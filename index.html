@@ -2,154 +2,191 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CRITICAL MOBILE FIX: PREVENT OVERFLOW ON BODY */
-        html, body { 
+        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; }
+        
+        .sticky-zone { 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
             background-color: #050505; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            padding: 0;
-            height: 100vh;
-            overflow: hidden; /* Stops the whole page from moving */
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* THE STAGNANT TOP - LOCKED HEIGHT */
-        .board-header-fixed { 
-            flex-shrink: 0; /* Prevents header from collapsing */
-            background: #080808; 
-            border-bottom: 2px solid #FF0000;
-            padding: 15px 20px;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            border-bottom: 2px solid #1a1a1a;
+            padding: 20px 0;
         }
 
-        /* THE ONLY SCROLLABLE PART */
-        .scrollable-content { 
-            flex-grow: 1;
-            overflow-y: auto; /* Only this area moves */
-            -webkit-overflow-scrolling: touch; /* Smooth mobile scroll */
-            padding: 20px;
-        }
-
-        /* BRANDING & UTILS */
-        .h-red { color: #FF0000; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; border-left: 4px solid #FF0000; padding-left: 10px; margin: 25px 0 15px 0; display: block; font-size: 1rem; }
-        .rev-green { color: #00FF00 !important; font-weight: 800; }
-        .exp-red { color: #FF0000 !important; font-weight: 800; }
-        .met-white { color: #FFFFFF !important; font-weight: 700; }
-        .pct-green { color: #00FF00 !important; font-weight: 900; }
-        .pct-red { color: #FF0000 !important; font-weight: 900; }
-        
-        .exec-card { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 4px; padding: 15px; }
-        .stat-label { color: #555; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; display: block;}
+        .h-red { color: #FF0000; font-weight: 950; text-transform: uppercase; border-left: 6px solid #FF0000; padding-left: 15px; margin: 40px 0 15px 0; display: block; font-size: 1.6rem; }
+        .card { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px; padding: 24px; }
+        .stat-label { color: #555; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+        .stack-lg { font-size: 2.6rem; font-weight: 900; line-height: 1; }
         
         table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; color: #444; font-size: 9px; text-transform: uppercase; padding: 10px 5px; border-bottom: 1px solid #222; }
-        td { padding: 10px 5px; border-bottom: 1px solid #111; font-size: 0.85rem; }
+        th { color:#444; font-size:10px; text-transform:uppercase; padding:12px; border-bottom:1px solid #222; text-align: left; }
+        td { padding:12px; border-bottom:1px solid #111; font-size:1rem; font-weight: 700; }
+        
+        /* Color Logic */
+        .rev-green { color: #00FF00; }
+        .exp-red { color: #FF0000; }
+        .met-white { color: #FFFFFF; }
+        .pct-green { color: #00FF00; }
+        .pct-red { color: #FF0000; }
+        .highlight-row { background: #151515; }
     </style>
 </head>
-<body>
 
-    <div class="board-header-fixed">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex justify-between items-center mb-3">
-                <div>
-                    <h1 class="text-xl font-black italic tracking-tighter">SURUKA <span class="text-red-600">AUDIT</span></h1>
-                    <p class="text-[8px] text-zinc-500 font-bold uppercase tracking-widest">Jan 14, 2026</p>
-                </div>
-                <div class="text-right">
-                    <span class="stat-label">Actual Net Profit</span>
-                    <p class="rev-green text-xl font-black">₦10.05m</p>
-                </div>
+<body class="p-6 md:p-10">
+<div class="max-w-7xl mx-auto">
+
+<div class="sticky-zone">
+    <header class="flex justify-between items-end mb-8 border-b border-zinc-900 pb-8">
+        <div>
+            <h1 class="text-6xl font-black tracking-tighter uppercase">SURUKA<span class="text-red-600">NATURES</span></h1>
+            <p class="text-zinc-500 font-bold uppercase text-xs tracking-[5px] mt-2">Executive Team Report | Jan 14, 2026</p>
+        </div>
+        <div class="text-right">
+            <p class="stat-label">Net Revenue (MTD)</p>
+            <p class="rev-green stack-lg">₦10.05m</p>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="card p-4 md:p-6 border-l-4 border-white">
+            <p class="stat-label">Today's Revenue</p>
+            <p class="rev-green text-2xl md:text-4xl font-black">₦1.09m</p>
+        </div>
+        <div class="card p-4 md:p-6">
+            <p class="stat-label">Units (Today)</p>
+            <p class="met-white text-2xl md:text-4xl font-black">123</p>
+        </div>
+        <div class="card p-4 md:p-6">
+            <p class="stat-label">Daily Top Rep</p>
+            <p class="met-white text-xl font-bold">Bolu (₦535k)</p>
+        </div>
+        <div class="card p-4 md:p-6 border-l-4 border-green-600">
+            <p class="stat-label">Jan Projection</p>
+            <p class="rev-green text-2xl md:text-4xl font-black">₦52.2m</p>
+        </div>
+    </div>
+</div>
+
+<div class="pt-4">
+    <span class="h-red">Monthly Metrics (MTD)</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="card">
+            <p class="stat-label">Gross Sales</p>
+            <p class="rev-green stack-lg">₦23.58m</p>
+        </div>
+        <div class="card">
+            <p class="stat-label">Return Customers</p>
+            <p class="met-white stack-lg">163</p>
+        </div>
+        <div class="card">
+            <p class="stat-label">Return Rate</p>
+            <p class="pct-red stack-lg">40.45%</p>
+        </div>
+    </div>
+
+    <span class="h-red">Ad Performance Overview</span>
+    <div class="card mb-12 overflow-x-auto">
+        <table>
+            <thead>
+                <tr><th>Channel</th><th>Revenue</th><th>Spent</th><th>Profit</th><th>ROI</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Instagram Ad</td><td class="rev-green">₦6.7m</td><td>₦1.36m</td><td class="rev-green">₦5.34m</td><td class="pct-green">493%</td></tr>
+                <tr><td>Landing Page / FB</td><td class="rev-green">₦6.49m</td><td>₦2.94m</td><td class="rev-green">₦3.88m</td><td class="pct-green">215%</td></tr>
+                <tr><td>Whatsapp DM</td><td class="rev-green">₦332.8k</td><td>--</td><td>--</td><td>--</td></tr>
+                <tr class="highlight-row font-black">
+                    <td>TOTAL AD AUDIT</td><td class="rev-green">₦13.52m</td><td class="exp-red">₦4.29m</td><td class="rev-green">₦9.23m</td><td class="pct-green">214.68%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+        <div>
+            <span class="h-red">Departments</span>
+            <div class="card overflow-x-auto">
+                <table>
+                    <thead><tr><th>Dept</th><th>Rev</th><th>Units</th><th>%</th></tr></thead>
+                    <tbody>
+                        <tr><td>Digital Mkt</td><td class="rev-green">₦13.7m</td><td>1,892</td><td class="pct-green">58.2%</td></tr>
+                        <tr><td>Sales Team</td><td class="rev-green">₦6.7m</td><td>669</td><td class="pct-red">28.2%</td></tr>
+                        <tr><td>Cust. Care</td><td class="rev-green">₦3.2m</td><td>375</td><td class="pct-red">13.6%</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="grid grid-cols-2 gap-2">
-                <div class="exec-card py-2 bg-zinc-900/50">
-                    <span class="stat-label">Today's Rev</span>
-                    <p class="rev-green text-lg font-black">₦1.10m</p>
-                    <p class="text-[9px] text-zinc-500 font-bold">123 UNITS</p>
-                </div>
-                <div class="exec-card py-2 bg-zinc-900/50">
-                    <span class="stat-label">Daily Top Reps</span>
-                    <div class="text-[9px] font-bold leading-tight mt-1">
-                        BOLU: <span class="rev-green">₦535k</span><br>
-                        SUSAN: <span class="rev-green">₦362k</span>
-                    </div>
-                </div>
+        </div>
+        <div>
+            <span class="h-red">Zones</span>
+            <div class="card overflow-x-auto">
+                <table>
+                    <thead><tr><th>Zone</th><th>Rev</th><th>Cust</th><th>%</th></tr></thead>
+                    <tbody>
+                        <tr><td>Lagos</td><td class="rev-green">₦11.5m</td><td>179</td><td class="pct-red">48.8%</td></tr>
+                        <tr><td>Benin</td><td class="rev-green">₦8.1m</td><td>156</td><td class="pct-red">34.2%</td></tr>
+                        <tr><td>Abuja</td><td class="rev-green">₦3.9m</td><td>72</td><td class="pct-red">16.7%</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="scrollable-content">
-        <div class="max-w-4xl mx-auto">
-            
-            <span class="h-red">Jan 31st Forecast</span>
-            <div class="grid grid-cols-1 gap-4 mb-8">
-                <div class="exec-card border-t-2 border-green-600">
-                    <span class="stat-label">Projected Jan Revenue</span>
-                    <p class="rev-green text-4xl font-black">₦52.22m</p>
-                    <p class="text-[10px] text-zinc-600 font-bold mt-1">CALC: (MTD / 14 * 17) + MTD</p>
-                </div>
-            </div>
+    <span class="h-red">Individual Performance Audit</span>
+    <div class="card mb-12 overflow-x-auto">
+        <table>
+            <thead>
+                <tr><th>Staff Name</th><th>Revenue</th><th>Target</th><th class="text-right">% of Target</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Mary</td><td class="rev-green">₦6.67m</td><td>₦500m</td><td class="text-right pct-red">1.33%</td></tr>
+                <tr><td>Bolu</td><td class="rev-green">₦4.8m</td><td>₦400m</td><td class="text-right pct-red">1.20%</td></tr>
+                <tr><td>Susan</td><td class="rev-green">₦2.94m</td><td>₦100m</td><td class="text-right pct-red">2.94%</td></tr>
+                <tr><td>Rachel</td><td class="rev-green">₦2.3m</td><td>₦100m</td><td class="text-right pct-red">2.30%</td></tr>
+                <tr><td>Jaya</td><td class="rev-green">₦1.86m</td><td>₦150m</td><td class="text-right pct-red">1.24%</td></tr>
+                <tr><td>Lewa</td><td class="rev-green">₦1.85m</td><td>₦250m</td><td class="text-right pct-red">0.74%</td></tr>
+                <tr><td>Divine</td><td class="rev-green">₦1.34m</td><td>₦100m</td><td class="text-right pct-red">1.34%</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-            <span class="h-red">Monthly Metrics</span>
-            <div class="grid grid-cols-2 gap-3 mb-8">
-                <div class="exec-card">
-                    <span class="stat-label">MTD Gross</span>
-                    <p class="rev-green text-lg font-bold">₦23.58m</p>
-                </div>
-                <div class="exec-card">
-                    <span class="stat-label">Units Sold</span>
-                    <p class="met-white text-lg font-bold">2.94k</p>
-                </div>
-                <div class="exec-card">
-                    <span class="stat-label">Return %</span>
-                    <p class="pct-red text-lg font-bold">40.45%</p>
-                </div>
-                <div class="exec-card">
-                    <span class="stat-label">Net 15%</span>
-                    <p class="met-white text-lg font-bold">₦1.51m</p>
-                </div>
-            </div>
-
-            <span class="h-red">Ad ROI Performance</span>
-            <div class="exec-card mb-8">
-                <table>
-                    <thead>
-                        <tr><th>Channel</th><th>Revenue</th><th>ROI</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Instagram</td><td class="rev-green">₦6.70m</td><td class="pct-green">493%</td></tr>
-                        <tr><td>Landing Page</td><td class="rev-green">₦6.31m</td><td class="pct-green">215%</td></tr>
-                        <tr class="bg-zinc-900"><td class="font-bold">Total Profit</td><td class="rev-green font-bold">₦9.23m</td><td class="pct-green">214.6%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <span class="h-red">Staff MTD Ranking</span>
-            <div class="exec-card mb-12">
-                <table>
-                    <thead>
-                        <tr><th>Name</th><th>MTD Rev</th><th>Achieved</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="font-bold">Mary</td><td class="rev-green">₦6.67m</td><td class="pct-red">1.33%</td></tr>
-                        <tr><td class="font-bold">Bolu</td><td class="rev-green">₦4.80m</td><td class="pct-red">1.20%</td></tr>
-                        <tr><td class="font-bold">Susan</td><td class="rev-green">₦2.94m</td><td class="pct-red">2.94%</td></tr>
-                        <tr><td class="font-bold">Rachel</td><td class="rev-green">₦2.30m</td><td class="pct-red">2.30%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <footer class="text-center py-10 opacity-20 text-[8px] uppercase tracking-[10px]">
-                Suruka Board Report
-            </footer>
+    <span class="h-red">Funnel & Lead Conversion</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="card">
+            <p class="stat-label">Instagram Funnel</p>
+            <p class="met-white text-lg">Leads: 1,198</p>
+            <p class="pct-red stack-lg">9.27% <span class="text-sm font-normal">Closed</span></p>
+        </div>
+        <div class="card">
+            <p class="stat-label">Landing Page Funnel</p>
+            <p class="met-white text-lg">Interested: 180</p>
+            <p class="pct-red stack-lg">31.98% <span class="text-sm font-normal">Delivered</span></p>
         </div>
     </div>
 
+    <span class="h-red">Historical Analysis (2022 - 2026)</span>
+    <div class="card mb-12 overflow-x-auto">
+        <table>
+            <thead>
+                <tr><th>Metric</th><th>2023</th><th>2024</th><th>2025</th><th>2026 (MTD)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Gross Revenue</td><td>₦154.5m</td><td>₦452.9m</td><td>₦875.7m</td><td class="rev-green">₦23.58m</td></tr>
+                <tr><td>Expenses</td><td>₦50.0m</td><td>₦201.3m</td><td>₦314.6m</td><td class="exp-red">₦13.53m</td></tr>
+                <tr><td>Net Profit</td><td>₦104.4m</td><td>₦251.6m</td><td>₦561.1m</td><td class="rev-green">₦10.05m</td></tr>
+                <tr><td>Customers</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="met-white">403</td></tr>
+                <tr><td>Units Sold</td><td>40,878</td><td>101,071</td><td>133,616</td><td class="met-white">2,936</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer class="text-center py-20 opacity-20 text-[10px] uppercase tracking-[15px]">
+    Suruka Natures Gift | Audit 2026
+</footer>
+
+</div>
 </body>
 </html>
