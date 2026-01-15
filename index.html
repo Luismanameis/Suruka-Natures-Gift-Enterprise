@@ -5,38 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; }
+        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
         
-        /* TIGHTENED HEADER SECTION */
-        .sticky-header { 
-            position: sticky; 
-            top: 0; 
-            z-index: 50; 
-            background-color: #050505; 
-            border-bottom: 2px solid #1a1a1a; 
-            padding: 10px 40px 15px 40px; /* Reduced vertical padding */
+        /* THE FIX: Remove fixed heights and absolute positioning */
+        .report-container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 20px 40px; 
         }
 
-        .h-red { color: #fff; font-weight: 950; text-transform: uppercase; border-left: 8px solid #FF0000; padding-left: 15px; margin: 20px 0 10px 0; display: block; font-size: 1.2rem; }
-        .card { background: #0f0f0f; border: 1px solid #222; border-radius: 12px; padding: 15px; }
-        .stat-label { color: #555; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
-        .stack-lg { font-size: 2.2rem; font-weight: 900; line-height: 1; margin-top: 2px; }
+        .header-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 15px;
+            margin-bottom: 20px; /* Controls gap to the stats */
+        }
+
+        .h-red { color: #fff; font-weight: 950; text-transform: uppercase; border-left: 8px solid #FF0000; padding-left: 15px; margin: 25px 0 10px 0; display: block; font-size: 1.1rem; }
+        .card { background: #0f0f0f; border: 1px solid #222; border-radius: 12px; padding: 15px; height: 100%; }
+        .stat-label { color: #555; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        .stack-lg { font-size: 2.1rem; font-weight: 900; line-height: 1; margin-top: 2px; }
         
         .txt-rev { color: #10b981; } .txt-unit { color: #fbbf24; } .txt-cust { color: #38bdf8; }
         
         table { width: 100%; border-collapse: collapse; }
         th { color:#444; font-size:9px; text-transform:uppercase; padding:10px; border-bottom:2px solid #222; text-align: left; }
-        td { padding:10px; border-bottom:1px solid #111; font-size:0.85rem; font-weight: 700; cursor: pointer; }
-        tr:hover { background: #111; }
+        td { padding:10px; border-bottom:1px solid #111; font-size:0.85rem; font-weight: 700; }
         
-        .reset-btn { display: none; color: #FF0000; font-size: 9px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 4px; }
-        .main-content { padding: 0 40px 40px 40px; margin-top: 10px; } /* Removed large margin-top */
+        .reset-btn { display: none; color: #FF0000; font-size: 9px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-<div class="sticky-header">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="report-container">
+    <div class="header-strip">
         <div>
             <h1 class="text-3xl font-black tracking-tighter uppercase leading-none">SURUKA<span class="text-red-600">NATURES</span></h1>
             <p id="viewStatus" class="text-zinc-500 font-bold uppercase text-[8px] tracking-[3px] mt-1">EXECUTIVE AUDIT | JAN 15, 2026</p>
@@ -48,113 +52,38 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-        <div class="card border-zinc-800 ring-1 ring-white/10"><p class="stat-label">Today's Revenue</p><p id="hToday" class="stack-lg txt-rev">₦1.1m</p></div>
-        <div class="card border-zinc-800"><p class="stat-label">Units (Today)</p><p id="hUnitT" class="stack-lg">123</p></div>
-        <div class="card border-zinc-800"><p class="stat-label">MTD Customers</p><p id="hCust" class="stack-lg txt-cust">403</p></div>
-        <div class="card border-emerald-900/50 ring-1 ring-emerald-500/20"><p class="stat-label">Jan Forecast</p><p id="hFore" class="stack-lg txt-rev">₦52.2m</p></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div class="card"><p class="stat-label">Today's Revenue</p><p id="hToday" class="stack-lg txt-rev">₦1.1m</p></div>
+        <div class="card"><p class="stat-label">Units (Today)</p><p id="hUnitT" class="stack-lg">123</p></div>
+        <div class="card"><p class="stat-label">MTD Customers</p><p id="hCust" class="stack-lg txt-cust">403</p></div>
+        <div class="card border-emerald-900/50"><p class="stat-label">Jan Forecast</p><p id="hFore" class="stack-lg txt-rev">₦52.2m</p></div>
     </div>
-</div>
 
-<div class="max-w-7xl mx-auto main-content">
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="md:col-span-2">
             <span class="h-red">Individual Performance</span>
             <div class="card p-0 overflow-hidden">
                 <table>
                     <thead><tr><th>Staff</th><th>Revenue</th><th>Cust</th><th>Units</th><th class="text-right">% Target</th></tr></thead>
-                    <tbody id="staffBody">
-                        </tbody>
+                    <tbody>
+                        <tr><td>Mary</td><td class="txt-rev">₦6.8m</td><td>143</td><td>884</td><td class="text-right text-red-600">1.37%</td></tr>
+                        <tr><td>Bolu</td><td class="txt-rev">₦4.9m</td><td>66</td><td>555</td><td class="text-right text-red-600">1.23%</td></tr>
+                        <tr><td>Susan</td><td class="txt-rev">₦3.2m</td><td>38</td><td>390</td><td class="text-right text-red-600">3.21%</td></tr>
+                    </tbody>
                 </table>
             </div>
         </div>
         
         <div>
             <span class="h-red">Profit Snapshot</span>
-            <div class="card space-y-3">
+            <div class="card space-y-4">
                 <div class="flex justify-between items-end"><p class="stat-label">Gross Profit</p><p class="text-xl font-bold txt-rev">₦11.2m</p></div>
                 <div class="flex justify-between items-end border-t border-zinc-800 pt-3"><p class="stat-label">Ad Profit</p><p class="text-xl font-bold txt-rev">₦10.1m</p></div>
-                <div class="flex justify-between items-end border-t border-zinc-800 pt-3"><p class="stat-label">Expenses</p><p class="text-xl font-bold text-red-500">₦13.5m</p></div>
+                <div class="flex justify-between items-end border-t border-zinc-800 pt-3"><p class="stat-label">Total Expenses</p><p class="text-xl font-bold text-red-500">₦13.5m</p></div>
             </div>
         </div>
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        <div>
-            <span class="h-red">Zonal contribution</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Zone</th><th>Revenue</th><th>Unit</th><th class="text-right">Share</th></tr></thead>
-                    <tbody>
-                        <tr><td>Lagos</td><td class="txt-rev">₦12.1m</td><td>1,548</td><td class="text-right">49.1%</td></tr>
-                        <tr><td>Benin</td><td class="txt-rev">₦8.3m</td><td>1,055</td><td class="text-right">33.8%</td></tr>
-                        <tr><td>Abuja</td><td class="txt-rev">₦4.1m</td><td>475</td><td class="text-right">16.7%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div>
-            <span class="h-red">Medium Performance</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Medium</th><th>Revenue</th><th class="text-right">Share</th></tr></thead>
-                    <tbody>
-                        <tr><td>Instagram Ad</td><td class="txt-rev">₦7.4m</td><td class="text-right">30.1%</td></tr>
-                        <tr><td>Landing Page</td><td class="txt-rev">₦6.3m</td><td class="text-right">25.8%</td></tr>
-                        <tr><td>Others</td><td class="txt-rev">₦10.7m</td><td class="text-right">43.4%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<script>
-const staffData = [
-    { name: "Mary", rev: 6842596, cust: 143, unit: 884, target: "1.37%" },
-    { name: "Bolu", rev: 4932173, cust: 66, unit: 555, target: "1.23%" },
-    { name: "Susan", rev: 3205296, cust: 38, unit: 390, target: "3.21%" },
-    { name: "Rachel", rev: 2300711, cust: 40, unit: 267, target: "2.30%" },
-    { name: "Jaya", rev: 2025440, cust: 34, unit: 255, target: "1.35%" },
-    { name: "Divine", rev: 1505400, cust: 31, unit: 190, target: "1.51%" }
-];
-
-function init() {
-    const body = document.getElementById('staffBody');
-    staffData.forEach(s => {
-        const tr = document.createElement('tr');
-        tr.onclick = () => filterStaff(s);
-        tr.innerHTML = `
-            <td>${s.name}</td>
-            <td class="txt-rev">₦${(s.rev/1000000).toFixed(1)}m</td>
-            <td class="txt-cust">${s.cust}</td>
-            <td class="txt-unit">${s.unit}</td>
-            <td class="text-right text-red-600">${s.target}</td>
-        `;
-        body.appendChild(tr);
-    });
-}
-
-function filterStaff(s) {
-    document.getElementById('hToday').innerText = '₦' + (s.rev/20/1000000).toFixed(2) + 'm'; // Mock daily split
-    document.getElementById('hUnitT').innerText = Math.floor(s.unit/20);
-    document.getElementById('hCust').innerText = s.cust;
-    document.getElementById('viewStatus').innerText = "FOCUS: " + s.name.toUpperCase();
-    document.getElementById('resetBtn').style.display = 'block';
-}
-
-function resetView() {
-    document.getElementById('hToday').innerText = '₦1.1m';
-    document.getElementById('hUnitT').innerText = '123';
-    document.getElementById('hCust').innerText = '403';
-    document.getElementById('viewStatus').innerText = "EXECUTIVE AUDIT | JAN 15, 2026";
-    document.getElementById('resetBtn').style.display = 'none';
-}
-
-init();
-</script>
 </body>
 </html>
