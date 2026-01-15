@@ -67,14 +67,14 @@
     <span class="h-red">01. Individual Sales Rep Performance</span>
     <div class="glass-card p-0 overflow-hidden">
         <table>
-            <thead><tr><th>Staff</th><th>Revenue</th><th>Today</th><th>% Target</th><th class="text-right">Annual Target</th></tr></thead>
+            <thead><tr><th>Staff</th><th>Revenue</th><th>Today</th><th>% Target</th><th class="text-right">Monthly Target</th></tr></thead>
             <tbody>
-                <tr class="clickable" onclick="filterData('Mary', 6.8, 143, 884)"><td>Mary</td><td class="txt-rev">₦6.8m</td><td>₦37k</td><td class="alert-red">1.37%</td><td class="text-right opacity-40">₦500m</td></tr>
-                <tr class="clickable" onclick="filterData('Bolu', 5.0, 66, 556)"><td>Bolu</td><td class="txt-rev">₦5.0m</td><td>₦152.2k</td><td class="alert-red">1.25%</td><td class="text-right opacity-40">₦400m</td></tr>
-                <tr class="clickable" onclick="filterData('Susan', 3.2, 38, 390)"><td>Susan</td><td class="txt-rev">₦3.2m</td><td>₦0</td><td class="alert-red">3.21%</td><td class="text-right opacity-40">₦100m</td></tr>
-                <tr class="clickable" onclick="filterData('Rachel', 2.3, 40, 267)"><td>Rachel</td><td class="txt-rev">₦2.3m</td><td>₦0</td><td class="alert-red">2.30%</td><td class="text-right opacity-40">₦100m</td></tr>
-                <tr class="clickable" onclick="filterData('Jaya', 2.1, 35, 256)"><td>Jaya</td><td class="txt-rev">₦2.1m</td><td>₦180.6k</td><td class="alert-red">1.41%</td><td class="text-right opacity-40">₦150m</td></tr>
-                <tr class="clickable" onclick="filterData('Divine', 1.6, 33, 197)"><td>Divine</td><td class="txt-rev">₦1.6m</td><td>₦0</td><td class="alert-red">1.60%</td><td class="text-right opacity-40">₦100m</td></tr>
+                <tr class="clickable" onclick="filterData('Mary', 6.8, 143, 884)"><td>Mary</td><td class="txt-rev">₦6.8m</td><td>₦37k</td><td class="alert-red">41.6%</td><td class="text-right opacity-40">₦16.4m</td></tr>
+                <tr class="clickable" onclick="filterData('Bolu', 5.0, 66, 556)"><td>Bolu</td><td class="txt-rev">₦5.0m</td><td>₦152.2k</td><td class="alert-red">38.4%</td><td class="text-right opacity-40">₦13.0m</td></tr>
+                <tr class="clickable" onclick="filterData('Susan', 3.2, 38, 390)"><td>Susan</td><td class="txt-rev">₦3.2m</td><td>₦0</td><td class="alert-red">97.8%</td><td class="text-right opacity-40">₦3.2m</td></tr>
+                <tr class="clickable" onclick="filterData('Rachel', 2.3, 40, 267)"><td>Rachel</td><td class="txt-rev">₦2.3m</td><td>₦0</td><td class="alert-red">71.8%</td><td class="text-right opacity-40">₦3.2m</td></tr>
+                <tr class="clickable" onclick="filterData('Jaya', 2.1, 35, 256)"><td>Jaya</td><td class="txt-rev">₦2.1m</td><td>₦180.6k</td><td class="alert-red">42.0%</td><td class="text-right opacity-40">₦5.0m</td></tr>
+                <tr class="clickable" onclick="filterData('Divine', 1.6, 33, 197)"><td>Divine</td><td class="txt-rev">₦1.6m</td><td>₦0</td><td class="alert-red">50.0%</td><td class="text-right opacity-40">₦3.2m</td></tr>
             </tbody>
         </table>
     </div>
@@ -87,7 +87,7 @@
                     <thead><tr><th>Channel</th><th>Revenue</th><th>Spend</th><th class="text-right">Profit</th></tr></thead>
                     <tbody>
                         <tr><td>Instagram Ad</td><td class="txt-rev">₦7.5m</td><td>₦1.4m</td><td class="text-right txt-rev">₦6.1m</td></tr>
-                        <tr><td>Landing Page</td><td class="txt-rev">₦6.4m</td><td>-</td><td class="text-right">-</td></tr>
+                        <tr><td>Landing Page</td><td class="txt-rev">₦6.3m</td><td>-</td><td class="text-right">-</td></tr>
                         <tr><td>Facebook Ad</td><td class="txt-rev">₦174k</td><td>-</td><td class="text-right">-</td></tr>
                         <tr class="bg-zinc-900 font-black"><td>TOTAL AD</td><td class="txt-rev">₦14.5m</td><td>₦4.3m</td><td class="text-right txt-rev">₦10.2m</td></tr>
                     </tbody>
@@ -100,47 +100,9 @@
                 <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">IG Leads (1,398)</p><p class="txt-rev">9.01% Closed</p></div>
                 <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">LP Leads (469)</p><p class="txt-rev">32.20% Closed</p></div>
                 <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">Return Customers</p><p class="text-sky-400">38.26% Rate</p></div>
-                <div class="flex justify-between items-center"><p class="stat-label m-0">Target Projection</p><p class="text-amber-400">₦299.6m (14.9%)</p></div>
+                <div class="flex justify-between items-center"><p class="stat-label m-0">Jan Revenue Projection</p><p class="text-amber-400">₦51.6m</p></div>
             </div>
         </div>
-    </div>
-
-    <span class="h-red">04. Regional & Departmental Share</span>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="glass-card p-0 overflow-hidden">
-            <table>
-                <thead><tr><th>Zone</th><th>Revenue</th><th class="text-right">Share</th></tr></thead>
-                <tbody>
-                    <tr><td>Lagos</td><td class="txt-rev">₦12.1m</td><td class="text-right">48.6%</td></tr>
-                    <tr><td>Benin</td><td class="txt-rev">₦8.6m</td><td class="text-right">34.5%</td></tr>
-                    <tr><td>Abuja</td><td class="txt-rev">₦4.1m</td><td class="text-right">16.5%</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="glass-card p-0 overflow-hidden">
-            <table>
-                <thead><tr><th>Team (Filterable)</th><th>Revenue</th><th class="text-right">Units</th></tr></thead>
-                <tbody>
-                    <tr class="clickable" onclick="filterData('Digital Team', 14.7, 292, 2017)"><td>Digital Marketers</td><td class="txt-rev">₦14.7m</td><td class="text-right">2,017</td></tr>
-                    <tr class="clickable" onclick="filterData('Sales Team', 7.0, 87, 707)"><td>Sales Team</td><td class="txt-rev">₦7.0m</td><td class="text-right">707</td></tr>
-                    <tr class="clickable" onclick="filterData('Support', 3.2, 50, 375)"><td>Customer Care</td><td class="txt-rev">₦3.2m</td><td class="text-right">375</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <span class="h-red">05. 5-Year Growth Audit</span>
-    <div class="glass-card p-0 overflow-hidden mb-12">
-        <table class="text-sm">
-            <thead class="bg-zinc-900">
-                <tr><th>Metric</th><th>2023</th><th>2024</th><th>2025</th><th class="txt-rev">2026 MTD</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Gross Revenue</td><td>₦154m</td><td>₦452m</td><td>₦875m</td><td class="txt-rev">₦24.9m</td></tr>
-                <tr><td>Net Revenue</td><td>₦104m</td><td>₦251m</td><td>₦561m</td><td class="txt-rev">₦11.4m</td></tr>
-                <tr><td>Customers</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="txt-rev">426</td></tr>
-            </tbody>
-        </table>
     </div>
 
     <footer class="text-center py-20 border-t border-zinc-900 opacity-20">
