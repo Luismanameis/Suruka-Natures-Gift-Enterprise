@@ -3,190 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENERGYMALL - JAN 2026 AUDIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; }
         
-        /* FIXED TOP SECTION */
-        .sticky-header { 
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background-color: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
-            border-bottom: 2px solid #222; padding: 15px 40px;
+        /* FIXED HEADER SECTION - STICKY */
+        .sticky-summary { 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            background-color: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #1a1a1a;
+            padding: 20px 40px;
         }
 
-        .content-body { padding: 220px 40px 40px 40px; max-width: 1600px; margin: 0 auto; }
+        .h-red { color: #FF0000; font-weight: 950; text-transform: uppercase; border-left: 6px solid #FF0000; padding-left: 15px; margin: 40px 0 15px 0; display: block; font-size: 1.6rem; }
+        .glass-card { background: #0d0d0d; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px; }
+        
+        /* PREVIOUS FONT STYLING */
+        .stat-label { color: #ffffff; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; opacity: 0.8; }
+        .stack-lg { font-size: 2.6rem; font-weight: 900; line-height: 1; }
+        .brand-yellow { color: #FFD700; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { color:#ffffff; font-size:10px; text-transform:uppercase; padding:12px; border-bottom:1px solid #222; text-align: left; opacity: 0.6; }
+        td { padding:12px; border-bottom:1px solid #111; font-size:1rem; font-weight: 700; color: #ffffff; }
+        
+        .txt-rev { color: #00ff88 !important; }
+        .alert-red { color: #ff3333 !important; }
+        .clickable { cursor: pointer; transition: 0.2s; }
+        .clickable:hover { background: #111; }
 
-        .h-red { color: #ffffff; font-weight: 900; text-transform: uppercase; border-left: 6px solid #FF0000; padding-left: 12px; margin: 25px 0 10px 0; display: block; font-size: 1rem; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 10px; padding: 15px; }
-        
-        /* READABILITY FIX: High contrast labels */
-        .stat-label { color: #aaaaaa; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .stack-lg { font-size: 2.2rem; font-weight: 900; line-height: 1; margin-top: 4px; }
-        
-        .txt-rev { color: #10b981; } .txt-unit { color: #fbbf24; } .txt-cust { color: #38bdf8; }
-        
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th { color:#ffffff; font-size: 9px; text-transform: uppercase; padding: 10px; border-bottom: 2px solid #333; text-align: left; background: #111; }
-        td { padding: 10px; border-bottom: 1px solid #1a1a1a; font-weight: 700; color: #efefef; }
-        
-        tr.clickable { cursor: pointer; transition: 0.2s; }
-        tr.clickable:hover { background: #1a1a1a; border-left: 4px solid #FF0000; }
-        
-        .reset-btn { display: none; background: #FF0000; color: white; font-size: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-top: 8px; width: fit-content; }
+        .reset-btn { display: none; color: #FF0000; font-size: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 10px; border: 1px solid #FF0000; padding: 4px 8px; width: fit-content; }
     </style>
 </head>
-<body>
 
-<div class="sticky-header">
-    <div class="flex justify-between items-center mb-4">
+<body class="pb-20">
+<div class="max-w-7xl mx-auto">
+
+<div class="sticky-summary">
+    <header class="flex justify-between items-end mb-6">
         <div>
-            <h1 class="text-4xl font-black tracking-tighter uppercase leading-none">SURUKA<span class="text-red-600">NATURES</span></h1>
-            <p id="viewLabel" class="text-white font-bold uppercase text-[9px] tracking-[5px] mt-1">EXECUTIVE AUDIT | JAN 2026</p>
+            <h1 class="text-5xl font-black tracking-tighter uppercase italic">SURUKA<span class="text-red-600">NATURES</span></h1>
+            <p id="viewLabel" class="text-zinc-500 font-bold uppercase text-xs tracking-[5px] mt-1">Monthly Executive Performance Audit | Jan 2026</p>
             <div id="resetBtn" class="reset-btn" onclick="resetReport()">Reset Global View ✕</div>
         </div>
         <div class="text-right">
-            <p class="stat-label">Live: Today's Revenue</p>
-            <p class="text-2xl font-black txt-rev">₦396k</p>
-            <p class="text-[10px] text-white font-bold">8 CUSTOMERS | 50 UNITS</p>
+            <p class="stat-label">Today's Revenue</p>
+            <p class="text-3xl font-black txt-rev">₦396k</p>
+            <p class="text-[10px] font-bold opacity-50">8 CUST | 50 UNITS</p>
         </div>
-    </div>
+    </header>
 
-    <div class="grid grid-cols-4 gap-4">
-        <div class="card border-zinc-800"><p class="stat-label">MTD Revenue</p><p id="mRev" class="stack-lg txt-rev">₦24.7m</p></div>
-        <div class="card border-zinc-800"><p class="stat-label">Net Profit (MTD)</p><p id="mNet" class="stack-lg">₦11.2m</p></div>
-        <div class="card border-zinc-800"><p class="stat-label">MTD Customers</p><p id="mCust" class="stack-lg txt-cust">423</p></div>
-        <div class="card border-zinc-800"><p class="stat-label">Units Sold</p><p id="mUnit" class="stack-lg txt-unit">3,090</p></div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="glass-card"><p class="stat-label">MTD Revenue</p><p id="mRev" class="stack-lg txt-rev">₦24.7m</p></div>
+        <div class="glass-card"><p class="stat-label">MTD Net Profit</p><p id="mNet" class="stack-lg">₦11.2m</p></div>
+        <div class="glass-card"><p class="stat-label">MTD Customers</p><p id="mCust" class="stack-lg text-sky-400">423</p></div>
+        <div class="glass-card"><p class="stat-label">Units Sold</p><p id="mUnit" class="stack-lg text-amber-400">3,090</p></div>
     </div>
 </div>
 
-<div class="content-body">
-    
-    <div class="grid grid-cols-3 gap-6">
-        <div class="col-span-2">
-            <span class="h-red">👤 Individual Sales Performance (Click to Filter)</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Staff</th><th>Revenue</th><th>Cust</th><th>Units</th><th>% Target</th><th>Target</th></tr></thead>
-                    <tbody>
-                        <tr class="clickable" onclick="filterData('Mary', 6.8, 143, 884)"><td>Mary</td><td class="txt-rev">₦6.8m</td><td>1</td><td>884</td><td class="text-red-500">1.37%</td><td>₦500m</td></tr>
-                        <tr class="clickable" onclick="filterData('Bolu', 4.9, 66, 555)"><td>Bolu</td><td class="txt-rev">₦4.9m</td><td>2</td><td>555</td><td class="text-red-500">1.23%</td><td>₦400m</td></tr>
-                        <tr class="clickable" onclick="filterData('Susan', 3.2, 38, 390)"><td>Susan</td><td class="txt-rev">₦3.2m</td><td>0</td><td>390</td><td class="text-red-500">3.21%</td><td>₦100m</td></tr>
-                        <tr class="clickable" onclick="filterData('Rachel', 2.3, 40, 267)"><td>Rachel</td><td class="txt-rev">₦2.3m</td><td>0</td><td>267</td><td class="text-red-500">2.30%</td><td>₦100m</td></tr>
-                        <tr class="clickable" onclick="filterData('Jaya', 2.0, 34, 255)"><td>Jaya</td><td class="txt-rev">₦2.0m</td><td>2</td><td>255</td><td class="text-red-500">1.35%</td><td>₦150m</td></tr>
-                        <tr class="clickable" onclick="filterData('Divine', 1.5, 31, 190)"><td>Divine</td><td class="txt-rev">₦1.5m</td><td>0</td><td>190</td><td class="text-red-500">1.51%</td><td>₦100m</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div>
-            <span class="h-red">Team Performance (Filter)</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Team</th><th>Revenue</th><th>Share</th></tr></thead>
-                    <tbody>
-                        <tr class="clickable" onclick="filterData('Digital Marketers', 14.6, 290, 2010)"><td>Digital Marketer</td><td class="txt-rev">₦14.6m</td><td>59.27%</td></tr>
-                        <tr class="clickable" onclick="filterData('Sales Team', 6.8, 86, 705)"><td>Sales Team</td><td class="txt-rev">₦6.8m</td><td>27.79%</td></tr>
-                        <tr class="clickable" onclick="filterData('Customer Care', 3.1, 50, 375)"><td>Customer Care</td><td class="txt-rev">₦3.1m</td><td>12.94%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <span class="h-red">Profit & Loss Overview</span>
-            <div class="card space-y-3">
-                <div class="flex justify-between"><p class="stat-label">Total Sales</p><p class="txt-rev font-bold">₦24.7m</p></div>
-                <div class="flex justify-between"><p class="stat-label">Gross Expenses</p><p class="text-red-500 font-bold">₦13.5m</p></div>
-                <div class="flex justify-between border-t border-zinc-800 pt-2"><p class="stat-label">Net Profit 15%</p><p class="text-white font-bold">₦1.6m</p></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-6 mt-8">
-        <div>
-            <span class="h-red">📊 Ad Channel Breakdown</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Medium</th><th>Revenue</th><th>Spend</th><th>Profit</th></tr></thead>
-                    <tbody>
-                        <tr><td>Instagram</td><td class="txt-rev">₦7.4m</td><td>₦1.4m</td><td class="txt-rev">₦5.9m</td></tr>
-                        <tr><td>Landing Page</td><td class="txt-rev">₦6.3m</td><td>-</td><td>-</td></tr>
-                        <tr><td>WhatsApp DM</td><td class="txt-rev">₦451k</td><td>-</td><td>-</td></tr>
-                        <tr><td>Facebook</td><td class="txt-rev">₦174k</td><td>-</td><td>-</td></tr>
-                        <tr class="bg-zinc-900"><td>TOTAL AD</td><td class="txt-rev">₦14.4m</td><td>₦4.3m</td><td class="txt-rev">₦10.1m</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div>
-            <span class="h-red">📈 Lead Funnel Metrics</span>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="card"><p class="stat-label">IG Leads</p><p class="text-2xl font-black">1,209</p><p class="text-xs text-green-500">10.26% Closed</p></div>
-                <div class="card"><p class="stat-label">LP Leads</p><p class="text-2xl font-black">469</p><p class="text-xs text-green-500">32.20% Closed</p></div>
-                <div class="card"><p class="stat-label">Return Cust</p><p class="text-2xl font-black">163</p><p class="text-xs text-blue-400">38.53% Rate</p></div>
-                <div class="card"><p class="stat-label">Growth Rate</p><p class="text-2xl font-black text-red-600">-62.6%</p><p class="text-xs opacity-50">Sales vs Dec</p></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-3 gap-6 mt-8">
-        <div class="col-span-2">
-            <span class="h-red">🗓️ Revenue & Customer Trends (Click Month)</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Month</th><th>Revenue</th><th>Expenses</th><th>Net Revenue</th><th>Units</th></tr></thead>
-                    <tbody>
-                        <tr class="clickable" onclick="filterData('January', 24.7, 423, 3090)"><td>January</td><td class="txt-rev">₦24.7m</td><td>₦13.5m</td><td class="txt-rev">₦11.1m</td><td>3,090</td></tr>
-                        <tr class="opacity-30"><td>December</td><td>₦0</td><td>₦0</td><td>₦0</td><td>0</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div>
-            <span class="h-red">Zonal Performance</span>
-            <div class="card p-0 overflow-hidden">
-                <table>
-                    <thead><tr><th>Zone</th><th>Revenue</th><th>Share</th></tr></thead>
-                    <tbody>
-                        <tr><td>Lagos</td><td class="txt-rev">₦12.1m</td><td>49.1%</td></tr>
-                        <tr><td>Benin</td><td class="txt-rev">₦8.3m</td><td>33.8%</td></tr>
-                        <tr><td>Abuja</td><td class="txt-rev">₦4.1m</td><td>16.7%</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <span class="h-red">Last 5 Years Growth Comparison</span>
-    <div class="card p-0 overflow-hidden mb-12">
-        <table class="text-[10px]">
-            <thead class="bg-zinc-900">
-                <tr><th>Metric</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th class="txt-rev">2026 MTD</th></tr>
-            </thead>
+<div class="px-10">
+    <span class="h-red">01. Individual Sales Rep Performance</span>
+    <div class="glass-card p-0 overflow-hidden">
+        <table>
+            <thead><tr><th>Staff</th><th>Revenue</th><th>Today</th><th>% Target</th><th class="text-right">Annual Target</th></tr></thead>
             <tbody>
-                <tr><td>Gross Revenue</td><td>₦122m</td><td>₦154m</td><td>₦452m</td><td>₦875m</td><td class="txt-rev font-black">₦24.7m</td></tr>
-                <tr><td>Net Revenue</td><td>₦77m</td><td>₦104m</td><td>₦251m</td><td>₦561m</td><td class="txt-rev font-black">₦11.1m</td></tr>
-                <tr><td>Customers</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="txt-rev font-black">423</td></tr>
-                <tr><td>Ad Spend</td><td>₦23m</td><td>₦27m</td><td>₦91m</td><td>₦147m</td><td class="txt-rev font-black">₦4.3m</td></tr>
+                <tr class="clickable" onclick="filterData('Mary', 6.8, 143, 884)"><td>Mary</td><td class="txt-rev">₦6.8m</td><td>₦37k</td><td class="alert-red">1.37%</td><td class="text-right opacity-40">₦500m</td></tr>
+                <tr class="clickable" onclick="filterData('Bolu', 4.9, 66, 555)"><td>Bolu</td><td class="txt-rev">₦4.9m</td><td>₦67k</td><td class="alert-red">1.23%</td><td class="text-right opacity-40">₦400m</td></tr>
+                <tr class="clickable" onclick="filterData('Susan', 3.2, 38, 390)"><td>Susan</td><td class="txt-rev">₦3.2m</td><td>₦0</td><td class="alert-red">3.21%</td><td class="text-right opacity-40">₦100m</td></tr>
+                <tr class="clickable" onclick="filterData('Rachel', 2.3, 40, 267)"><td>Rachel</td><td class="txt-rev">₦2.3m</td><td>₦0</td><td class="alert-red">2.30%</td><td class="text-right opacity-40">₦100m</td></tr>
+                <tr class="clickable" onclick="filterData('Jaya', 2.0, 34, 255)"><td>Jaya</td><td class="txt-rev">₦2.0m</td><td>₦95k</td><td class="alert-red">1.35%</td><td class="text-right opacity-40">₦150m</td></tr>
+                <tr class="clickable" onclick="filterData('Divine', 1.5, 31, 190)"><td>Divine</td><td class="txt-rev">₦1.5m</td><td>₦0</td><td class="alert-red">1.51%</td><td class="text-right opacity-40">₦100m</td></tr>
             </tbody>
         </table>
     </div>
 
-    <div class="grid grid-cols-2 gap-6 mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-            <span class="h-red">Landing Page Comparison (Ours)</span>
-            <div class="card space-y-2">
-                <div class="flex justify-between"><p class="stat-label">Leads</p><p>383</p></div>
-                <div class="flex justify-between"><p class="stat-label">Delivered</p><p>118 (30.8%)</p></div>
+            <span class="h-red">02. Ad Performance Overview</span>
+            <div class="glass-card p-0 overflow-hidden">
+                <table>
+                    <thead><tr><th>Channel</th><th>Revenue</th><th>Spend</th><th class="text-right">Profit</th></tr></thead>
+                    <tbody>
+                        <tr><td>Instagram Ad</td><td class="txt-rev">₦7.4m</td><td>₦1.4m</td><td class="text-right txt-rev">₦5.9m</td></tr>
+                        <tr><td>Landing Page</td><td class="txt-rev">₦6.3m</td><td>-</td><td class="text-right">-</td></tr>
+                        <tr><td>WhatsApp DM</td><td class="txt-rev">₦451k</td><td>-</td><td class="text-right">-</td></tr>
+                        <tr class="bg-zinc-900 font-black"><td>TOTAL AD</td><td class="txt-rev">₦14.4m</td><td>₦4.3m</td><td class="text-right txt-rev">₦10.1m</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div>
-            <span class="h-red">Landing Page Comparison (Dan)</span>
-            <div class="card space-y-2">
-                <div class="flex justify-between"><p class="stat-label">Leads</p><p>86</p></div>
-                <div class="flex justify-between"><p class="stat-label">Delivered</p><p>33 (38.3%)</p></div>
+            <span class="h-red">03. Lead & Conversion Funnel</span>
+            <div class="glass-card space-y-4">
+                <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">IG Leads (1,209)</p><p class="txt-rev">10.26% Closed</p></div>
+                <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">LP Leads (469)</p><p class="txt-rev">32.20% Closed</p></div>
+                <div class="flex justify-between items-center border-b border-zinc-800 pb-2"><p class="stat-label m-0">Return Customers</p><p class="text-sky-400">38.53% Rate</p></div>
+                <div class="flex justify-between items-center"><p class="stat-label m-0">Target Projection</p><p class="text-amber-400">₦296.4m (14.8%)</p></div>
             </div>
         </div>
     </div>
+
+    <span class="h-red">04. Regional & Departmental Share</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card p-0 overflow-hidden">
+            <table>
+                <thead><tr><th>Zone</th><th>Revenue</th><th class="text-right">Share</th></tr></thead>
+                <tbody>
+                    <tr><td>Lagos</td><td class="txt-rev">₦12.1m</td><td class="text-right">49.1%</td></tr>
+                    <tr><td>Benin</td><td class="txt-rev">₦8.3m</td><td class="text-right">33.8%</td></tr>
+                    <tr><td>Abuja</td><td class="txt-rev">₦4.1m</td><td class="text-right">16.7%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="glass-card p-0 overflow-hidden">
+            <table>
+                <thead><tr><th>Team (Filterable)</th><th>Revenue</th><th class="text-right">Units</th></tr></thead>
+                <tbody>
+                    <tr class="clickable" onclick="filterData('Digital Team', 14.6, 290, 2010)"><td>Digital Marketers</td><td class="txt-rev">₦14.6m</td><td class="text-right">2,010</td></tr>
+                    <tr class="clickable" onclick="filterData('Sales Team', 6.8, 86, 705)"><td>Sales Team</td><td class="txt-rev">₦6.8m</td><td class="text-right">705</td></tr>
+                    <tr class="clickable" onclick="filterData('Support', 3.1, 50, 375)"><td>Customer Care</td><td class="txt-rev">₦3.1m</td><td class="text-right">375</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <span class="h-red">05. 5-Year Growth Audit</span>
+    <div class="glass-card p-0 overflow-hidden mb-12">
+        <table class="text-sm">
+            <thead class="bg-zinc-900">
+                <tr><th>Metric</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th class="txt-rev">2026 MTD</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Gross Revenue</td><td>₦122m</td><td>₦154m</td><td>₦452m</td><td>₦875m</td><td class="txt-rev">₦24.7m</td></tr>
+                <tr><td>Net Revenue</td><td>₦77m</td><td>₦104m</td><td>₦251m</td><td>₦561m</td><td class="txt-rev">₦11.1m</td></tr>
+                <tr><td>Customers</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="txt-rev">423</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="text-center py-20 border-t border-zinc-900 opacity-20">
+        <p class="text-lg font-black uppercase tracking-[15px] italic">Suruka Nature's Gift Strategy • 2026 Audit</p>
+    </footer>
+</div>
 </div>
 
 <script>
@@ -196,7 +158,7 @@
         document.getElementById('mCust').innerText = cust;
         document.getElementById('mUnit').innerText = units;
         
-        document.getElementById('viewLabel').innerText = "FOCUS: " + label.toUpperCase();
+        document.getElementById('viewLabel').innerText = "FILTERED VIEW: " + label.toUpperCase();
         document.getElementById('resetBtn').style.display = 'block';
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
@@ -206,7 +168,7 @@
         document.getElementById('mNet').innerText = '₦11.2m';
         document.getElementById('mCust').innerText = '423';
         document.getElementById('mUnit').innerText = '3,090';
-        document.getElementById('viewLabel').innerText = "EXECUTIVE AUDIT | JAN 2026";
+        document.getElementById('viewLabel').innerText = "Monthly Executive Performance Audit | Jan 2026";
         document.getElementById('resetBtn').style.display = 'none';
     }
 </script>
