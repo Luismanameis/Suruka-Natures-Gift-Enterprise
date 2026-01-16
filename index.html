@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SURUKA NATURES - INTERACTIVE CEO AUDIT</title>
+    <title>SURUKA NATURES - FULL CEO AUDIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; scroll-behavior: smooth; }
@@ -14,9 +14,9 @@
             border-bottom: 2px solid #1a1a1a; padding: 15px 40px;
         }
 
-        .filter-bar { background: #111; padding: 10px 40px; border-bottom: 1px solid #222; display: flex; gap: 10px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
-        .filter-btn { padding: 6px 14px; background: #1a1a1a; border: 1px solid #333; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .filter-btn:hover { background: #333; border-color: #00ff88; }
+        .filter-bar { background: #111; padding: 8px 40px; border-bottom: 1px solid #222; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+        .filter-btn { padding: 4px 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; font-size: 9px; font-weight: 800; text-transform: uppercase; cursor: pointer; color: #888; transition: 0.2s; }
+        .filter-btn:hover { border-color: #00ff88; color: #fff; }
         .filter-active { background: #00ff88 !important; color: #000 !important; border-color: #00ff88 !important; }
 
         .h-red { color: #FF0000; font-weight: 950; text-transform: uppercase; border-left: 6px solid #FF0000; padding-left: 15px; margin: 30px 0 10px 0; display: block; font-size: 1.2rem; }
@@ -31,7 +31,7 @@
         
         .txt-rev { color: #00ff88 !important; }
         .txt-exp { color: #ff3333 !important; }
-        .reset-btn { color: #ff3333; font-size: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; border: 1px solid #ff3333; padding: 4px 8px; border-radius: 4px; }
+        .reset-btn { color: #ff3333; font-size: 9px; font-weight: 900; cursor: pointer; text-transform: uppercase; border: 1px solid #ff3333; padding: 2px 6px; margin-left: 10px; }
     </style>
 </head>
 
@@ -43,79 +43,83 @@
             <h1 class="text-4xl font-black tracking-tighter uppercase italic">SURUKA<span class="text-red-600">NATURES</span></h1>
             <p id="viewLabel" class="text-zinc-500 font-bold uppercase text-[10px] tracking-[3px]">CEO Performance Audit | Jan 16, 2026</p>
         </div>
-        <div class="flex items-center gap-4">
-            <div id="resetBtn" class="reset-btn hidden" onclick="resetData()">Reset ✕</div>
-            <div class="text-right">
-                <p class="stat-label">Current Revenue</p>
-                <p id="mRev" class="text-3xl font-black txt-rev">₦26.4m</p>
+        <div class="text-right flex gap-8">
+            <div>
+                <p class="stat-label">Daily Revenue <span id="resetBtn" class="reset-btn hidden" onclick="resetData()">Reset</span></p>
+                <p id="tRev" class="text-2xl font-black txt-rev">₦477k</p>
+            </div>
+            <div>
+                <p class="stat-label">Units / Cust</p>
+                <p id="tUC" class="text-2xl font-black text-sky-400">61 / 10</p>
             </div>
         </div>
     </header>
 
     <div class="grid grid-cols-4 gap-4">
-        <div class="glass-card py-2"><p class="stat-label">Net Revenue</p><p id="mNet" class="stack-lg">₦14.0m</p></div>
-        <div class="glass-card py-2"><p class="stat-label">Target Achieved</p><p id="mTarget" class="stack-lg text-amber-400">1.32%</p></div>
-        <div class="glass-card py-2"><p class="stat-label">Customers</p><p id="mCust" class="stack-lg text-sky-400">455</p></div>
-        <div class="glass-card py-2"><p class="stat-label">Units Sold</p><p id="mUnit" class="stack-lg">3,283</p></div>
+        <div class="glass-card py-2"><p class="stat-label">MTD Gross Revenue</p><p id="mRev" class="stack-lg txt-rev">₦26.4m</p></div>
+        <div class="glass-card py-2"><p class="stat-label">MTD Net Revenue</p><p id="mNet" class="stack-lg">₦14.0m</p></div>
+        <div class="glass-card py-2"><p class="stat-label">Units Sold</p><p id="mUnit" class="stack-lg text-amber-400">3,283</p></div>
+        <div class="glass-card py-2"><p class="stat-label">Gross Expenses</p><p id="mExp" class="stack-lg txt-exp">₦12.4m</p></div>
     </div>
 </div>
 
 <div class="filter-bar">
-    <span class="text-[9px] font-black opacity-30 self-center mr-2">FILTER BY:</span>
-    <button class="filter-btn" onclick="applyFilter('Bolu', '5.4m', '2.8m', '69', '569', '1.34%')">Bolu</button>
-    <button class="filter-btn" onclick="applyFilter('Mary', '7.2m', '3.8m', '148', '920', '1.44%')">Mary</button>
-    <button class="filter-btn" onclick="applyFilter('Susan', '3.4m', '1.8m', '38', '390', '3.37%')">Susan</button>
-    <button class="filter-btn" onclick="applyFilter('Rachel', '2.3m', '1.2m', '40', '267', '2.33%')">Rachel</button>
-    <button class="filter-btn" onclick="applyFilter('Jaya', '2.2m', '1.1m', '37', '268', '1.45%')">Jaya</button>
-    <button class="filter-btn" onclick="applyFilter('Lewa', '2.0m', '1.0m', '40', '301', '0.81%')">Lewa</button>
-    <button class="filter-btn" onclick="applyFilter('Divine', '1.8m', '0.9m', '34', '198', '1.75%')">Divine</button>
-    <button class="filter-btn" onclick="applyFilter('Esther', '653k', '0.3m', '13', '58', '0.65%')">Esther</button>
-    <button class="filter-btn" onclick="applyFilter('Amaya', '152k', '0.1m', '4', '19', '0.15%')">Amaya</button>
-    <div class="w-px h-4 bg-zinc-800 mx-2"></div>
-    <button class="filter-btn" onclick="applyFilter('Lagos', '13.0m', '6.8m', '209', '1,658', '49.2%')">Lagos</button>
-    <button class="filter-btn" onclick="applyFilter('Benin', '8.9m', '4.7m', '172', '1,107', '33.9%')">Benin</button>
-    <button class="filter-btn" onclick="applyFilter('Abuja', '4.4m', '2.3m', '80', '506', '16.6%')">Abuja</button>
-    <div class="w-px h-4 bg-zinc-800 mx-2"></div>
-    <button class="filter-btn" onclick="applyFilter('2025', '875.7m', '561.1m', '17.7k', '133k', '100%')">2025</button>
-    <button class="filter-btn" onclick="applyFilter('2024', '453.0m', '251.6m', '14.6k', '101k', '100%')">2024</button>
+    <button class="filter-btn" onclick="applyFilter('Bolu', '5.4m', '141k', '1 / 1', '1.34%')">Bolu</button>
+    <button class="filter-btn" onclick="applyFilter('Mary', '7.2m', '33.6k', '1 / 1', '1.44%')">Mary</button>
+    <button class="filter-btn" onclick="applyFilter('Susan', '3.4m', '168k', '4 / 4', '3.37%')">Susan</button>
+    <button class="filter-btn" onclick="applyFilter('Rachel', '2.3m', '0', '0', '2.33%')">Rachel</button>
+    <button class="filter-btn" onclick="applyFilter('Jaya', '2.2m', '33.6k', '1 / 1', '1.45%')">Jaya</button>
+    <button class="filter-btn" onclick="applyFilter('Lewa', '2.0m', '100.8k', '3 / 3', '0.81%')">Lewa</button>
+    <button class="filter-btn" onclick="applyFilter('Divine', '1.8m', '0', '0', '1.75%')">Divine</button>
+    <button class="filter-btn" onclick="applyFilter('Esther', '653k', '0', '0', '0.65%')">Esther</button>
+    <button class="filter-btn" onclick="applyFilter('Amaya', '152k', '0', '0', '0.15%')">Amaya</button>
+    <div class="w-px h-4 bg-zinc-800 mx-2 self-center"></div>
+    <button class="filter-btn" onclick="applyFilter('Lagos', '13.0m', '---', '---', '49.1%')">Lagos</button>
+    <button class="filter-btn" onclick="applyFilter('Benin', '8.9m', '---', '---', '33.9%')">Benin</button>
+    <button class="filter-btn" onclick="applyFilter('Abuja', '4.4m', '---', '---', '16.6%')">Abuja</button>
 </div>
 
 <div class="max-w-7xl mx-auto px-10">
-    <span class="h-red">01. Detailed Sales Breakdown</span>
+    <span class="h-red">01. Individual Sales Rep Performance (Full List)</span>
     <div class="glass-card p-0 overflow-hidden">
         <table>
-            <thead><tr><th>Staff Name</th><th>Revenue</th><th>Cust</th><th>Units</th><th>Target Tracking</th></tr></thead>
+            <thead><tr><th>Staff Name</th><th>MTD Revenue</th><th>% from Target</th><th>Target Goal</th></tr></thead>
             <tbody>
-                <tr><td>Mary</td><td class="txt-rev">₦7.2m</td><td>148</td><td>920</td><td class="txt-rev">1.44%</td></tr>
-                <tr><td>Bolu</td><td class="txt-rev">₦5.4m</td><td>69</td><td>569</td><td class="txt-rev">1.34%</td></tr>
-                <tr><td>Susan</td><td class="txt-rev">₦3.4m</td><td>38</td><td>390</td><td class="txt-rev">3.37%</td></tr>
-                <tr><td>Rachel</td><td class="txt-rev">₦2.3m</td><td>40</td><td>267</td><td class="txt-rev">2.33%</td></tr>
-                <tr><td>Jaya</td><td class="txt-rev">₦2.2m</td><td>37</td><td>268</td><td class="txt-rev">1.45%</td></tr>
+                <tr><td>Mary</td><td class="txt-rev">₦7,190,796</td><td>1.44%</td><td>₦500m</td></tr>
+                <tr><td>Bolu</td><td class="txt-rev">₦5,362,573</td><td>1.34%</td><td>₦400m</td></tr>
+                <tr><td>Susan</td><td class="txt-rev">₦3,373,296</td><td>3.37%</td><td>₦100m</td></tr>
+                <tr><td>Rachel</td><td class="txt-rev">₦2,334,311</td><td>2.33%</td><td>₦100m</td></tr>
+                <tr><td>Jaya</td><td class="txt-rev">₦2,177,640</td><td>1.45%</td><td>₦150m</td></tr>
+                <tr><td>Lewa</td><td class="txt-rev">₦2,021,000</td><td>0.81%</td><td>₦250m</td></tr>
+                <tr><td>Divine</td><td class="txt-rev">₦1,753,200</td><td>1.75%</td><td>₦100m</td></tr>
+                <tr><td>Esther</td><td class="txt-rev">₦653,000</td><td>0.65%</td><td>₦100m</td></tr>
+                <tr><td>Amaya</td><td class="txt-rev">₦152,173</td><td>0.15%</td><td>₦100m</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="grid grid-cols-2 gap-6 mt-6">
         <div>
-            <span class="h-red">02. Ad Performance Overview</span>
+            <span class="h-red">02. Marketing ROI</span>
             <div class="glass-card p-0 overflow-hidden">
                 <table>
-                    <thead><tr><th>Channel</th><th>Revenue</th><th>Spend</th><th>Profit</th></tr></thead>
+                    <thead><tr><th>Channel</th><th>Gross Revenue</th><th>Spend</th><th>Profit</th></tr></thead>
                     <tbody>
-                        <tr><td>Instagram Ad</td><td class="txt-rev">₦8.0m</td><td class="txt-exp">₦1.6m</td><td class="txt-rev">₦6.5m</td></tr>
-                        <tr><td>Landing Page</td><td class="txt-rev">₦6.7m</td><td class="txt-exp">₦3.0m</td><td class="txt-rev">₦4.1m</td></tr>
+                        <tr><td>Instagram</td><td class="txt-rev">₦8.0m</td><td class="txt-exp">₦1.6m</td><td class="txt-rev">₦6.5m</td></tr>
+                        <tr><td>Landing Page</td><td class="txt-rev">₦6.5m</td><td class="txt-exp">₦3.0m</td><td class="txt-rev">₦4.1m</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div>
-            <span class="h-red">03. Zone & Team Metrics</span>
+            <span class="h-red">03. Zone Distribution</span>
             <div class="glass-card p-0 overflow-hidden">
                 <table>
-                    <thead><tr><th>Segment</th><th>Value</th><th>Weight</th></tr></thead>
+                    <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th></tr></thead>
                     <tbody>
-                        <tr><td>Lagos Zone</td><td class="txt-rev">₦13.0m</td><td>49.15%</td></tr>
-                        <tr><td>Digital Marketers</td><td class="txt-rev">₦15.4m</td><td>58.42%</td></tr>
+                        <tr><td>Lagos</td><td class="txt-rev">₦12.9m</td><td>209</td><td>1,658</td></tr>
+                        <tr><td>Benin</td><td class="txt-rev">₦8.9m</td><td>172</td><td>1,107</td></tr>
+                        <tr><td>Abuja</td><td class="txt-rev">₦4.4m</td><td>80</td><td>506</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -123,38 +127,26 @@
     </div>
 
     <footer class="text-center py-20 border-t border-zinc-900 opacity-20">
-        <p class="text-lg font-black uppercase tracking-[15px] italic">Suruka Nature's Gift Strategy • CEO Interactive Report 2026</p>
+        <p class="text-lg font-black uppercase tracking-[15px] italic">Suruka Nature's Gift Strategy • Full Audit 2026</p>
     </footer>
 </div>
 
 <script>
-    function applyFilter(name, rev, net, cust, units, target) {
-        document.getElementById('mRev').innerText = '₦' + rev;
-        document.getElementById('mNet').innerText = '₦' + net;
-        document.getElementById('mCust').innerText = cust;
-        document.getElementById('mUnit').innerText = units;
-        document.getElementById('mTarget').innerText = target;
-        
-        document.getElementById('viewLabel').innerText = "FILTERED DATA: " + name.toUpperCase();
+    function applyFilter(name, mtd, today, uc, target) {
+        document.getElementById('mRev').innerText = '₦' + mtd;
+        document.getElementById('tRev').innerText = '₦' + today;
+        document.getElementById('tUC').innerText = uc;
+        document.getElementById('viewLabel').innerText = "AUDIT VIEW: " + name.toUpperCase() + " (" + target + ")";
         document.getElementById('resetBtn').classList.remove('hidden');
-        
-        // Visual feedback for buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('filter-active');
-            if(btn.innerText.toUpperCase() === name.toUpperCase()) btn.classList.add('filter-active');
-        });
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function resetData() {
         document.getElementById('mRev').innerText = '₦26.4m';
-        document.getElementById('mNet').innerText = '₦14.0m';
-        document.getElementById('mCust').innerText = '455';
-        document.getElementById('mUnit').innerText = '3,283';
-        document.getElementById('mTarget').innerText = '1.32%';
-        
+        document.getElementById('tRev').innerText = '₦477k';
+        document.getElementById('tUC').innerText = '61 / 10';
         document.getElementById('viewLabel').innerText = "CEO Performance Audit | Jan 16, 2026";
         document.getElementById('resetBtn').classList.add('hidden');
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('filter-active'));
     }
 </script>
 
