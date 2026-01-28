@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SURUKA CEO AUDIT - JAN 28 UPDATED</title>
+    <title>SURUKA CEO AUDIT - JAN 28 FINAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -13,22 +13,23 @@
         @media (min-width: 768px) { .content-area { padding: 260px 2.5rem 5rem 2.5rem; } }
         .glass-card { background: #0d0d0d; border: 1px solid #222; border-radius: 12px; padding: 1.2rem; }
         
-        .txt-emerald { color: #00ff88; } /* Revenue Green */
+        /* Thematic Colors */
+        .txt-emerald { color: #00FF41; } /* Revenue Green */
         .txt-white { color: #ffffff; }    /* Metrics White */
-        .txt-red { color: #ff3333; }      /* < 50% Red */
+        .txt-red { color: #FF0000; }      /* < 50% Red */
         .txt-sky { color: #00d4ff; } 
         
         .table-wrap { width: 100%; overflow-x: auto; border-radius: 12px; background: #0d0d0d; border: 1px solid #1a1a1a; margin-bottom: 3rem; }
-        table { width: 100%; border-collapse: collapse; min-width: 900px; }
-        th { padding: 18px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase; border-bottom: 2px solid #222; letter-spacing: 1px; }
-        td { padding: 20px 18px; font-size: 1.05rem; font-weight: 700; border-bottom: 1px solid #111; color: #efefef; }
+        table { width: 100%; border-collapse: collapse; min-width: 1000px; }
+        th { padding: 18px; text-align: left; font-size: 13px; color: #888; text-transform: uppercase; border-bottom: 2px solid #222; letter-spacing: 1px; }
+        td { padding: 22px 18px; font-size: 1.1rem; font-weight: 700; border-bottom: 1px solid #111; color: #efefef; }
         
-        .section-header { margin: 3rem 0 1.5rem 0; border-left: 6px solid #ff3333; padding-left: 1.5rem; }
-        .section-header h2 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: #ff3333; }
+        .section-header { margin: 4rem 0 1.5rem 0; border-left: 8px solid #FF0000; padding-left: 1.5rem; }
+        .section-header h2 { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: #FF0000; }
         
-        .stat-label { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #777; }
-        .stat-val { font-size: 1.8rem; font-weight: 900; }
-        #resetBtn { display: none; background: #ff3333; color: white; font-size: 10px; font-weight: 900; padding: 6px 12px; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 10px; width: fit-content; }
+        .stat-label { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #888; }
+        .stat-val { font-size: 2rem; font-weight: 900; }
+        #resetBtn { display: none; background: #FF0000; color: white; font-size: 11px; font-weight: 900; padding: 8px 16px; border-radius: 6px; cursor: pointer; text-transform: uppercase; margin-top: 10px; width: fit-content; }
     </style>
 </head>
 <body>
@@ -36,19 +37,19 @@
     <div class="fixed-header">
         <div class="flex justify-between items-center mb-4">
             <div>
-                <h1 class="text-3xl md:text-4xl font-black italic uppercase text-red-600">SURUKA<span class="text-white">CEO</span></h1>
+                <h1 class="text-3xl md:text-5xl font-black italic uppercase text-red-600">SURUKA<span class="text-white">CEO</span></h1>
                 <div id="resetBtn" onclick="resetAudit()">Reset View ✕</div>
             </div>
             <div class="text-right">
-                <p id="headerTitle" class="stat-label">Daily Rev (JAN 28)</p>
-                <p id="hDaily" class="text-3xl font-black txt-emerald">₦746k</p>
+                <p id="headerTitle" class="stat-label text-white">Daily Rev (JAN 28)</p>
+                <p id="hDaily" class="text-3xl md:text-4xl font-black txt-emerald">₦291k</p>
             </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="glass-card"><p class="stat-label">MTD Gross</p><p id="hGross" class="stat-val txt-emerald">₦42.4m</p></div>
-            <div class="glass-card"><p class="stat-label">Units</p><p id="hUnits" class="stat-val txt-white">4,799</p></div>
-            <div class="glass-card"><p class="stat-label">Cust.</p><p id="hCust" class="stat-val txt-white">669</p></div>
-            <div class="glass-card"><p class="stat-label">Return</p><p id="hReturn" class="stat-val txt-red">47.53%</p></div>
+            <div class="glass-card"><p class="stat-label">MTD Gross</p><p id="hGross" class="stat-val txt-emerald">₦43.2m</p></div>
+            <div class="glass-card"><p class="stat-label">Units</p><p id="hUnits" class="stat-val txt-white">4.8k</p></div>
+            <div class="glass-card"><p class="stat-label">Cust.</p><p id="hCust" class="stat-val txt-white">683</p></div>
+            <div class="glass-card"><p class="stat-label">Return %</p><p id="hReturn" class="stat-val txt-red">46.56%</p></div>
         </div>
     </div>
 
@@ -59,48 +60,80 @@
             <table>
                 <thead><tr><th>Label</th><th>Revenue</th><th>Units</th><th>Cust</th><th>Return %</th></tr></thead>
                 <tbody>
-                    <tr><td>Current Month</td><td class="txt-emerald">₦42.4m</td><td class="txt-white">4,799</td><td class="txt-white">669</td><td class="txt-red">47.53%</td></tr>
-                    <tr class="opacity-40"><td>Projection</td><td class="txt-emerald">₦48.7m</td><td class="txt-white">5,510</td><td class="txt-white">768</td><td class="txt-red">47.53%</td></tr>
+                    <tr><td>Current Month</td><td class="txt-emerald">₦43,210,185</td><td class="txt-white">4,888</td><td class="txt-white">683</td><td class="txt-red">46.56%</td></tr>
+                    <tr class="opacity-40"><td>Projection</td><td class="txt-emerald">₦47.8m</td><td class="txt-white">5,412</td><td class="txt-white">756</td><td class="txt-red">46.56%</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="section-header"><h2>Segment 2 - Today's Rep Performance</h2></div>
+        <div class="section-header"><h2>Segment 2 - Today's Numbers (Jan 28)</h2></div>
         <div class="table-wrap">
             <table>
                 <thead><tr><th>Rep</th><th>Cust</th><th>Revenue</th><th>Unit Sold</th></tr></thead>
                 <tbody>
-                    <tr onclick="filterStaff('Jaya', '₦340k', '1', 'Jaya Today', '₦4.8m')"><td>Jaya</td><td class="txt-white">1</td><td class="txt-emerald">₦340k</td><td>-</td></tr>
-                    <tr onclick="filterStaff('Mary', '₦201.6k', '2', 'Mary Today', '₦10.8m')"><td>Mary</td><td class="txt-white">2</td><td class="txt-emerald">₦201.6k</td><td>-</td></tr>
-                    <tr onclick="filterStaff('Susan', '₦103.6k', '2', 'Susan Today', '₦4.5m')"><td>Susan</td><td class="txt-white">2</td><td class="txt-emerald">₦103.6k</td><td>-</td></tr>
-                    <tr onclick="filterStaff('Lewa', '₦67.2k', '1', 'Lewa Today', '₦3.3m')"><td>Lewa</td><td class="txt-white">1</td><td class="txt-emerald">₦67.2k</td><td>-</td></tr>
-                    <tr onclick="filterStaff('Bolu', '₦33.6k', '1', 'Bolu Today', '₦9.2m')"><td>Bolu</td><td class="txt-white">1</td><td class="txt-emerald">₦33.6k</td><td>-</td></tr>
-                    <tr class="bg-zinc-900 font-bold"><td>TOTAL</td><td class="txt-white">7</td><td class="txt-emerald">₦746k</td><td class="txt-white">65 Units</td></tr>
+                    <tr><td>Susan</td><td class="txt-white">3</td><td class="txt-emerald">₦195,796</td><td>-</td></tr>
+                    <tr><td>Esther</td><td class="txt-white">1</td><td class="txt-emerald">₦62,000</td><td>-</td></tr>
+                    <tr><td>Bolu</td><td class="txt-white">1</td><td class="txt-emerald">₦33,600</td><td>-</td></tr>
+                    <tr class="bg-zinc-900 font-bold border-t-2 border-red-600"><td>TOTAL</td><td class="txt-white">5</td><td class="txt-emerald">₦291,396</td><td class="txt-white">21 Units</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="section-header"><h2>Segment 3 - Ad & Profit Overview</h2></div>
+        <div class="section-header"><h2>Segment 3 - Ad Performance Overview</h2></div>
         <div class="table-wrap">
             <table>
-                <thead><tr><th>Metric</th><th>IG Ad</th><th>FB/LP/WA/TikTok</th><th>Combined Total</th></tr></thead>
+                <thead><tr><th>Metric</th><th>IG Performance</th><th>FB/LP/TikTok</th><th>Combined Total</th></tr></thead>
                 <tbody>
-                    <tr><td>Revenue</td><td class="txt-emerald">₦13.0m</td><td class="txt-emerald">₦9.3m</td><td class="txt-emerald">₦22.3m</td></tr>
-                    <tr><td>Ad Spend</td><td class="txt-red">₦2.62m</td><td class="txt-red">₦3.24m</td><td class="txt-red">₦5.86m</td></tr>
-                    <tr class="bg-zinc-900 font-bold"><td>Net Ad Profit</td><td class="txt-sky">₦10.4m</td><td class="txt-sky">₦6.1m</td><td class="txt-emerald">₦16.5m (281.0%)</td></tr>
+                    <tr><td>Revenue</td><td class="txt-emerald">₦13,324,532</td><td class="txt-emerald">₦9,706,000</td><td class="txt-emerald">₦23,030,532</td></tr>
+                    <tr><td>Ad Spend</td><td class="txt-red">₦2,716,000</td><td class="txt-red">₦3,360,000</td><td class="txt-red">₦6,076,000</td></tr>
+                    <tr class="bg-zinc-900 font-bold"><td>Net Ad Profit</td><td class="txt-sky">₦10,608,532</td><td class="txt-sky">₦6,346,000</td><td class="txt-emerald">₦16,954,532 (279.0%)</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="section-header"><h2>Segment 9 - 5-Year Historical Tracking</h2></div>
+        <div class="section-header"><h2>Segment 4 - Zones & Departments</h2></div>
         <div class="table-wrap">
             <table>
-                <thead><tr><th>Metric</th><th>2023</th><th>2024</th><th>2025</th><th>2026 YTD</th><th>Total (5yr)</th></tr></thead>
+                <thead><tr><th>Category</th><th>Revenue</th><th>Cust</th><th>Unit</th><th>% Contrib</th></tr></thead>
                 <tbody>
-                    <tr><td>Gross Revenue</td><td class="txt-emerald">₦154.5m</td><td class="txt-emerald">₦453.0m</td><td class="txt-emerald">₦875.7m</td><td class="txt-emerald">₦42.4m</td><td class="txt-emerald">₦1.65bn</td></tr>
-                    <tr><td>Net Revenue</td><td class="txt-white">₦104.5m</td><td class="txt-white">₦251.6m</td><td class="txt-white">₦561.1m</td><td class="txt-white">₦28.5m</td><td class="txt-white">₦1.02bn</td></tr>
-                    <tr><td>Net 15%</td><td class="txt-sky">₦15.7m</td><td class="txt-sky">₦37.7m</td><td class="txt-sky">₦84.2m</td><td class="txt-sky">₦4.3m</td><td class="txt-sky">₦153.4m</td></tr>
-                    <tr><td>Units Sold</td><td>40,878</td><td>101,071</td><td>133,616</td><td>4,799</td><td>288,893</td></tr>
+                    <tr><td>Lagos (Zone)</td><td class="txt-emerald">₦20,569,696</td><td class="txt-white">327</td><td class="txt-white">2,485</td><td class="txt-red">47.60%</td></tr>
+                    <tr><td>Digital Marketer (Dept)</td><td class="txt-emerald">₦23,688,332</td><td class="txt-white">433</td><td class="txt-white">2,861</td><td class="txt-emerald">54.82%</td></tr>
+                    <tr><td>Sales Team (Dept)</td><td class="txt-emerald">₦13,829,942</td><td class="txt-white">177</td><td class="txt-white">1,386</td><td class="txt-red">32.01%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header"><h2>Segment 7 - Profit & Loss (January)</h2></div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Metric</th><th>Value</th><th>Growth/Change</th></tr></thead>
+                <tbody>
+                    <tr><td>Gross Profit</td><td class="txt-emerald">₦29,109,351</td><td class="txt-red">-34.67%</td></tr>
+                    <tr><td>Expenses/Tax</td><td class="txt-red">₦14,100,834</td><td class="txt-white">-40.48%</td></tr>
+                    <tr class="bg-zinc-900 font-bold"><td>Net Profit (15%)</td><td class="txt-sky">₦4,366,402</td><td class="txt-white">4,888 Units</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header"><h2>Segment 9 - Historical Audit (5 Years)</h2></div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Year</th><th>Gross Revenue</th><th>Units Sold</th><th>Net Revenue</th><th>Net 15%</th></tr></thead>
+                <tbody>
+                    <tr><td>2025</td><td class="txt-emerald">₦875.7m</td><td class="txt-white">133,616</td><td>₦561.1m</td><td class="txt-sky">₦84.1m</td></tr>
+                    <tr><td>2024</td><td class="txt-emerald">₦452.9m</td><td class="txt-white">101,071</td><td>₦251.6m</td><td class="txt-sky">₦37.7m</td></tr>
+                    <tr class="bg-zinc-900 font-bold border-t-2 border-red-600"><td>5YR TOTAL</td><td class="txt-emerald">₦1.65bn</td><td class="txt-white">288,982</td><td>₦1.02bn</td><td class="txt-sky">₦153.5m</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-header"><h2>Segment 14 - LP Analysis (Ours vs Dan)</h2></div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Provider</th><th>Leads</th><th>Delivered</th><th>% Closed</th><th>Efficiency %</th></tr></thead>
+                <tbody>
+                    <tr><td>Internal (Ours)</td><td class="txt-white">495</td><td class="txt-white">151</td><td class="txt-red">30.51%</td><td class="txt-emerald">82.51%</td></tr>
+                    <tr><td>Dan</td><td class="txt-white">88</td><td class="txt-white">34</td><td class="txt-red">38.64%</td><td class="txt-red">77.27%</td></tr>
                 </tbody>
             </table>
         </div>
@@ -111,6 +144,7 @@
     </div>
 
     <script>
+        // Placeholder for the interactivity requested in your previous format
         function filterStaff(name, daily, cust, type, mtd) {
             document.getElementById('headerTitle').innerText = type;
             document.getElementById('hDaily').innerText = daily;
@@ -124,11 +158,11 @@
 
         function resetAudit() {
             document.getElementById('headerTitle').innerText = "Daily Rev (JAN 28)";
-            document.getElementById('hDaily').innerText = "₦746k";
-            document.getElementById('hGross').innerText = "₦42.4m";
-            document.getElementById('hCust').innerText = "669";
-            document.getElementById('hUnits').innerText = "4,799";
-            document.getElementById('hReturn').innerText = "47.53%";
+            document.getElementById('hDaily').innerText = "₦291k";
+            document.getElementById('hGross').innerText = "₦43.2m";
+            document.getElementById('hCust').innerText = "683";
+            document.getElementById('hUnits').innerText = "4,888";
+            document.getElementById('hReturn').innerText = "46.56%";
             document.getElementById('resetBtn').style.display = 'none';
         }
     </script>
