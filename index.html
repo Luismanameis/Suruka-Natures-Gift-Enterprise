@@ -10,7 +10,7 @@
     <style>
         body { font-family: 'Outfit', sans-serif; background-color: #050505; color: #ffffff; margin: 0; padding: 0; line-height: 1.4; }
         .fixed-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(5,5,5,0.98); backdrop-filter: blur(12px); border-bottom: 3px solid #ff0000; padding: 15px; }
-        .content-area { padding-top: 260px; padding-left: 15px; padding-right: 15px; padding-bottom: 60px; max-width: 900px; margin: 0 auto; } 
+        .content-area { padding-top: 280px; padding-left: 15px; padding-right: 15px; padding-bottom: 60px; max-width: 900px; margin: 0 auto; } 
         .glass-card { background: #0d0d0d; border: 1px solid #222; border-radius: 10px; padding: 12px; }
         
         .txt-emerald { color: #00FF41 !important; } 
@@ -22,12 +22,12 @@
         th { padding: 14px; text-align: left; font-size: 10px; color: #666; text-transform: uppercase; border-bottom: 2px solid #222; font-weight: 900; }
         td { padding: 14px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #111; color: #efefef; }
         .val-cell { text-align: right; }
-        
+
         #filterInput { background: #111; border: 1px solid #444; color: white; padding: 14px; width: 100%; border-radius: 8px; margin-top: 12px; font-size: 14px; outline: none; transition: border 0.3s; }
         #filterInput:focus { border-color: #ff0000; }
-
+        
         @media (max-width: 640px) {
-            .content-area { padding-top: 280px; }
+            .content-area { padding-top: 310px; }
             td { font-size: 13px; padding: 12px; }
             .h-bold-red { font-size: 1.1rem; }
         }
@@ -50,7 +50,7 @@
                 <div class="glass-card"><p class="text-[9px] font-bold text-gray-400 uppercase">YTD Units</p><p class="text-lg font-black text-white">7.4k</p></div>
                 <div class="glass-card"><p class="text-[9px] font-bold text-gray-400 uppercase">Return</p><p class="text-lg font-black txt-emerald">65.46%</p></div>
             </div>
-            <input type="text" id="filterInput" onkeyup="filterAudit()" placeholder="🔍 Search Staff, Zone, Medium or CS Audit...">
+            <input type="text" id="filterInput" onkeyup="filterAudit()" placeholder="🔍 Search Staff, Zone, or Year...">
         </div>
     </div>
 
@@ -58,7 +58,7 @@
         
         <h2 class="h-bold-red">Segment 1 - Performance & Projections</h2>
         <div class="table-wrap">
-            <table class="data-table">
+            <table>
                 <thead><tr><th>Timeline</th><th class="val-cell">Revenue</th><th class="val-cell">Units</th><th class="val-cell">Cust.</th><th class="val-cell">Return %</th></tr></thead>
                 <tbody>
                     <tr><td>Feb Actual</td><td class="val-cell txt-emerald">₦16.0m</td><td class="val-cell">1.76k</td><td class="val-cell">249</td><td class="val-cell">65.46%</td></tr>
@@ -69,12 +69,12 @@
 
         <h2 class="h-bold-red">Segment 3 - Ad Performance ROI</h2>
         <div class="table-wrap">
-            <table class="data-table">
+            <table>
                 <thead><tr><th>Medium</th><th class="val-cell">Revenue</th><th class="val-cell">Profit</th><th class="val-cell">Spent</th></tr></thead>
                 <tbody>
                     <tr><td>Instagram Ad</td><td class="val-cell">₦3.4m</td><td class="val-cell txt-emerald">₦2.9m</td><td class="val-cell">₦480k</td></tr>
                     <tr><td>FB/LP/WA</td><td class="val-cell">₦4.5m</td><td class="val-cell txt-emerald">₦3.9m</td><td class="val-cell">₦612k</td></tr>
-                    <tr class="bg-zinc-900 font-black"><td>TOTAL ADS (MTD)</td><td class="val-cell txt-emerald">₦7.9m</td><td class="val-cell txt-emerald">₦6.8m</td><td class="val-cell">₦1.1m (622%)</td></tr>
+                    <tr class="bg-zinc-900 font-black"><td>TOTAL ADS (MTD)</td><td class="val-cell txt-emerald">₦7.9m</td><td class="val-cell txt-emerald">₦6.8m</td><td class="val-cell">₦1.1m</td></tr>
                 </tbody>
             </table>
         </div>
@@ -99,9 +99,9 @@
             </table></div>
         </div>
 
-        <h2 class="h-bold-red">Segment 8 - 2026 Staff Standings (YTD)</h2>
+        <h2 class="h-bold-red">Segment 8 - 2026 Staff Standings</h2>
         <div class="table-wrap">
-            <table class="data-table">
+            <table>
                 <thead><tr><th>Staff</th><th class="val-cell">YTD Rev</th><th class="val-cell">Achieved</th><th class="val-cell">Target</th></tr></thead>
                 <tbody>
                     <tr><td>Mary</td><td class="val-cell txt-emerald">₦17.9m</td><td class="val-cell">3.57%</td><td class="val-cell">₦500m</td></tr>
@@ -112,42 +112,21 @@
                     <tr><td>Esther</td><td class="val-cell">₦4.6m</td><td class="val-cell">4.57%</td><td class="val-cell">₦100m</td></tr>
                     <tr><td>Lewa</td><td class="val-cell">₦4.6m</td><td class="val-cell">1.83%</td><td class="val-cell">₦250m</td></tr>
                     <tr><td>Rachel</td><td class="val-cell">₦4.5m</td><td class="val-cell">4.48%</td><td class="val-cell">₦100m</td></tr>
-                    <tr><td>Amaya</td><td class="val-cell">₦0.2m</td><td class="val-cell txt-red">0.19%</td><td class="val-cell">₦100m</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2 class="h-bold-red">Segment 9 - Historical Growth Audit</h2>
-        <div class="table-wrap">
-            <table class="data-table">
-                <thead><tr><th>Year</th><th class="val-cell">Gross Rev</th><th class="val-cell">Net 15%</th><th class="val-cell">Units</th></tr></thead>
-                <tbody>
-                    <tr class="txt-emerald"><td>2026 YTD</td><td class="val-cell">₦66.1m</td><td class="val-cell">₦6.5m</td><td class="val-cell">7.4k</td></tr>
-                    <tr><td>2025</td><td class="val-cell">₦875.7m</td><td class="val-cell">₦84.2m</td><td class="val-cell">133.6k</td></tr>
-                    <tr><td>2024</td><td class="val-cell">₦453.0m</td><td class="val-cell">₦37.7m</td><td class="val-cell">101.1k</td></tr>
-                    <tr><td>2023</td><td class="val-cell">₦154.5m</td><td class="val-cell">₦15.7m</td><td class="val-cell">40.9k</td></tr>
-                    <tr class="bg-zinc-900"><td>5YR TOTAL</td><td class="val-cell">₦1.67bn</td><td class="val-cell">₦155.7m</td><td class="val-cell">291.5k</td></tr>
                 </tbody>
             </table>
         </div>
 
         <h2 class="h-bold-red">Segment 15 - CS Department Quality Audit</h2>
         <div class="table-wrap">
-            <table class="data-table">
+            <table>
                 <thead>
                     <tr><th>Year</th><th class="val-cell">Contacted</th><th class="val-cell">Satisfied %</th><th class="val-cell">Revenue</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>2026 (MTD)</td><td class="val-cell">1.9k</td><td class="val-cell txt-emerald">97.24%</td><td class="val-cell txt-emerald">₦8.0m</td></tr>
-                    <tr><td>2025</td><td class="val-cell">14.4k</td><td class="val-cell txt-emerald">96.10%</td><td class="val-cell txt-emerald">₦90.9m</td></tr>
-                    <tr><td>2024</td><td class="val-cell">8.4k</td><td class="val-cell txt-emerald">96.68%</td><td class="val-cell txt-emerald">₦26.5m</td></tr>
-                    <tr><td>2023</td><td class="val-cell">5.7k</td><td class="val-cell txt-emerald">97.42%</td><td class="val-cell txt-emerald">₦9.0m</td></tr>
-                    <tr class="bg-zinc-900">
-                        <td>TOTALS</td>
-                        <td class="val-cell">30.4k</td>
-                        <td class="val-cell txt-emerald">96.84%</td>
-                        <td class="val-cell txt-emerald">₦134.4m</td>
-                    </tr>
+                    <tr><td>2026 (MTD)</td><td class="val-cell">1,885</td><td class="val-cell txt-emerald">97.24%</td><td class="val-cell txt-emerald">₦8.0m</td></tr>
+                    <tr><td>2025</td><td class="val-cell">14,367</td><td class="val-cell txt-emerald">96.10%</td><td class="val-cell txt-emerald">₦90.9m</td></tr>
+                    <tr><td>2024</td><td class="val-cell">8,437</td><td class="val-cell txt-emerald">96.68%</td><td class="val-cell txt-emerald">₦26.5m</td></tr>
+                    <tr><td>2023</td><td class="val-cell">5,687</td><td class="val-cell txt-emerald">97.42%</td><td class="val-cell txt-emerald">₦9.0m</td></tr>
                 </tbody>
             </table>
         </div>
@@ -159,14 +138,24 @@
 
     <script>
         function filterAudit() {
+            // Get the input value
             let input = document.getElementById("filterInput");
             let filter = input.value.toUpperCase();
-            let tables = document.querySelectorAll(".data-table, table");
+            
+            // Select all tables in the document
+            let tables = document.querySelectorAll("table");
+            
             tables.forEach(table => {
                 let rows = table.getElementsByTagName("tr");
+                
+                // Skip the header (i=1)
                 for (let i = 1; i < rows.length; i++) {
-                    let text = rows[i].textContent || rows[i].innerText;
-                    rows[i].style.display = text.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+                    let rowText = rows[i].textContent || rows[i].innerText;
+                    if (rowText.toUpperCase().indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
                 }
             });
         }
