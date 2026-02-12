@@ -23,8 +23,8 @@
         td { padding: 14px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #111; color: #efefef; }
         .val-cell { text-align: right; }
 
-        #filterInput { background: #111; border: 1px solid #444; color: white; padding: 14px; width: 100%; border-radius: 8px; margin-top: 12px; font-size: 14px; outline: none; transition: border 0.3s; }
-        #filterInput:focus { border-color: #ff0000; }
+        #filterInput { background: #111; border: 2px solid #333; color: white; padding: 14px; width: 100%; border-radius: 8px; margin-top: 12px; font-size: 16px; outline: none; transition: all 0.3s; }
+        #filterInput:focus { border-color: #ff0000; box-shadow: 0 0 10px rgba(255,0,0,0.2); }
         
         @media (max-width: 640px) {
             .content-area { padding-top: 310px; }
@@ -50,7 +50,7 @@
                 <div class="glass-card"><p class="text-[9px] font-bold text-gray-400 uppercase">YTD Units</p><p class="text-lg font-black text-white">7.4k</p></div>
                 <div class="glass-card"><p class="text-[9px] font-bold text-gray-400 uppercase">Return</p><p class="text-lg font-black txt-emerald">65.46%</p></div>
             </div>
-            <input type="text" id="filterInput" onkeyup="filterAudit()" placeholder="🔍 Search Staff, Zone, or Year...">
+            <input type="text" id="filterInput" onkeyup="filterAudit()" placeholder="🔍 Type Staff Name (e.g. Bolu), Zone, or Year...">
         </div>
     </div>
 
@@ -58,7 +58,7 @@
         
         <h2 class="h-bold-red">Segment 1 - Performance & Projections</h2>
         <div class="table-wrap">
-            <table>
+            <table class="filterable">
                 <thead><tr><th>Timeline</th><th class="val-cell">Revenue</th><th class="val-cell">Units</th><th class="val-cell">Cust.</th><th class="val-cell">Return %</th></tr></thead>
                 <tbody>
                     <tr><td>Feb Actual</td><td class="val-cell txt-emerald">₦16.0m</td><td class="val-cell">1.76k</td><td class="val-cell">249</td><td class="val-cell">65.46%</td></tr>
@@ -69,7 +69,7 @@
 
         <h2 class="h-bold-red">Segment 3 - Ad Performance ROI</h2>
         <div class="table-wrap">
-            <table>
+            <table class="filterable">
                 <thead><tr><th>Medium</th><th class="val-cell">Revenue</th><th class="val-cell">Profit</th><th class="val-cell">Spent</th></tr></thead>
                 <tbody>
                     <tr><td>Instagram Ad</td><td class="val-cell">₦3.4m</td><td class="val-cell txt-emerald">₦2.9m</td><td class="val-cell">₦480k</td></tr>
@@ -81,7 +81,7 @@
 
         <h2 class="h-bold-red">Segment 4 - Distribution</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="filterable">
                 <thead><tr><th>Zone</th><th class="val-cell">Rev</th><th class="val-cell">Units</th><th class="val-cell">Contrib%</th></tr></thead>
                 <tbody>
                     <tr><td>Lagos</td><td class="val-cell">₦6.3m</td><td class="val-cell">614</td><td class="val-cell">39.39%</td></tr>
@@ -89,7 +89,7 @@
                     <tr><td>Abuja</td><td class="val-cell">₦4.1m</td><td class="val-cell">393</td><td class="val-cell">25.68%</td></tr>
                 </tbody>
             </table></div>
-            <div class="table-wrap"><table>
+            <div class="table-wrap"><table class="filterable">
                 <thead><tr><th>Dept</th><th class="val-cell">Rev</th><th class="val-cell">Units</th><th class="val-cell">Contrib%</th></tr></thead>
                 <tbody>
                     <tr><td>Digital Marketers</td><td class="val-cell">₦8.1m</td><td class="val-cell">953</td><td class="val-cell">50.33%</td></tr>
@@ -101,8 +101,8 @@
 
         <h2 class="h-bold-red">Segment 8 - 2026 Staff Standings</h2>
         <div class="table-wrap">
-            <table>
-                <thead><tr><th>Staff</th><th class="val-cell">YTD Rev</th><th class="val-cell">Achieved</th><th class="val-cell">Target</th></tr></thead>
+            <table class="filterable">
+                <thead><tr><th>Staff</th><th class="val-cell">YTD Rev</th><th class="val-cell">Achieved %</th><th class="val-cell">Target</th></tr></thead>
                 <tbody>
                     <tr><td>Mary</td><td class="val-cell txt-emerald">₦17.9m</td><td class="val-cell">3.57%</td><td class="val-cell">₦500m</td></tr>
                     <tr><td>Bolu</td><td class="val-cell txt-emerald">₦14.3m</td><td class="val-cell">3.57%</td><td class="val-cell">₦400m</td></tr>
@@ -118,7 +118,7 @@
 
         <h2 class="h-bold-red">Segment 15 - CS Department Quality Audit</h2>
         <div class="table-wrap">
-            <table>
+            <table class="filterable">
                 <thead>
                     <tr><th>Year</th><th class="val-cell">Contacted</th><th class="val-cell">Satisfied %</th><th class="val-cell">Revenue</th></tr>
                 </thead>
@@ -138,23 +138,33 @@
 
     <script>
         function filterAudit() {
-            // Get the input value
             let input = document.getElementById("filterInput");
             let filter = input.value.toUpperCase();
-            
-            // Select all tables in the document
-            let tables = document.querySelectorAll("table");
+            let tables = document.querySelectorAll("table.filterable");
             
             tables.forEach(table => {
-                let rows = table.getElementsByTagName("tr");
-                
-                // Skip the header (i=1)
-                for (let i = 1; i < rows.length; i++) {
-                    let rowText = rows[i].textContent || rows[i].innerText;
-                    if (rowText.toUpperCase().indexOf(filter) > -1) {
+                let tbody = table.getElementsByTagName("tbody")[0];
+                let rows = tbody.getElementsByTagName("tr");
+                let tableHasMatch = false;
+
+                // First pass: Check if the table contains the search term at all
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].innerText.toUpperCase().includes(filter)) {
+                        tableHasMatch = true;
+                        break;
+                    }
+                }
+
+                // Second pass: If search is empty, show everything. 
+                // If table has a match, filter it. 
+                // If table HAS NO match, leave it alone (don't hide everything).
+                for (let i = 0; i < rows.length; i++) {
+                    if (filter === "") {
                         rows[i].style.display = "";
+                    } else if (tableHasMatch) {
+                        rows[i].style.display = rows[i].innerText.toUpperCase().includes(filter) ? "" : "none";
                     } else {
-                        rows[i].style.display = "none";
+                        rows[i].style.display = ""; // Keep showing data if no match in this specific table
                     }
                 }
             });
