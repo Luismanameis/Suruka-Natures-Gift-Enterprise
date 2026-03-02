@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SURUKA CEO COMMAND | MARCH 02 FULL AUDIT</title>
+    <title>SURUKA CEO COMMAND | FULL AUDIT MARCH 02</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
     <style>
         :root { --ceo-gold: #D4AF37; --neon-red: #FF0000; --neon-green: #00FF41; --bg-black: #000000; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-black); color: white; margin: 0; padding-top: 130px; }
         .ceo-fixed-hud { background: #000; border-bottom: 4px solid var(--ceo-gold); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 15px 40px; }
-        .hud-grid { display: grid; grid-template-columns: 1.8fr repeat(4, 1fr); gap: 15px; max-width: 1800px; margin: 0 auto; align-items: center; }
-        .hud-val { font-size: 2.8rem; font-weight: 950; letter-spacing: -2px; line-height: 1; }
-        .ceo-tag { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; line-height: 0.9; }
+        .hud-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 15px; max-width: 1800px; margin: 0 auto; align-items: center; }
+        .hud-val { font-size: 2.5rem; font-weight: 950; letter-spacing: -1px; line-height: 1; }
         .main-container { max-width: 1800px; margin: 0 auto; padding: 0 40px 100px 40px; }
-        .h-bold-red { color: var(--neon-red); font-weight: 900; text-transform: uppercase; font-size: 1.6rem; margin: 40px 0 15px 0; display: flex; align-items: center; border-left: 10px solid var(--neon-red); padding-left: 15px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: rgba(15,15,15,0.9); }
-        th { text-align: left; padding: 10px; font-size: 11px; color: #666; text-transform: uppercase; border-bottom: 2px solid #222; font-weight: 900; }
-        td { padding: 12px; font-size: 16px; border-bottom: 1px solid #111; }
+        .h-bold-red { color: var(--neon-red); font-weight: 900; text-transform: uppercase; font-size: 1.4rem; margin: 40px 0 10px 0; display: flex; align-items: center; }
+        .h-bold-red::before { content: ''; display: inline-block; width: 8px; height: 25px; background: var(--neon-red); margin-right: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 25px; table-layout: fixed; }
+        th { text-align: left; padding: 10px; font-size: 10px; color: #555; text-transform: uppercase; border-bottom: 2px solid #222; }
+        td { padding: 10px; font-size: 15px; border-bottom: 1px solid #111; overflow: hidden; text-overflow: ellipsis; }
         .rev-green { color: var(--neon-green) !important; font-weight: 900; }
         .rev-red { color: var(--neon-red) !important; font-weight: 900; }
         .perc-high { color: var(--neon-green) !important; font-weight: 900; }
@@ -30,124 +30,74 @@
 
     <header class="ceo-fixed-hud">
         <div class="hud-grid">
-            <div class="ceo-tag">SURUKA <span style="color:var(--ceo-gold)">CEO</span><br><span style="font-size:10px; letter-spacing:5px; color:#555">MARCH COMMAND</span></div>
-            <div><p style="font-size:10px; color:#888;">MARCH REV</p><p class="hud-val rev-green">₦519k</p></div>
-            <div><p style="font-size:10px; color:#888;">NET PROFIT</p><p class="hud-val rev-red">-₦2.2m</p></div>
-            <div><p style="font-size:10px; color:#888;">TODAY REV</p><p class="hud-val rev-green">₦266k</p></div>
-            <div><p style="font-size:10px; color:#888;">UNITS</p><p class="hud-val metric-white">26</p></div>
+            <div style="font-size:1.8rem; font-weight:900;">SURUKA <span class="gold-label">CEO</span></div>
+            <div><p style="font-size:10px; color:#666">MARCH REV</p><p class="hud-val rev-green">₦519k</p></div>
+            <div><p style="font-size:10px; color:#666">MARCH NET</p><p class="hud-val rev-red">-₦2.2m</p></div>
+            <div><p style="font-size:10px; color:#666">TODAY REV</p><p class="hud-val rev-green">₦266k</p></div>
+            <div><p style="font-size:10px; color:#666">YTD REV</p><p class="hud-val rev-green">₦103m</p></div>
         </div>
     </header>
 
     <div class="main-container">
 
-        <div class="h-bold-red">SEGMENT 1 // CURRENT MONTH NUMBERS</div>
+        <div class="h-bold-red">SEGMENT 12 // IG & FB CONVERSION - THIS MONTH</div>
         <table>
-            <thead><tr><th>Metric</th><th>Revenue</th><th>Units</th><th>Customers</th><th>Return %</th></tr></thead>
+            <thead>
+                <tr><th>Staff Name</th><th>FB Leads</th><th>FB Closed</th><th>IG Leads</th><th>IG Closed</th><th>Total Leads</th><th>Total Closed</th><th>Conv %</th></tr>
+            </thead>
             <tbody>
-                <tr><td>Current Numbers</td><td class="rev-green">₦519,400.00</td><td class="metric-white">57</td><td class="metric-white">10</td><td class="perc-low">20.00%</td></tr>
-                <tr><td>Month Projection</td><td class="rev-green">₦8.05m</td><td class="metric-white">884</td><td class="metric-white">155</td><td class="perc-low">20.00%</td></tr>
+                <tr><td>Jaya</td><td>15</td><td>0</td><td>20</td><td>2</td><td class="metric-white">35</td><td class="metric-white">2</td><td class="perc-low">5.71%</td></tr>
+                <tr><td>Divine</td><td>29</td><td>0</td><td>30</td><td>3</td><td class="metric-white">59</td><td class="metric-white">3</td><td class="perc-low">5.08%</td></tr>
+                <tr><td>Susan</td><td>5</td><td>0</td><td>50</td><td>0</td><td class="metric-white">55</td><td class="metric-white">0</td><td class="perc-low">0.00%</td></tr>
+                <tr><td>Bolu</td><td>0</td><td>0</td><td>110</td><td>0</td><td class="metric-white">110</td><td class="metric-white">0</td><td class="perc-low">0.00%</td></tr>
+                <tr><td>Esther</td><td>42</td><td>0</td><td>0</td><td>0</td><td class="metric-white">42</td><td class="metric-white">0</td><td class="perc-low">0.00%</td></tr>
+                <tr class="bg-zinc-900"><td class="gold-label">TOTAL</td><td>91</td><td>0</td><td>210</td><td>5</td><td class="metric-white">301</td><td class="metric-white">5</td><td class="perc-low">1.66%</td></tr>
             </tbody>
         </table>
 
-        <div class="h-bold-red">SEGMENT 2 // TODAY'S LIVE NUMBERS (02/03)</div>
+        <div class="h-bold-red">SEGMENT 15 // CS SEGMENT & SATISFACTION</div>
         <table>
-            <thead><tr><th>Rep Name</th><th>Customers</th><th>Revenue</th><th>Unit Sold</th></tr></thead>
+            <thead>
+                <tr><th>Date/Rep</th><th>Contacted</th><th>Satisfied</th><th>Not Satisfied</th><th>Satisfied %</th><th>Not Satisfied %</th></tr>
+            </thead>
             <tbody>
-                <tr><td>Divine</td><td class="metric-white">3</td><td class="rev-green">₦137,200.00</td><td class="metric-white">13</td></tr>
-                <tr><td>Lewa</td><td class="metric-white">1</td><td class="rev-green">₦33,600.00</td><td class="metric-white">6</td></tr>
-                <tr class="bg-zinc-900"><td class="gold-label">TOTAL TODAY</td><td class="metric-white">6</td><td class="rev-green">₦266,400</td><td class="metric-white">26</td></tr>
+                <tr class="bg-zinc-900"><td class="gold-label">TODAY (02/03)</td><td colspan="5"></td></tr>
+                <tr><td>LEWA</td><td class="metric-white">20</td><td class="metric-white">18</td><td>0</td><td class="perc-high">100.00%</td><td class="rev-red">0.00%</td></tr>
+                <tr><td>RAY</td><td class="metric-white">0</td><td class="metric-white">0</td><td>0</td><td class="metric-white">0.00%</td><td class="metric-white">0.00%</td></tr>
+                <tr class="border-t-2 border-white"><td>TOTAL TODAY</td><td class="metric-white">20</td><td class="metric-white">18</td><td>0</td><td class="perc-high">100.00%</td><td class="rev-red">0.00%</td></tr>
             </tbody>
         </table>
 
-        <div class="h-bold-red">SEGMENT 3 // AD PERFORMANCE OVERVIEW</div>
         <table>
-            <thead><tr><th>Channel</th><th>Revenue</th><th>Spent</th><th>Profit</th><th>ROI %</th></tr></thead>
+            <thead><tr><th>Historical</th><th>Satisfied %</th><th>Not Satisfied %</th><th>Customers</th><th>Revenue Gen</th></tr></thead>
             <tbody>
-                <tr><td>Instagram</td><td class="rev-green">₦204,400</td><td class="metric-white">₦110,000</td><td class="rev-green">₦94,400</td><td class="perc-low">46.1%</td></tr>
-                <tr><td>FB / TikTok / LP</td><td class="rev-green">₦0</td><td class="metric-white">₦150,000</td><td class="rev-red">-₦150,000</td><td class="perc-low">-100%</td></tr>
-                <tr class="bg-zinc-900"><td>TOTAL AD</td><td class="rev-green">₦204,400</td><td class="metric-white">₦260,000</td><td class="rev-red">-₦55,600</td><td class="perc-low">-21.38%</td></tr>
+                <tr><td>2026 YTD</td><td class="perc-high">97.26%</td><td class="perc-low">2.74%</td><td class="metric-white">3,103</td><td class="rev-green">₦11.45m</td></tr>
+                <tr><td>2025</td><td class="perc-high">96.10%</td><td class="perc-low">3.90%</td><td class="metric-white">14,367</td><td class="rev-green">₦90.93m</td></tr>
+                <tr><td>2024</td><td class="perc-high">96.68%</td><td class="perc-low">3.32%</td><td class="metric-white">8,437</td><td class="rev-green">₦26.52m</td></tr>
+                <tr><td>2023</td><td class="perc-high">97.42%</td><td class="perc-low">2.58%</td><td class="metric-white">5,687</td><td class="rev-green">₦9.02m</td></tr>
+                <tr class="bg-zinc-900"><td class="gold-label">LIFETIME</td><td class="perc-high">96.79% AVG</td><td>---</td><td class="metric-white">31,594</td><td class="rev-green" style="font-size:25px">₦137.94m</td></tr>
             </tbody>
         </table>
 
-        <div class="h-bold-red">SEGMENT 4 // ZONES & DEPARTMENTS</div>
-        <div class="grid grid-cols-2 gap-4">
-            <table>
-                <thead><tr><th>Zone</th><th>Revenue</th><th>Unit</th><th>Contrib.</th></tr></thead>
-                <tbody>
-                    <tr><td>Lagos</td><td class="rev-green">₦253,000</td><td class="metric-white">31</td><td class="perc-low">48.71%</td></tr>
-                    <tr><td>Abuja</td><td class="rev-green">₦199,200</td><td class="metric-white">14</td><td class="perc-low">38.35%</td></tr>
-                    <tr><td>Benin</td><td class="rev-green">₦67,200</td><td class="metric-white">12</td><td class="perc-low">12.94%</td></tr>
-                </tbody>
-            </table>
-            <table>
-                <thead><tr><th>Team</th><th>Revenue</th><th>Unit</th><th>Contrib.</th></tr></thead>
-                <tbody>
-                    <tr><td>Digital Marketer</td><td class="rev-green">₦204,400</td><td class="metric-white">25</td><td class="perc-low">39.35%</td></tr>
-                    <tr><td>Sales Team</td><td class="rev-green">₦185,800</td><td class="metric-white">19</td><td class="perc-low">35.77%</td></tr>
-                    <tr><td>Customer Care</td><td class="rev-green">₦33,600</td><td class="metric-white">6</td><td class="perc-low">6.47%</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="h-bold-red">SEGMENT 5 // REVENUE & CUSTOMER TRENDS</div>
+        <div class="h-bold-red">SEGMENT 13 & 14 // LANDING PAGE AUDIT</div>
         <table>
-            <thead><tr><th>Metric</th><th>March</th><th>February</th><th>January</th></tr></thead>
+            <thead><tr><th>Month</th><th>Provider</th><th>Leads</th><th>Interested</th><th>Delivered</th><th>% Interested</th><th>% Closed</th></tr></thead>
             <tbody>
-                <tr><td>Gross Revenue</td><td class="rev-green">₦519,400</td><td class="rev-green">₦53.12m</td><td class="rev-green">₦50.16m</td></tr>
-                <tr><td>Net Revenue</td><td class="rev-red">-₦2.25m</td><td class="rev-green">₦35.25m</td><td class="rev-green">₦25.57m</td></tr>
-                <tr><td>Return %</td><td class="perc-low">20.00%</td><td class="perc-high">55.01%</td><td class="perc-low">48.85%</td></tr>
+                <tr><td>March</td><td>Ours</td><td class="metric-white">17</td><td class="metric-white">5</td><td>0</td><td class="perc-low">29.41%</td><td class="perc-low">0.00%</td></tr>
+                <tr><td>March</td><td>Dan</td><td class="metric-white">2</td><td class="metric-white">2</td><td>0</td><td class="perc-high">100.00%</td><td class="perc-low">0.00%</td></tr>
+                <tr class="bg-zinc-900 border-l-4 border-yellow-600"><td>TOTAL LP</td><td colspan="1"></td><td class="metric-white">19</td><td class="metric-white">7</td><td>0</td><td class="perc-low">36.84%</td><td class="perc-low">0.00%</td></tr>
             </tbody>
         </table>
 
-        <div class="h-bold-red">SEGMENT 8 // INDIVIDUAL SALES PERFORMANCE (YTD 2026)</div>
+        <div class="h-bold-red">SEGMENT 11 // QUARTERLY PERFORMANCE 2026</div>
         <table>
-            <thead><tr><th>Staff</th><th>Revenue</th><th>Target</th><th>% Achieved</th></tr></thead>
+            <thead><tr><th>Staff</th><th>Q1 (Jan-Mar)</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
             <tbody>
-                <tr><td>Mary</td><td class="rev-green">₦34.01m</td><td class="metric-white">₦500m</td><td class="perc-low">6.80%</td></tr>
-                <tr><td>Bolu</td><td class="rev-green">₦22.14m</td><td class="metric-white">₦400m</td><td class="perc-low">5.54%</td></tr>
-                <tr><td>Jaya</td><td class="rev-green">₦9.33m</td><td class="metric-white">₦150m</td><td class="perc-low">6.23%</td></tr>
-                <tr><td>Susan</td><td class="rev-green">₦8.26m</td><td class="metric-white">₦100m</td><td class="perc-low">8.27%</td></tr>
-                <tr><td>Esther</td><td class="rev-green">₦7.52m</td><td class="metric-white">₦100m</td><td class="perc-low">7.53%</td></tr>
-                <tr><td>Divine</td><td class="rev-green">₦6.58m</td><td class="metric-white">₦100m</td><td class="perc-low">6.58%</td></tr>
-            </tbody>
-        </table>
-
-        <div class="h-bold-red">SEGMENT 9 // 5-YEAR HISTORICAL AUDIT</div>
-        <table>
-            <thead><tr><th>Metric</th><th>TOTAL</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th></tr></thead>
-            <tbody>
-                <tr><td>Gross Revenue</td><td class="metric-white">1.7bn</td><td class="rev-green">875m</td><td class="rev-green">452m</td><td class="rev-green">154m</td><td class="rev-green">122m</td></tr>
-                <tr><td>Net Revenue</td><td class="metric-white">1.05bn</td><td class="rev-green">561m</td><td class="rev-green">251m</td><td class="rev-green">104m</td><td class="rev-green">77m</td></tr>
-                <tr><td>TAX</td><td class="rev-red">97m</td><td class="rev-red">45m</td><td class="rev-red">24m</td><td class="rev-red">8m</td><td class="rev-red">6m</td></tr>
-            </tbody>
-        </table>
-
-        <div class="h-bold-red">SEGMENT 12 // AD CONVERSION (THIS MONTH)</div>
-        <table>
-            <thead><tr><th>Rep</th><th>Total Leads</th><th>Total Closed</th><th>Conversion %</th></tr></thead>
-            <tbody>
-                <tr><td>Jaya</td><td class="metric-white">35</td><td class="metric-white">2</td><td class="perc-low">5.71%</td></tr>
-                <tr><td>Divine</td><td class="metric-white">59</td><td class="metric-white">3</td><td class="perc-low">5.08%</td></tr>
-                <tr><td>Susan</td><td class="metric-white">55</td><td class="metric-white">0</td><td class="perc-low">0.00%</td></tr>
-            </tbody>
-        </table>
-
-        <div class="h-bold-red">SEGMENT 14 // LANDING PAGE: OURS VS DAN</div>
-        <table>
-            <thead><tr><th>Provider</th><th>Leads</th><th>Interested</th><th>Closed</th><th>% Interested</th></tr></thead>
-            <tbody>
-                <tr><td>Ours</td><td class="metric-white">17</td><td class="metric-white">5</td><td class="metric-white">0</td><td class="perc-low">29.41%</td></tr>
-                <tr><td>Dan</td><td class="metric-white">2</td><td class="metric-white">2</td><td class="metric-white">0</td><td class="perc-high">100.00%</td></tr>
-            </tbody>
-        </table>
-
-        <div class="h-bold-red">SEGMENT 15 // CS YEAR ON YEAR</div>
-        <table>
-            <thead><tr><th>Year</th><th>Satisfied %</th><th>Total Customers</th><th>Revenue Gen</th></tr></thead>
-            <tbody>
-                <tr><td>2026 YTD</td><td class="perc-high">97.26%</td><td class="metric-white">3,103</td><td class="rev-green">₦11.4m</td></tr>
-                <tr><td>2025</td><td class="perc-high">96.10%</td><td class="metric-white">14,367</td><td class="rev-green">₦90.9m</td></tr>
-                <tr class="bg-zinc-900 border-t-2 border-gold"><td class="gold-label">LIFETIME</td><td class="perc-high">96.79%</td><td class="metric-white">31,594</td><td class="rev-green">₦137.9m</td></tr>
+                <tr><td>Mary</td><td class="rev-green">₦34.01m</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td></tr>
+                <tr><td>Bolu</td><td class="rev-green">₦22.14m</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td></tr>
+                <tr><td>Jaya</td><td class="rev-green">₦9.33m</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td></tr>
+                <tr><td>Divine</td><td class="rev-green">₦6.58m</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td><td class="metric-white">₦0</td></tr>
+                <tr class="bg-zinc-900 border-t-2 border-red-500"><td>TOTAL PROGRESS</td><td class="perc-high">71.91%</td><td class="metric-white">0%</td><td class="metric-white">0%</td><td class="metric-white">0%</td></tr>
             </tbody>
         </table>
 
