@@ -3,1420 +3,486 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-function fixPadding(){
-  var h=document.querySelector('.fixed-header');
-  if(h) document.body.style.paddingTop=h.offsetHeight+'px';
-}
-window.addEventListener('load',fixPadding);
-window.addEventListener('resize',fixPadding);
-</script>
-<title>SURUKA — Full CEO Command Report · March 2026</title>
+<title>SURUKA — CEO Command Report · Live</title>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F6F7FA;
-  --surface: #FFFFFF;
-  --surface2: #F0F2F7;
-  --border: #E3E6EF;
-  --border2: #CDD1DF;
-  --white: #111218;
-  --muted: #9298AA;
-  --muted2: #6B7080;
-  --red: #B01828;
-  --green: #0E8F52;
-  --gold: #B87D00;
-  --blue: #2558E8;
-  --teal: #0891B2;
+  --bg:#F6F7FA; --surface:#FFFFFF; --surface2:#F0F2F7;
+  --border:#E3E6EF; --border2:#CDD1DF;
+  --ink:#111218; --muted:#9298AA; --muted2:#6B7080;
+  --red:#B01828; --green:#0E8F52; --gold:#B87D00; --blue:#2558E8;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'Familjen Grotesk',sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* loading */
+#loading{position:fixed;inset:0;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px;}
+.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.load-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+#error-msg{display:none;color:var(--red);font-weight:700;font-size:13px;text-align:center;padding:0 20px;max-width:400px;}
 
-body {
-  font-family: 'Familjen Grotesk', sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  line-height: 1.5;
-  min-height: 100vh;
-}
+/* fixed header */
+.fixed-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--surface);box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,0,0,.07);}
 
-/* ── FIXED HEADER WRAPPER ── */
-.fixed-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: var(--surface);
-  box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0,0,0,0.07);
-}
+/* ticker */
+.ticker{background:var(--ink);padding:6px 0;overflow:hidden;}
+.ticker-track{display:inline-flex;animation:tick 35s linear infinite;white-space:nowrap;}
+.ticker-item{padding:0 28px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F6F7FA;}
+.ticker-sep{opacity:.35;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ── TICKER ── */
-.ticker { background: var(--white); padding: 7px 0; overflow: hidden; position: relative; }
-.ticker-track { display: inline-flex; animation: tick 35s linear infinite; white-space: nowrap; }
-.ticker-item { padding: 0 32px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F7FA; }
-.ticker-sep { opacity: 0.35; }
-@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* masthead */
+.masthead{position:relative;z-index:1;border-bottom:1px solid var(--border);padding:0 28px;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;min-height:80px;background:var(--surface);}
+.masthead-brand{display:flex;align-items:center;gap:16px;padding:16px 28px 16px 0;border-right:1px solid var(--border);}
+.brand-logo{width:40px;height:40px;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:white;flex-shrink:0;}
+.brand-name{font-size:1.3rem;font-weight:700;letter-spacing:-.5px;color:var(--ink);}
+.brand-sub{font-size:9px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:2px;}
+.masthead-kpis{display:flex;align-items:stretch;padding:0 0 0 28px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.mkpi{padding:16px 24px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;flex-shrink:0;}
+.mkpi:last-child{border-right:none;}
+.mkpi-label{font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px;}
+.mkpi-val{font-size:1.35rem;font-weight:700;letter-spacing:-.8px;line-height:1;}
+.mkpi-val.g{color:var(--green);} .mkpi-val.r{color:var(--red);} .mkpi-val.w{color:var(--ink);} .mkpi-val.gold{color:var(--gold);}
+.mkpi-sub{font-size:10px;color:var(--muted);margin-top:3px;}
+.masthead-date{display:flex;align-items:center;padding:0 0 0 24px;border-left:1px solid var(--border);font-size:10px;color:var(--muted);letter-spacing:.1em;text-align:right;flex-shrink:0;}
+.live-pip{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* ── MASTHEAD ── */
-.masthead {
-  position: relative; z-index: 1;
-  border-bottom: 1px solid var(--border);
-  padding: 0 56px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: stretch;
-  min-height: 100px;
-  background: var(--surface);
-}
-.masthead-brand {
-  display: flex; align-items: center; gap: 20px;
-  padding: 24px 40px 24px 0;
-  border-right: 1px solid var(--border);
-}
-.brand-logo {
-  width: 46px; height: 46px;
-  background: var(--red);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px;
-  color: white;
-  flex-shrink: 0;
-}
-.brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
-.brand-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
+/* filter bar */
+.filter-bar{background:var(--surface2);border-bottom:1px solid var(--border2);padding:8px 28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.filter-label{font-size:10px;font-weight:700;color:var(--muted2);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;}
+.filter-select{appearance:none;-webkit-appearance:none;background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:5px 24px 5px 10px;font-size:12px;font-weight:600;font-family:'Familjen Grotesk',sans-serif;color:var(--ink);cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;flex:1;min-width:110px;max-width:160px;}
+.filter-select.active{border-color:var(--blue);color:var(--blue);background-color:rgba(37,88,232,.04);}
+.filter-reset{padding:5px 12px;background:transparent;border:1px solid var(--border2);border-radius:4px;font-size:11px;font-weight:700;font-family:'Familjen Grotesk',sans-serif;color:var(--muted2);cursor:pointer;}
+.filter-reset:hover{border-color:var(--red);color:var(--red);}
+tr.filter-hidden{display:none;}
 
-.masthead-kpis {
-  display: flex; align-items: stretch;
-  padding: 0 0 0 40px; gap: 0;
-}
-.mkpi {
-  padding: 24px 32px;
-  border-right: 1px solid var(--border);
-  display: flex; flex-direction: column; justify-content: center;
-}
-.mkpi:last-child { border-right: none; }
-.mkpi-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
-.mkpi-val { font-size: 1.65rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
-.mkpi-val.g { color: var(--green); }
-.mkpi-val.r { color: var(--red); }
-.mkpi-val.w { color: var(--white); }
-.mkpi-val.gold { color: var(--gold); }
-.mkpi-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+/* page */
+.page{max-width:1400px;margin:0 auto;padding:32px 20px 80px;display:flex;flex-direction:column;gap:48px;}
 
-.masthead-date {
-  display: flex; align-items: center;
-  padding: 0 0 0 32px;
-  border-left: 1px solid var(--border);
-  font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-align: right;
-}
-.live-pip { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 8px; animation: blink 2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+/* section */
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--ink);flex-wrap:wrap;}
+.sec-num{font-size:10px;font-weight:700;color:var(--red);letter-spacing:.25em;text-transform:uppercase;background:rgba(176,24,40,.08);padding:3px 8px;border-radius:3px;flex-shrink:0;}
+.sec-title{font-size:1.05rem;font-weight:700;letter-spacing:-.3px;color:var(--ink);}
+.sec-badge{margin-left:auto;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0;}
+.badge-live{background:rgba(14,143,82,.1);color:var(--green);border:1px solid rgba(14,143,82,.2);}
+.badge-march{background:rgba(184,125,0,.1);color:var(--gold);border:1px solid rgba(184,125,0,.2);}
 
-/* ── PAGE BODY ── */
-.page { position: relative; z-index: 1; max-width: 1640px; margin: 0 auto; padding: 52px 56px 100px; display: flex; flex-direction: column; gap: 64px; }
+/* cards */
+.card-grid{display:grid;gap:10px;}
+.card-grid-2{grid-template-columns:1fr 1fr;}
+.card-grid-3{grid-template-columns:1fr 1fr 1fr;}
+.card-grid-4{grid-template-columns:repeat(4,1fr);}
+.card{background:var(--surface);padding:18px 20px;border:1px solid var(--border);border-radius:4px;position:relative;overflow:hidden;}
+.card-label{font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+.card-val{font-size:1.45rem;font-weight:700;letter-spacing:-.8px;line-height:1;color:var(--ink);}
+.card-val.g{color:var(--green);} .card-val.r{color:var(--red);} .card-val.gold{color:var(--gold);}
+.card-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.card-accent{position:absolute;bottom:0;left:0;right:0;height:3px;}
+.ca-green{background:var(--green);} .ca-red{background:var(--red);} .ca-gold{background:var(--gold);} .ca-blue{background:var(--blue);}
 
-/* ── SECTION ── */
-.section {}
-.sec-head {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 22px;
-  padding-bottom: 14px;
-  border-bottom: 2px solid var(--white);
-}
-.sec-num { font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; background: rgba(176,24,40,0.08); padding: 3px 8px; border-radius: 3px; }
-.sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; color: var(--white); }
-.sec-badge {
-  margin-left: auto; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 3px 10px; border-radius: 20px; font-weight: 600;
-}
-.badge-live { background: rgba(14,143,82,0.1); color: var(--green); border: 1px solid rgba(14,143,82,0.2); }
-.badge-march { background: rgba(184,125,0,0.1); color: var(--gold); border: 1px solid rgba(184,125,0,0.2); }
+/* table */
+.tbl-wrap{background:var(--surface);border-radius:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);}
+.tbl-wrap table{width:100%;min-width:480px;border-collapse:collapse;}
+thead tr{background:var(--surface2);}
+th{padding:10px 14px;text-align:left;font-size:9px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--border2);white-space:nowrap;}
+td{padding:12px 14px;font-size:13px;font-weight:500;border-bottom:1px solid var(--border);color:var(--ink);white-space:nowrap;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#F8F9FD;}
+.td-total td{background:var(--surface2)!important;font-weight:700;border-top:1px solid var(--border2);}
+.g{color:var(--green);font-weight:700;} .r{color:var(--red);font-weight:700;} .gold{color:var(--gold);font-weight:700;} .mu{color:var(--muted);} .b{color:var(--blue);font-weight:700;}
 
-/* ── CARDS ── */
-.card-grid { display: grid; gap: 12px; border-radius: 4px; }
-.card-grid-2 { grid-template-columns: 1fr 1fr; }
-.card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-.card-grid-4 { grid-template-columns: repeat(4, 1fr); }
-.card-grid-5 { grid-template-columns: repeat(5, 1fr); }
-.card-grid-6 { grid-template-columns: repeat(6, 1fr); }
+/* bar rows */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.bar-row:last-child{margin-bottom:0;}
+.bar-name{font-size:12px;font-weight:600;width:120px;flex-shrink:0;color:var(--ink);}
+.bar-track{flex:1;height:5px;background:var(--border2);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;}
+.bar-pct{font-size:11px;font-weight:700;width:44px;text-align:right;flex-shrink:0;}
+.bar-val{font-size:11px;color:var(--muted);width:60px;text-align:right;flex-shrink:0;}
 
-.card {
-  background: var(--surface);
-  padding: 22px 24px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  position: relative; overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
-.card-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-.card-val { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--white); }
-.card-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
-.card-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
-.ca-green { background: var(--green); }
-.ca-red { background: var(--red); }
-.ca-gold { background: var(--gold); }
-.ca-blue { background: var(--blue); }
+/* pl box */
+.pl-box{background:var(--surface);border-radius:4px;padding:22px;border:1px solid var(--border);}
+.pl-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.pl-row:last-child{border-bottom:none;}
+.pl-row-key{color:var(--muted2);font-size:12px;}
+.pl-row-val{font-weight:700;color:var(--ink);}
 
-/* ── TABLE ── */
-.tbl-wrap { background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
-table { width: 100%; border-collapse: collapse; }
-thead tr { background: var(--surface2); }
-th { padding: 11px 16px; text-align: left; font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
-td { padding: 13px 16px; font-size: 13.5px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: #F8F9FD; }
-.td-total td { background: var(--surface2) !important; font-weight: 700; border-top: 1px solid var(--border2); }
-.td-total td:first-child { color: var(--gold); font-weight: 800; }
+/* big stat */
+.big-stat{background:var(--surface);padding:22px;border:1px solid var(--border);border-radius:4px;}
+.bs-label{font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+.bs-val{font-size:1.9rem;font-weight:700;letter-spacing:-1.5px;line-height:1;}
+.bs-sub{font-size:11px;color:var(--muted);margin-top:5px;}
 
-.g { color: var(--green); font-weight: 700; }
-.r { color: var(--red); font-weight: 700; }
-.gold { color: var(--gold); font-weight: 700; }
-.mu { color: var(--muted); }
-.w { color: var(--white); font-weight: 700; }
-.b { color: var(--blue); font-weight: 700; }
+/* return chart */
+.return-chart{display:flex;align-items:flex-end;gap:10px;height:120px;padding:0 4px;}
+.rc-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;}
+.rc-bar{width:100%;border-radius:3px 3px 0 0;}
+.rc-val{font-size:11px;font-weight:700;text-align:center;margin-bottom:4px;color:var(--ink);}
+.rc-year{font-size:10px;color:var(--muted);margin-top:6px;letter-spacing:.08em;text-align:center;}
 
-/* ── BAR ROW ── */
-.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.bar-row:last-child { margin-bottom: 0; }
-.bar-name { font-size: 12px; font-weight: 600; width: 140px; flex-shrink: 0; color: var(--white); }
-.bar-track { flex: 1; height: 5px; background: var(--border2); border-radius: 3px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 3px; transform-origin: left; animation: growBar 1s cubic-bezier(0.16,1,0.3,1) forwards; }
-@keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.bar-pct { font-size: 11px; font-weight: 700; width: 48px; text-align: right; flex-shrink: 0; }
+/* chip */
+.chip{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;}
+.chip-g{background:rgba(14,143,82,.1);color:var(--green);}
+.chip-r{background:rgba(176,24,40,.1);color:var(--red);}
+.chip-gold{background:rgba(184,125,0,.1);color:var(--gold);}
 
-/* ── 2-COL LAYOUT ── */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+/* two col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 
-/* ── BIG STAT ── */
-.big-stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
-.big-stat { background: var(--surface); padding: 28px 28px; border: 1px solid var(--border); border-radius: 4px; }
-.bs-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
-.bs-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; color: var(--white); }
-.bs-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
-
-/* ── P&L ── */
-.pl-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.pl-box { background: var(--surface); border-radius: 4px; padding: 28px; border: 1px solid var(--border); }
-.pl-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
-.pl-row:last-child { border-bottom: none; }
-.pl-row-key { color: var(--muted2); font-size: 12px; }
-.pl-row-val { font-weight: 700; color: var(--white); }
-.pl-divider { height: 1px; background: var(--border2); margin: 8px 0; }
-
-/* ── CHANNELS PIE-LIKE ── */
-.ch-list { display: flex; flex-direction: column; gap: 10px; }
-.ch-row { display: flex; align-items: center; gap: 12px; }
-.ch-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.ch-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--white); }
-.ch-val { font-size: 12px; font-weight: 700; color: var(--green); }
-.ch-pct { font-size: 11px; color: var(--muted); width: 44px; text-align: right; }
-
-/* ── ROI HERO ── */
-.roi-hero {
-  background: var(--surface);
-  border-radius: 4px;
-  padding: 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--green);
-}
-.roi-num { font-size: 5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; color: var(--green); }
-.roi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
-.roi-breakdown { display: flex; gap: 36px; }
-.roi-item { text-align: center; }
-.roi-item-val { font-size: 1.2rem; font-weight: 700; color: var(--white); }
-.roi-item-key { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-top: 3px; }
-
-/* ── TREND SPARKLINE ── */
-.trend-svg { width: 100%; height: 70px; }
-
-/* ── 5YR TABLE ── */
-.fiveyear-wrap { overflow-x: auto; }
-.fiveyear-wrap table th, .fiveyear-wrap table td { white-space: nowrap; }
-.yr-head { font-weight: 700 !important; color: var(--gold) !important; }
-
-/* ── RETURN % BARS ── */
-.return-chart { display: flex; align-items: flex-end; gap: 12px; height: 160px; padding: 0 4px; }
-.rc-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0; }
-.rc-bar { width: 100%; border-radius: 3px 3px 0 0; position: relative; transition: all 0.3s; }
-.rc-bar:hover { filter: brightness(0.9); }
-.rc-val { font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 5px; color: var(--white); }
-.rc-year { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.1em; text-align: center; }
-
-/* ── CS YEAR-YEAR ── */
-.cs-yoy { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
-.cs-card { background: var(--surface); padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
-.cs-year { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-.cs-pct { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; }
-.cs-detail { font-size: 11px; color: var(--muted); margin-top: 6px; }
-
-/* ── QUARTERLY ── */
-.q-table-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
-
-/* ── LP COMPARE ── */
-.lp-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.lp-box { background: var(--surface); border-radius: 4px; padding: 24px; border: 1px solid var(--border); }
-.lp-box.featured { border-color: var(--blue); border-left: 4px solid var(--blue); }
-.lp-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; font-weight: 700; }
-
-/* ── FADE IN ── */
-.fade { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+/* fade */
+.fade{opacity:0;transform:translateY(12px);animation:fadeUp .5s cubic-bezier(.16,1,.3,1) forwards;}
 .d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s}
-.d4{animation-delay:.2s} .d5{animation-delay:.25s} .d6{animation-delay:.3s}
-@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 
-/* ── DIVIDER ── */
-.div-line { height: 1px; background: var(--border); }
-
-/* ── TAG CHIP ── */
-.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; }
-.chip-g { background: rgba(14,143,82,0.1); color: var(--green); }
-.chip-r { background: rgba(176,24,40,0.1); color: var(--red); }
-.chip-gold { background: rgba(184,125,0,0.1); color: var(--gold); }
-.chip-b { background: rgba(37,88,232,0.1); color: var(--blue); }
-
-/* staff progress */
-.sp-progress { height: 3px; background: var(--border2); border-radius: 2px; margin-top: 6px; overflow: hidden; }
-.sp-bar { height: 100%; border-radius: 2px; background: var(--green); }
-
-/* ── FILTER BAR ── */
-.filter-bar {
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border2);
-  padding: 10px 56px;
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+/* RESPONSIVE */
+@media(max-width:900px){
+  .masthead{grid-template-columns:1fr;padding:0 16px;}
+  .masthead-brand{padding:12px 0;border-right:none;border-bottom:1px solid var(--border);}
+  .masthead-kpis{padding:0;border-bottom:1px solid var(--border);}
+  .masthead-date{padding:8px 0;border-left:none;}
+  .filter-bar{padding:8px 16px;}
+  .filter-select{min-width:0;flex:1;}
+  .page{padding:20px 14px 60px;gap:32px;}
+  .card-grid-3,.card-grid-4{grid-template-columns:1fr 1fr!important;}
+  .two-col{grid-template-columns:1fr!important;}
+  .bar-name{width:80px;font-size:11px;}
+  .return-chart{height:80px;}
+  td{font-size:12px;padding:9px 10px;}
+  th{font-size:9px;padding:8px 10px;}
 }
-.filter-label {
-  font-size: 10px; font-weight: 700; color: var(--muted2);
-  letter-spacing: 0.18em; text-transform: uppercase;
-  margin-right: 4px; white-space: nowrap;
-}
-.filter-select {
-  appearance: none;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 4px;
-  padding: 6px 28px 6px 11px;
-  font-size: 12px; font-weight: 600;
-  font-family: 'Familjen Grotesk', sans-serif;
-  color: var(--white);
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 9px center;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  min-width: 140px;
-}
-.filter-select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,88,232,0.1); }
-.filter-select.active { border-color: var(--blue); background-color: rgba(37,88,232,0.04); color: var(--blue); }
-.filter-divider { width: 1px; height: 22px; background: var(--border2); margin: 0 4px; }
-.filter-reset {
-  margin-left: auto;
-  padding: 6px 14px;
-  background: transparent;
-  border: 1px solid var(--border2);
-  border-radius: 4px;
-  font-size: 11px; font-weight: 700;
-  font-family: 'Familjen Grotesk', sans-serif;
-  color: var(--muted2);
-  cursor: pointer;
-  letter-spacing: 0.08em;
-  transition: all 0.2s;
-}
-.filter-reset:hover { border-color: var(--red); color: var(--red); }
-tr.filter-hidden { display: none; }
-.row-dimmed { opacity: 0.25; }
-
-/* ══ RESPONSIVE ══ */
-
-/* All tables scrollable */
-.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.tbl-wrap table { min-width: 500px; }
-.fiveyear-wrap { -webkit-overflow-scrolling: touch; }
-
-/* Scroll hint for tables */
-@media (max-width: 768px) {
-  html { -webkit-text-size-adjust: 100%; }
-
-  /* Masthead: stack vertically */
-  .masthead {
-    grid-template-columns: 1fr !important;
-    padding: 0 16px !important;
-    min-height: auto !important;
-  }
-  .masthead-brand {
-    padding: 14px 0 !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--border);
-    gap: 12px;
-  }
-  .brand-logo { width: 36px; height: 36px; font-size: .9rem; }
-  .brand-name { font-size: 1.1rem; }
-  .masthead-kpis {
-    padding: 0 !important;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .mkpi { padding: 12px 16px !important; flex-shrink: 0; min-width: 110px; border-right: 1px solid var(--border) !important; }
-  .mkpi:last-child { border-right: none !important; }
-  .mkpi-val { font-size: 1.2rem !important; }
-  .masthead-date { padding: 10px 0 !important; border-left: none !important; }
-
-  /* Filter bar */
-  .filter-bar { padding: 8px 16px !important; gap: 8px; }
-  .filter-select { min-width: 0 !important; flex: 1; font-size: 13px; padding: 6px 22px 6px 9px !important; }
-
-  /* Page */
-  .page { padding: 20px 16px 60px !important; gap: 40px !important; }
-
-  /* Cards: 1 column by default, 2 for -2 */
-  .card-grid-2 { grid-template-columns: 1fr 1fr !important; }
-  .card-grid-3, .card-grid-4, .card-grid-5, .card-grid-6 { grid-template-columns: 1fr 1fr !important; }
-  .card-val { font-size: 1.25rem !important; }
-  .card { padding: 16px 14px !important; }
-
-  /* Big stat grid */
-  .big-stat-grid { grid-template-columns: 1fr 1fr !important; }
-  .big-stat { padding: 18px 16px !important; }
-  .bs-val { font-size: 1.6rem !important; }
-
-  /* Two/three col layouts */
-  .two-col, .three-col, .pl-layout, .lp-compare { grid-template-columns: 1fr !important; }
-
-  /* ROI hero */
-  .roi-hero { flex-direction: column; gap: 16px; align-items: flex-start !important; padding: 20px 16px !important; }
-  .roi-num { font-size: 3rem !important; letter-spacing: -2px !important; }
-  .roi-breakdown { gap: 20px; flex-wrap: wrap; }
-
-  /* CS year-year */
-  .cs-yoy { grid-template-columns: 1fr 1fr !important; }
-  .cs-pct { font-size: 1.6rem !important; }
-
-  /* Section head */
-  .sec-head { flex-wrap: wrap; gap: 8px; }
-  .sec-title { font-size: 1rem !important; }
-
-  /* Bar rows */
-  .bar-name { width: 90px !important; font-size: 11px !important; }
-
-  /* Return chart */
-  .return-chart { height: 100px !important; }
-  .rc-val { font-size: 9px !important; }
-  .rc-year { font-size: 9px !important; }
-
-  /* inline grids */
-  [style*="grid-template-columns:repeat(4"] { display: grid !important; grid-template-columns: 1fr 1fr !important; }
-  [style*="grid-template-columns:1fr 1fr 1fr"] { display: grid !important; grid-template-columns: 1fr 1fr !important; }
-  [style*="grid-template-columns:1fr 1fr;"] { display: grid !important; grid-template-columns: 1fr !important; }
-
-  /* Table fonts */
-  td { font-size: 12px !important; padding: 10px 10px !important; }
-  th { font-size: 9px !important; padding: 9px 10px !important; }
-}
-
-@media (max-width: 480px) {
-  .card-grid-2 { grid-template-columns: 1fr !important; }
-  .cs-yoy { grid-template-columns: 1fr 1fr !important; }
-  .big-stat-grid { grid-template-columns: 1fr 1fr !important; }
+@media(max-width:520px){
+  .card-grid-2,.card-grid-3,.card-grid-4{grid-template-columns:1fr 1fr!important;}
+  .mkpi{padding:10px 14px;}
+  .mkpi-val{font-size:1.1rem;}
+  .brand-name{font-size:1.1rem;}
 }
 </style>
+<script>
+function fixPadding(){var h=document.querySelector('.fixed-header');if(h)document.body.style.paddingTop=h.offsetHeight+'px';}
+window.addEventListener('load',fixPadding);
+window.addEventListener('resize',fixPadding);
+</script>
 </head>
 <body>
 
-<!-- FIXED HEADER -->
+<div id="loading">
+  <div class="spin"></div>
+  <div class="load-label">Loading live data…</div>
+  <div id="error-msg"></div>
+</div>
+
 <div class="fixed-header">
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">SURUKA CEO COMMAND</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">MARCH 2026</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">GROSS REV ₦14.25M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">NET REV ₦8.88M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">AD ROI 522.84%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">RETURN CUSTOMERS 58.71%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">YTD ₦117.68M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">UNITS SOLD 1,494</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">201 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">SURUKA CEO COMMAND</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">MARCH 2026</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">GROSS REV ₦14.25M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">NET REV ₦8.88M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">AD ROI 522.84%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">RETURN CUSTOMERS 58.71%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">YTD ₦117.68M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">UNITS SOLD 1,494</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">201 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
+  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+  <div class="masthead">
+    <div class="masthead-brand">
+      <div class="brand-logo">S</div>
+      <div><div class="brand-name">Suruka</div><div class="brand-sub">CEO Command Report</div></div>
+    </div>
+    <div class="masthead-kpis">
+      <div class="mkpi"><div class="mkpi-label">Gross Revenue</div><div class="mkpi-val g" id="h1">—</div></div>
+      <div class="mkpi"><div class="mkpi-label">Net Revenue</div><div class="mkpi-val w" id="h2">—</div></div>
+      <div class="mkpi"><div class="mkpi-label">Units</div><div class="mkpi-val w" id="h3">—</div></div>
+      <div class="mkpi"><div class="mkpi-label">Customers</div><div class="mkpi-val w" id="h4">—</div></div>
+      <div class="mkpi"><div class="mkpi-label">Return Rate</div><div class="mkpi-val gold" id="h5">—</div></div>
+      <div class="mkpi"><div class="mkpi-label">Ad ROI</div><div class="mkpi-val g" id="h6">—</div></div>
+    </div>
+    <div class="masthead-date"><span class="live-pip"></span><span id="hudDate">Live</span></div>
+  </div>
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Filter:</span>
+    <select class="filter-select" id="filterRep" onchange="applyFilters()"><option value="all">All Reps</option></select>
+    <select class="filter-select" id="filterDept" onchange="applyFilters()">
+      <option value="all">All Departments</option>
+      <option value="Sales Team">Sales Team</option>
+      <option value="Digital Marketer">Digital Marketer</option>
+      <option value="Customer Care">Customer Care</option>
+    </select>
+    <select class="filter-select" id="filterZone" onchange="applyFilters()">
+      <option value="all">All Zones</option>
+      <option value="Lagos">Lagos</option>
+      <option value="Benin">Benin</option>
+      <option value="Abuja">Abuja</option>
+      <option value="Ghana">Ghana</option>
+    </select>
+    <button class="filter-reset" id="resetBtn" onclick="resetFilters()">✕ Reset</button>
   </div>
 </div>
 
-<!-- MASTHEAD -->
-<div class="masthead fade d1">
-  <div class="masthead-brand">
-    <div class="brand-logo">SU</div>
-    <div>
-      <div class="brand-name">SURUKA</div>
-      <div class="brand-sub">CEO Command Report</div>
+<div class="page" id="reportBody" style="display:none;">
+
+  <!-- 01 TODAY -->
+  <div class="section fade d1">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Today's Performance</span>
+      <span class="sec-badge badge-live" id="todayDate">Live</span>
+    </div>
+    <div class="card-grid card-grid-4" id="todayCards"></div>
+    <div style="margin-top:14px;">
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Rep</th><th>Revenue</th><th>Customers</th><th>Leads</th><th>Conversion</th></tr></thead>
+        <tbody id="repTbody"></tbody>
+      </table></div>
     </div>
   </div>
-  <div class="masthead-kpis">
-    <div class="mkpi">
-      <div class="mkpi-label">March Gross Rev</div>
-      <div class="mkpi-val g">₦14.25M</div>
-      <div class="mkpi-sub">1,494 units · 201 customers</div>
-    </div>
-    <div class="mkpi">
-      <div class="mkpi-label">March Net Rev</div>
-      <div class="mkpi-val g">₦8.88M</div>
-      <div class="mkpi-sub">Return rate 58.71%</div>
-    </div>
-    <div class="mkpi">
-      <div class="mkpi-label">Month Projection</div>
-      <div class="mkpi-val gold">₦55.23M</div>
-      <div class="mkpi-sub">5,789 units · 779 customers</div>
-    </div>
-    <div class="mkpi">
-      <div class="mkpi-label">2026 YTD</div>
-      <div class="mkpi-val g">₦117.68M</div>
-      <div class="mkpi-sub">5.88% of ₦2B target</div>
+
+  <!-- 02 ZONES -->
+  <div class="section fade d2">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Revenue by Zone</span></div>
+    <div class="two-col">
+      <div id="zoneBars"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Zone</th><th>Revenue</th><th>Share %</th></tr></thead>
+        <tbody id="zoneTbody"></tbody>
+      </table></div>
     </div>
   </div>
-  <div class="masthead-date">
-    <div>
-      <div style="margin-bottom:4px;"><span class="live-pip"></span>LIVE DATA</div>
-      <div>08 MARCH 2026</div>
-      <div style="margin-top:4px; color:var(--muted);">15-SEGMENT REPORT</div>
+
+  <!-- 03 DEPARTMENTS -->
+  <div class="section fade d2">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Revenue by Department</span></div>
+    <div class="two-col">
+      <div id="deptBars"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Department</th><th>Revenue</th><th>Share %</th></tr></thead>
+        <tbody id="deptTbody"></tbody>
+      </table></div>
     </div>
   </div>
-</div><!-- /masthead -->
 
-<!-- FILTER BAR -->
-<div class="filter-bar" id="filterBar">
-  <span class="filter-label">Filter:</span>
+  <!-- 04 P&L -->
+  <div class="section fade d3">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Profit & Loss Summary</span></div>
+    <div class="two-col">
+      <div class="pl-box" id="plIncome"></div>
+      <div class="pl-box" id="plExpenses"></div>
+    </div>
+  </div>
 
-  <select class="filter-select" id="filterRep" onchange="applyFilters()">
-    <option value="all">All Reps</option>
-    <option value="Mary">Mary</option>
-    <option value="Bolu">Bolu</option>
-    <option value="Jaya">Jaya</option>
-    <option value="Susan">Susan</option>
-    <option value="Esther">Esther</option>
-    <option value="Lewa">Lewa</option>
-    <option value="Divine">Divine</option>
-    <option value="Rachel">Rachel</option>
-    <option value="Amaya">Amaya</option>
-    <option value="Jane">Jane</option>
-  </select>
+  <!-- 05 YTD -->
+  <div class="section fade d3">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">2026 YTD vs Target</span></div>
+    <div class="card-grid card-grid-4" id="ytdCards"></div>
+  </div>
 
-  <div class="filter-divider"></div>
+  <!-- 06 RETURN CUSTOMERS -->
+  <div class="section fade d3">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Return Customer Rate — 2026</span></div>
+    <div class="return-chart" id="returnChart"></div>
+  </div>
 
-  <select class="filter-select" id="filterDept" onchange="applyFilters()">
-    <option value="all">All Departments</option>
-    <option value="Digital Marketer">Digital Marketer</option>
-    <option value="Sales Team">Sales Team</option>
-    <option value="Customer Care">Customer Care</option>
-  </select>
+  <!-- 07 5-YEAR -->
+  <div class="section fade d3">
+    <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">5-Year Business Overview</span></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Year</th><th>Gross Revenue</th><th>Net Revenue</th><th>Customers</th><th>Units</th></tr></thead>
+      <tbody id="fiveYrTbody"></tbody>
+    </table></div>
+  </div>
 
-  <div class="filter-divider"></div>
+  <!-- 08 CS SCORE -->
+  <div class="section fade d3">
+    <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">Customer Satisfaction Score (YoY)</span></div>
+    <div class="card-grid card-grid-4" id="csCards"></div>
+  </div>
 
-  <select class="filter-select" id="filterZone" onchange="applyFilters()">
-    <option value="all">All Zones</option>
-    <option value="Lagos">Lagos</option>
-    <option value="Benin">Benin</option>
-    <option value="Abuja">Abuja</option>
-    <option value="Ghana">Ghana</option>
-  </select>
-
-  <div class="filter-divider"></div>
-
-  <select class="filter-select" id="filterYear" onchange="applyFilters()">
-    <option value="all">All Years</option>
-    <option value="2022">2022</option>
-    <option value="2023">2023</option>
-    <option value="2024">2024</option>
-    <option value="2025">2025</option>
-    <option value="2026">2026</option>
-  </select>
-
-  <button class="filter-reset" onclick="resetFilters()">✕ Reset Filters</button>
+  <div style="height:40px;"></div>
 </div>
-
-</div><!-- /fixed-header -->
-
-<div class="page" id="mainPage">
-
-<!-- ════════════════════════════════
-     SEGMENT 1 — CURRENT MONTH
-════════════════════════════════ -->
-<section class="section fade d2">
-  <div class="sec-head">
-    <span class="sec-num">SEG 01</span>
-    <span class="sec-title">Current Month & Projection</span>
-    <span class="sec-badge badge-live">● Live</span>
-  </div>
-  <div class="card-grid card-grid-2" style="gap:2px;">
-    <!-- current -->
-    <div style="background:var(--surface); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Current March Numbers</div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
-        <div><div class="card-val g">₦14.25M</div><div class="card-sub">Gross Revenue</div></div>
-        <div><div class="card-val w">1,494</div><div class="card-sub">Units Sold</div></div>
-        <div><div class="card-val w">201</div><div class="card-sub">Customers</div></div>
-        <div><div class="card-val g">58.71%</div><div class="card-sub">Return Rate</div></div>
-      </div>
-      <div class="card-accent ca-green"></div>
-    </div>
-    <!-- projection -->
-    <div style="background:var(--surface2); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Full Month Projection</div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
-        <div><div class="card-val gold">₦55.23M</div><div class="card-sub">Projected Revenue</div></div>
-        <div><div class="card-val w">5,789</div><div class="card-sub">Units</div></div>
-        <div><div class="card-val w">779</div><div class="card-sub">Customers</div></div>
-        <div><div class="card-val gold">58.71%</div><div class="card-sub">Return Rate</div></div>
-      </div>
-      <div class="card-accent ca-gold"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 2 — TODAY'S NUMBERS
-════════════════════════════════ -->
-<section class="section fade d2">
-  <div class="sec-head">
-    <span class="sec-num">SEG 02</span>
-    <span class="sec-title">Today's Numbers — 08/03/2026</span>
-    <span class="sec-badge badge-live">● Live · No sales today yet</span>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>Sales Representative</th><th>Customers</th><th>Revenue</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr data-rep="Bolu"><td>Bolu</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Mary"><td>Mary</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Jaya"><td>Jaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Lewa"><td>Lewa</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Susan"><td>Susan</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Amaya"><td>Amaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Rachel"><td>Rachel</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Esther"><td>Esther</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Divine"><td>Divine</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Jane"><td>Jane</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr class="td-total"><td>TOTAL TODAY</td><td>0</td><td>₦0.00</td><td></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 3 — AD PERFORMANCE
-════════════════════════════════ -->
-<section class="section fade d3">
-  <div class="sec-head">
-    <span class="sec-num">SEG 03</span>
-    <span class="sec-title">Ad Performance Overview — Nigeria</span>
-    <span class="sec-badge badge-march">March 2026</span>
-  </div>
-
-  <!-- ROI hero -->
-  <div class="roi-hero" style="margin-bottom:20px;">
-    <div>
-      <div class="roi-num">522.84%</div>
-      <div class="roi-label">Return on Ad Spend · March</div>
-    </div>
-    <div class="roi-breakdown">
-      <div class="roi-item">
-        <div class="roi-item-val g">₦6.41M</div>
-        <div class="roi-item-key">Total Revenue</div>
-      </div>
-      <div class="roi-item">
-        <div class="roi-item-val r">₦1.04M</div>
-        <div class="roi-item-key">Total Spent</div>
-      </div>
-      <div class="roi-item">
-        <div class="roi-item-val g">₦5.44M</div>
-        <div class="roi-item-key">Net Profit</div>
-      </div>
-      <div class="roi-item">
-        <div class="roi-item-val gold">₦1 → ₦6.16</div>
-        <div class="roi-item-key">Per Naira Spent</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <!-- channels -->
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Channel</th><th>Revenue</th><th>Contribution</th></tr></thead>
-        <tbody>
-          <tr><td>Instagram</td><td class="g">₦3.44M</td><td class="w">53.75%</td></tr>
-          <tr><td>Landing Page</td><td class="g">₦1.76M</td><td class="w">27.40%</td></tr>
-          <tr><td>WhatsApp DM</td><td class="g">₦718K</td><td class="w">11.21%</td></tr>
-          <tr><td>Facebook</td><td class="g">₦489.8K</td><td class="w">7.64%</td></tr>
-          <tr><td>FB → WhatsApp Sub</td><td class="g">₦70K</td><td class="w">1.09%</td></tr>
-          <tr><td class="mu">TikTok</td><td class="mu">₦0.00</td><td class="mu">0.00%</td></tr>
-          <tr class="td-total"><td>TOTAL REVENUE</td><td>₦6.41M</td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- spend breakdown -->
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Spend Category</th><th>Spent</th><th>Profit</th></tr></thead>
-        <tbody>
-          <tr><td>Instagram</td><td class="r">₦440K</td><td class="g">₦3M</td></tr>
-          <tr><td>FB / LP / TikTok</td><td class="r">₦600K</td><td class="g">₦2.43M</td></tr>
-          <tr class="td-total"><td>TOTAL SPENT</td><td class="r">₦1.04M</td><td class="g">₦5.44M</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 4 — ZONES & DEPARTMENTS
-════════════════════════════════ -->
-<section class="section fade d3">
-  <div class="sec-head">
-    <span class="sec-num">SEG 04</span>
-    <span class="sec-title">Zones & Departments</span>
-  </div>
-  <div class="two-col">
-    <!-- zones -->
-    <div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Zone</div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
-          <tbody>
-            <tr data-zone="Lagos">
-              <td><strong>Lagos</strong></td><td class="g">₦7.47M</td><td>92</td><td>772</td>
-              <td><span class="chip chip-g">52.41%</span></td>
-            </tr>
-            <tr data-zone="Benin">
-              <td><strong>Benin</strong></td><td class="g">₦4.35M</td><td>73</td><td>525</td>
-              <td><span class="chip chip-gold">30.53%</span></td>
-            </tr>
-            <tr data-zone="Abuja">
-              <td><strong>Abuja</strong></td><td class="g">₦2.43M</td><td>37</td><td>197</td>
-              <td><span class="chip chip-r">17.06%</span></td>
-            </tr>
-            <tr data-zone="Ghana">
-              <td class="mu">Ghana</td><td class="mu">GHS 0.00</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">52.41%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">30.53%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:17.06%; background:var(--red);"></div></div><span class="bar-pct r">17.06%</span></div>
-      </div>
-    </div>
-    <!-- departments -->
-    <div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Department</div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Department</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
-          <tbody>
-            <tr data-dept="Digital Marketer">
-              <td><strong>Digital Marketer</strong></td><td class="g">₦6.15M</td><td>110</td><td>789</td>
-              <td><span class="chip chip-g">43.16%</span></td>
-            </tr>
-            <tr data-dept="Sales Team">
-              <td><strong>Sales Team</strong></td><td class="g">₦5.75M</td><td>58</td><td>506</td>
-              <td><span class="chip chip-gold">40.34%</span></td>
-            </tr>
-            <tr data-dept="Customer Care">
-              <td><strong>Customer Care</strong></td><td class="g">₦2.35M</td><td>33</td><td>199</td>
-              <td><span class="chip chip-r">16.50%</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Digital Marketer</span><div class="bar-track"><div class="bar-fill" style="width:43.16%; background:var(--blue);"></div></div><span class="bar-pct b">43.16%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Sales Team</span><div class="bar-track"><div class="bar-fill" style="width:40.34%; background:var(--green);"></div></div><span class="bar-pct g">40.34%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Customer Care</span><div class="bar-track"><div class="bar-fill" style="width:16.50%; background:var(--gold);"></div></div><span class="bar-pct gold">16.50%</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 5 — REVENUE & CUSTOMER TRENDS
-════════════════════════════════ -->
-<section class="section fade d3">
-  <div class="sec-head">
-    <span class="sec-num">SEG 05</span>
-    <span class="sec-title">Revenue & Customer Trends</span>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>Metric</th><th>March 2026</th><th>February 2026</th><th>January 2026</th><th>December 2025</th></tr></thead>
-      <tbody>
-        <tr><td class="mu">Gross Revenue</td><td class="g">₦14.25M</td><td class="g">₦53.26M</td><td class="g">₦50.17M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Gross Expenses</td><td class="r">₦5.37M</td><td class="r">₦18.37M</td><td class="r">₦24.59M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Net Revenue</td><td class="g">₦8.88M</td><td class="g">₦34.88M</td><td class="g">₦25.58M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Total Customers</td><td class="w">201</td><td class="w">758</td><td class="w">782</td><td class="mu">—</td></tr>
-        <tr><td class="mu">Return Customers</td><td class="g">118</td><td class="g">417</td><td class="g">382</td><td class="mu">—</td></tr>
-        <tr><td class="mu">Return %</td>
-          <td><span class="chip chip-g">58.71%</span></td>
-          <td><span class="chip chip-gold">55.01%</span></td>
-          <td><span class="chip chip-r">48.85%</span></td>
-          <td class="mu">—</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Return % mini chart -->
-  <div style="margin-top:20px; background:var(--surface); border-radius:4px; padding:24px 28px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Return Customer % — Monthly Trend (2026)</div>
-    <div style="display:flex; align-items:flex-end; gap:16px; height:120px;">
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">48.85%</div>
-        <div style="width:100%; background:var(--red); border-radius:3px 3px 0 0; height:calc(120px * 0.48);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Jan</div>
-      </div>
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:5px;">55.01%</div>
-        <div style="width:100%; background:var(--gold); border-radius:3px 3px 0 0; height:calc(120px * 0.55);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Feb</div>
-      </div>
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:5px;">58.71%</div>
-        <div style="width:100%; background:var(--green); border-radius:3px 3px 0 0; height:calc(120px * 0.587);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Mar</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 6 — 2026 REVENUE & PROJECTION
-════════════════════════════════ -->
-<section class="section fade d4">
-  <div class="sec-head">
-    <span class="sec-num">SEG 06</span>
-    <span class="sec-title">2026 Revenue & Annual Projection</span>
-  </div>
-  <div class="card-grid card-grid-4">
-    <div class="card">
-      <div class="card-label">2026 YTD Revenue</div>
-      <div class="card-val g">₦117.68M</div>
-      <div class="card-sub">Gross revenue year to date</div>
-      <div class="card-accent ca-green"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">% of Target Achieved</div>
-      <div class="card-val r">5.88%</div>
-      <div class="card-sub">Against 2026 annual target</div>
-      <div class="card-accent ca-red"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Full Year Projection</div>
-      <div class="card-val gold">₦470.70M</div>
-      <div class="card-sub">Based on current run rate</div>
-      <div class="card-accent ca-gold"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Projected % of Target</div>
-      <div class="card-val gold">23.54%</div>
-      <div class="card-sub">Projected annual achievement</div>
-      <div class="card-accent ca-blue"></div>
-    </div>
-  </div>
-  <div style="margin-top:14px; background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">YTD Progress vs Annual Target (₦2B)</div>
-    <div class="bar-row" style="margin-bottom:0;">
-      <span class="bar-name" style="font-size:12px; width:160px;">YTD Achieved</span>
-      <div class="bar-track"><div class="bar-fill" style="width:5.88%; background:var(--green);"></div></div>
-      <span class="bar-pct g">5.88%</span>
-    </div>
-    <div class="bar-row" style="margin-top:10px; margin-bottom:0;">
-      <span class="bar-name" style="font-size:12px; width:160px;">Projected EOY</span>
-      <div class="bar-track"><div class="bar-fill" style="width:23.54%; background:var(--gold);"></div></div>
-      <span class="bar-pct gold">23.54%</span>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 7 — PROFIT & LOSS
-════════════════════════════════ -->
-<section class="section fade d4">
-  <div class="sec-head">
-    <span class="sec-num">SEG 07</span>
-    <span class="sec-title">Profit & Loss Overview — March 2026</span>
-  </div>
-  <div class="pl-layout">
-    <!-- P&L summary -->
-    <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Monthly P&L Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Total Sales</span><span class="pl-row-val g">₦14.25M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Expenses / Tax</span><span class="pl-row-val r">₦5.37M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Gross Profit</span><span class="pl-row-val g">₦8.88M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net Profit (15%)</span><span class="pl-row-val gold">₦1.33M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">1,494 Units</span></div>
-      <div class="pl-row"><span class="pl-row-key">Customers</span><span class="pl-row-val w">201</span></div>
-      <div class="pl-row"><span class="pl-row-key">Sales Growth MoM</span><span class="pl-row-val r">-73.24%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Expenses Growth MoM</span><span class="pl-row-val r">-70.79%</span></div>
-    </div>
-    <!-- Sales by channel -->
-    <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Sales by Channel</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
-        <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--blue);">43.16%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Digital</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦6.15M</div>
-        </div>
-        <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--green);">40.34%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Sales Team</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦5.75M</div>
-        </div>
-        <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--gold);">16.50%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Cust. Care</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦2.35M</div>
-        </div>
-      </div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Ad Medium Breakdown</div>
-      <div class="pl-row"><span class="pl-row-key">Instagram Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦3.44M</span><span class="mu" style="font-size:11px;">24.17%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Landing Page Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦1.76M</span><span class="mu" style="font-size:11px;">12.32%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Facebook Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦489.8K</span><span class="mu" style="font-size:11px;">3.44%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Others</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦8.56M</span><span class="mu" style="font-size:11px;">60.08%</span></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 8 — INDIVIDUAL SALES REPS
-════════════════════════════════ -->
-<section class="section fade d4">
-  <div class="sec-head">
-    <span class="sec-num">SEG 08</span>
-    <span class="sec-title">Individual Sales Rep Performance — 2026 YTD</span>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>#</th><th>Staff</th><th>2026 Revenue</th><th>Target</th><th>% Achieved</th><th>Progress</th></tr></thead>
-      <tbody id="staffRows">
-        <tr data-rep="Mary"><td class="mu">01</td><td><strong>Mary</strong></td><td class="g">₦38.64M</td><td class="mu">₦500M</td><td><span class="chip chip-gold">7.73%</span></td><td style="min-width:140px;"><div class="sp-progress"><div class="sp-bar" style="width:7.73%; background:var(--green);"></div></div></td></tr>
-        <tr data-rep="Bolu"><td class="mu">02</td><td><strong>Bolu</strong></td><td class="g">₦24.82M</td><td class="mu">₦400M</td><td><span class="chip chip-gold">6.20%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.20%;"></div></div></td></tr>
-        <tr data-rep="Jaya"><td class="mu">03</td><td><strong>Jaya</strong></td><td class="g">₦10.75M</td><td class="mu">₦150M</td><td><span class="chip chip-gold">7.16%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.16%;"></div></div></td></tr>
-        <tr data-rep="Susan"><td class="mu">04</td><td><strong>Susan</strong></td><td class="g">₦9.56M</td><td class="mu">₦100M</td><td><span class="chip chip-g">9.56%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:9.56%; background:var(--teal);"></div></div></td></tr>
-        <tr data-rep="Esther"><td class="mu">05</td><td><strong>Esther</strong></td><td class="g">₦8.21M</td><td class="mu">₦100M</td><td><span class="chip chip-g">8.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:8.21%;"></div></div></td></tr>
-        <tr data-rep="Lewa"><td class="mu">06</td><td><strong>Lewa</strong></td><td class="g">₦8.03M</td><td class="mu">₦250M</td><td><span class="chip chip-r">3.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:3.21%; background:var(--gold);"></div></div></td></tr>
-        <tr data-rep="Divine"><td class="mu">07</td><td><strong>Divine</strong></td><td class="g">₦7.36M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">7.36%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.36%;"></div></div></td></tr>
-        <tr data-rep="Rachel"><td class="mu">08</td><td><strong>Rachel</strong></td><td class="g">₦6.73M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">6.73%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.73%;"></div></div></td></tr>
-        <tr data-rep="Amaya"><td class="mu">09</td><td><strong>Amaya</strong></td><td class="r">₦185.77K</td><td class="mu">₦100M</td><td><span class="chip chip-r">0.19%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.19%; background:var(--red);"></div></div></td></tr>
-        <tr data-rep="Jane"><td class="mu">10</td><td><strong>Jane</strong></td><td class="r">₦33.6K</td><td class="mu">₦100M</td><td><span class="chip chip-r">0.03%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.03%; background:var(--red);"></div></div></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 9 — LAST 5 YEARS
-════════════════════════════════ -->
-<section class="section fade d5">
-  <div class="sec-head">
-    <span class="sec-num">SEG 09</span>
-    <span class="sec-title">5-Year Historical Overview (2022–2026)</span>
-  </div>
-  <div class="fiveyear-wrap tbl-wrap">
-    <table id="fiveYrTable">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>5-Year Total</th>
-          <th class="yr-head">2022</th>
-          <th class="yr-head">2023</th>
-          <th class="yr-head">2024</th>
-          <th class="yr-head">2025</th>
-          <th class="yr-head" style="color:var(--green) !important;">2026 YTD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="mu">Gross Revenue</td><td class="w">₦1.72B</td><td>₦122.27M</td><td>₦154.45M</td><td>₦452.97M</td><td>₦875.74M</td><td class="g">₦117.68M</td></tr>
-        <tr><td class="mu">Gross Expenses</td><td class="r">₦659.43M</td><td class="r">₦45.12M</td><td class="r">₦50M</td><td class="r">₦201.36M</td><td class="r">₦314.61M</td><td class="r">₦48.33M</td></tr>
-        <tr><td class="mu">Logistics</td><td class="r">₦126.15M</td><td class="r">₦0</td><td class="r">₦0</td><td class="r">₦44.45M</td><td class="r">₦74.47M</td><td class="r">₦7.23M</td></tr>
-        <tr><td class="mu">Digital Expenses</td><td class="r">₦301.7M</td><td class="r">₦23.35M</td><td class="r">₦27.41M</td><td class="r">₦91.3M</td><td class="r">₦147.08M</td><td class="r">₦12.56M</td></tr>
-        <tr><td class="mu">Salary + Bonus</td><td class="r">₦65.2M</td><td class="r">₦8.42M</td><td class="r">₦9.48M</td><td class="r">₦16.26M</td><td class="r">₦23.79M</td><td class="r">₦7.25M</td></tr>
-        <tr><td class="mu">Tax</td><td class="r">₦98.94M</td><td class="r">₦6.17M</td><td class="r">₦8.47M</td><td class="r">₦24M</td><td class="r">₦45.58M</td><td class="r">₦14.71M</td></tr>
-        <tr><td class="mu">Net Revenue</td><td class="g">₦1.06B</td><td class="g">₦77.14M</td><td class="g">₦104.45M</td><td class="g">₦251.61M</td><td class="g">₦561.13M</td><td class="g">₦69.34M</td></tr>
-        <tr><td class="mu">Net 15%</td><td class="gold">₦159.55M</td><td class="gold">₦11.57M</td><td class="gold">₦15.67M</td><td class="gold">₦37.74M</td><td class="gold">₦84.17M</td><td class="gold">₦10.4M</td></tr>
-        <tr><td class="mu">Total Customers</td><td class="w">44,325</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="g">1,741</td></tr>
-        <tr><td class="mu">Return Customers</td><td class="g">12,712</td><td>702</td><td>1,671</td><td>3,753</td><td>5,669</td><td class="g">917</td></tr>
-        <tr><td class="mu">Units Sold</td><td class="w">297,126</td><td>8,529</td><td>40,878</td><td>101,071</td><td>133,616</td><td>13,032</td></tr>
-        <tr style="border-top:1px solid var(--border2);">
-          <td class="mu">Total Staff</td><td class="w">13</td><td>12</td><td>21</td><td>18</td><td>20</td><td>12</td>
-        </tr>
-        <tr><td class="mu">Hires</td><td class="w">39</td><td>6</td><td>10</td><td>12</td><td>9</td><td>2</td></tr>
-        <tr><td class="mu">Fired</td><td class="r">18</td><td class="r">2</td><td class="r">8</td><td class="r">4</td><td class="r">3</td><td class="r">1</td></tr>
-        <tr><td class="mu">Resigned</td><td class="gold">16</td><td class="gold">1</td><td class="gold">7</td><td class="gold">3</td><td class="gold">5</td><td class="gold">0</td></tr>
-        <tr><td class="mu">Still With Us</td><td class="g">13</td><td class="g">9</td><td class="g">6</td><td class="g">11</td><td class="g">12</td><td class="g">13</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 10 — 2026 GENERAL OVERVIEW
-════════════════════════════════ -->
-<section class="section fade d5">
-  <div class="sec-head">
-    <span class="sec-num">SEG 10</span>
-    <span class="sec-title">General Overview of 2026</span>
-  </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-    <!-- financials -->
-    <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Financial Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Gross Revenue</span><span class="pl-row-val g">₦117.68M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Gross Expenses</span><span class="pl-row-val r">₦48.33M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Logistics Expenses</span><span class="pl-row-val r">₦7.23M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Digital Expenses</span><span class="pl-row-val r">₦12.56M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Salary + Bonus</span><span class="pl-row-val r">₦7.25M</span></div>
-      <div class="pl-row"><span class="pl-row-key">TAX (12.5% VAT)</span><span class="pl-row-val r">₦14.71M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net Revenue</span><span class="pl-row-val g">₦69.34M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net 15%</span><span class="pl-row-val gold">₦10.4M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Avg Monthly Net</span><span class="pl-row-val gold">₦10.4M</span></div>
-    </div>
-    <!-- operations -->
-    <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Operations Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Total Customers</span><span class="pl-row-val w">1,741</span></div>
-      <div class="pl-row"><span class="pl-row-key">Return Customers</span><span class="pl-row-val g">917</span></div>
-      <div class="pl-row"><span class="pl-row-key">Return Customer %</span><span class="pl-row-val g">52.7%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">13,032</span></div>
-      <div class="pl-row"><span class="pl-row-key">Total Staff</span><span class="pl-row-val w">12</span></div>
-      <div class="pl-row"><span class="pl-row-key">Hires (YTD)</span><span class="pl-row-val g">2</span></div>
-      <div class="pl-row"><span class="pl-row-key">Fired (YTD)</span><span class="pl-row-val r">1</span></div>
-      <div class="pl-row"><span class="pl-row-key">Resigned (YTD)</span><span class="pl-row-val gold">0</span></div>
-      <div class="pl-row"><span class="pl-row-key">Still With Company</span><span class="pl-row-val g">13</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 11 — QUARTERLY PERFORMANCE
-════════════════════════════════ -->
-<section class="section fade d5">
-  <div class="sec-head">
-    <span class="sec-num">SEG 11</span>
-    <span class="sec-title">Quarterly Performance — 2026</span>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>Staff</th><th>Q1 (Jan–Mar)</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Mary</strong></td><td class="g">₦38.64M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Bolu</strong></td><td class="g">₦24.82M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Jaya</strong></td><td class="g">₦10.75M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Susan</strong></td><td class="g">₦9.56M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Esther</strong></td><td class="g">₦8.21M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Lewa</strong></td><td class="g">₦8.03M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Divine</strong></td><td class="g">₦7.36M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Rachel</strong></td><td class="g">₦6.73M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Jane</strong></td><td class="r">₦33.6K</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-r">Low Activity</span></td></tr>
-        <tr style="border-top:1px solid var(--border2);"><td class="mu" colspan="5">Timothy — Conversion Rate</td><td><span class="chip chip-gold">73.51%</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="q-table-note">Q2, Q3, Q4 data pending — currently in Q1 2026.</p>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 12 — IG & FACEBOOK CONVERSION
-════════════════════════════════ -->
-<section class="section fade d5">
-  <div class="sec-head">
-    <span class="sec-num">SEG 12</span>
-    <span class="sec-title">IG & Facebook Conversion — March 2026</span>
-  </div>
-
-  <!-- overview -->
-  <div class="card-grid card-grid-3" style="margin-bottom:20px;">
-    <div class="card">
-      <div class="card-label">Total Leads</div>
-      <div class="card-val w">1,118</div>
-      <div class="card-sub">IG + Facebook combined</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Total Closed</div>
-      <div class="card-val g">62</div>
-      <div class="card-sub">Customers converted</div>
-      <div class="card-accent ca-green"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Overall Conversion</div>
-      <div class="card-val gold">5.55%</div>
-      <div class="card-sub">March closing rate</div>
-      <div class="card-accent ca-gold"></div>
-    </div>
-  </div>
-
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Rep</th>
-          <th>FB Leads</th><th>FB Closed</th>
-          <th>IG Leads</th><th>IG Closed</th>
-          <th>Total Leads</th><th>Total Closed</th>
-          <th>Conversion %</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr data-rep="Jaya"><td><strong>Jaya</strong></td><td>109</td><td class="g">9</td><td>67</td><td class="g">12</td><td class="w">176</td><td class="g">21</td><td><span class="chip chip-g">11.93%</span></td></tr>
-        <tr data-rep="Bolu"><td><strong>Bolu</strong></td><td class="mu">—</td><td class="g">1</td><td>212</td><td class="g">11</td><td class="w">212</td><td class="g">12</td><td><span class="chip chip-gold">5.66%</span></td></tr>
-        <tr data-rep="Divine"><td><strong>Divine</strong></td><td>130</td><td class="g">1</td><td>149</td><td class="g">13</td><td class="w">279</td><td class="g">14</td><td><span class="chip chip-gold">5.02%</span></td></tr>
-        <tr data-rep="Susan"><td><strong>Susan</strong></td><td>115</td><td class="mu">0</td><td>190</td><td class="g">13</td><td class="w">305</td><td class="g">13</td><td><span class="chip chip-gold">4.26%</span></td></tr>
-        <tr data-rep="Esther"><td><strong>Esther</strong></td><td>146</td><td class="g">2</td><td class="mu">—</td><td class="mu">—</td><td class="w">146</td><td class="g">2</td><td><span class="chip chip-r">1.37%</span></td></tr>
-        <tr data-rep="Mary"><td><strong>Mary</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
-        <tr data-rep="Jane"><td><strong>Jane</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- conversion bars -->
-  <div style="margin-top:16px; background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">Conversion Rate by Rep</div>
-    <div class="bar-row"><span class="bar-name">Jaya</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div><span class="bar-pct g">11.93%</span></div>
-    <div class="bar-row"><span class="bar-name">Bolu</span><div class="bar-track"><div class="bar-fill" style="width:47.4%; background:var(--teal);"></div></div><span class="bar-pct" style="color:var(--teal);">5.66%</span></div>
-    <div class="bar-row"><span class="bar-name">Divine</span><div class="bar-track"><div class="bar-fill" style="width:42.1%; background:var(--gold);"></div></div><span class="bar-pct gold">5.02%</span></div>
-    <div class="bar-row"><span class="bar-name">Susan</span><div class="bar-track"><div class="bar-fill" style="width:35.7%; background:var(--gold);"></div></div><span class="bar-pct gold">4.26%</span></div>
-    <div class="bar-row"><span class="bar-name">Esther</span><div class="bar-track"><div class="bar-fill" style="width:11.5%; background:var(--red);"></div></div><span class="bar-pct r">1.37%</span></div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 13 — LANDING PAGE
-════════════════════════════════ -->
-<section class="section fade d5">
-  <div class="sec-head">
-    <span class="sec-num">SEG 13</span>
-    <span class="sec-title">Landing Page Performance — March 2026</span>
-  </div>
-  <div class="card-grid card-grid-5">
-    <div class="card">
-      <div class="card-label">Total Leads</div>
-      <div class="card-val w">92</div>
-      <div class="card-sub">March 2026</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Interested</div>
-      <div class="card-val gold">55</div>
-      <div class="card-sub">59.78% of leads</div>
-      <div class="card-accent ca-gold"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">Delivered</div>
-      <div class="card-val g">48</div>
-      <div class="card-sub">Customers converted</div>
-      <div class="card-accent ca-green"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">% Interested</div>
-      <div class="card-val gold">59.78%</div>
-      <div class="card-sub">Of total leads</div>
-    </div>
-    <div class="card">
-      <div class="card-label">% Closed</div>
-      <div class="card-val g">52.17%</div>
-      <div class="card-sub">Of total leads delivered</div>
-      <div class="card-accent ca-green"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 14 — LP COMPARISON
-════════════════════════════════ -->
-<section class="section fade d6">
-  <div class="sec-head">
-    <span class="sec-num">SEG 14</span>
-    <span class="sec-title">Landing Page Comparison — Suruka vs Dan · March 2026</span>
-  </div>
-  <div class="lp-compare">
-    <div class="lp-box featured">
-      <div class="lp-title" style="color:var(--blue);">Suruka Landing Page</div>
-      <div class="pl-row"><span class="pl-row-key">Total Leads</span><span class="pl-row-val w">82</span></div>
-      <div class="pl-row"><span class="pl-row-key">Interested</span><span class="pl-row-val gold">46</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered</span><span class="pl-row-val g">42 Customers</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Interested</span><span class="pl-row-val gold">56.10%</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Closed</span><span class="pl-row-val g">51.22%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered from Interested</span><span class="pl-row-val g">91.30%</span></div>
-    </div>
-    <div class="lp-box">
-      <div class="lp-title">Dan Landing Page</div>
-      <div class="pl-row"><span class="pl-row-key">Total Leads</span><span class="pl-row-val w">10</span></div>
-      <div class="pl-row"><span class="pl-row-key">Interested</span><span class="pl-row-val gold">9</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered</span><span class="pl-row-val g">6 Customers</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Interested</span><span class="pl-row-val g">90.00%</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Closed</span><span class="pl-row-val g">60.00%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered from Interested</span><span class="pl-row-val gold">66.67%</span></div>
-    </div>
-  </div>
-  <div style="margin-top:14px; background:var(--surface); border-radius:4px; padding:16px 20px; border:1px solid var(--border); font-size:12px; color:var(--muted2);">
-    <strong style="color:var(--white);">Insight:</strong> Dan's LP has higher interest rate (90% vs 56%) and close rate (60% vs 51%) but far fewer total leads (10 vs 82). Suruka converts more volume. Suruka's delivery-from-interested rate (91.3%) significantly outperforms Dan (66.7%).
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     SEGMENT 15 — CS SATISFACTION
-════════════════════════════════ -->
-<section class="section fade d6">
-  <div class="sec-head">
-    <span class="sec-num">SEG 15</span>
-    <span class="sec-title">Customer Satisfaction</span>
-  </div>
-
-  <!-- today -->
-  <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Today — 08/03/2026</div>
-  <div class="tbl-wrap" style="margin-bottom:28px;">
-    <table>
-      <thead><tr><th>Date</th><th>Rep</th><th>Total Contacted</th><th>Satisfied</th><th>Not Satisfied</th><th>Satisfied %</th><th>Not Satisfied %</th></tr></thead>
-      <tbody>
-        <tr><td class="mu">08/03/2026</td><td><strong>Lewa</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">Pending</td><td class="mu">—</td></tr>
-        <tr><td class="mu">08/03/2026</td><td><strong>Ray</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">Pending</td><td class="mu">—</td></tr>
-        <tr class="td-total"><td colspan="2">TOTAL TODAY</td><td>—</td><td>—</td><td>—</td><td>Pending</td><td>—</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- year on year -->
-  <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">CS Satisfaction — Year on Year</div>
-  <div class="cs-yoy" style="margin-bottom:20px;">
-    <div class="cs-card">
-      <div class="cs-year">2023</div>
-      <div class="cs-pct" style="color:var(--green);">97.42%</div>
-      <div class="cs-detail">Satisfied<br>2.58% not satisfied</div>
-      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">5,687 customers · ₦9.03M</div>
-    </div>
-    <div class="cs-card">
-      <div class="cs-year">2024</div>
-      <div class="cs-pct" style="color:var(--gold);">96.68%</div>
-      <div class="cs-detail">Satisfied<br>3.32% not satisfied</div>
-      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">8,437 customers · ₦26.52M</div>
-    </div>
-    <div class="cs-card">
-      <div class="cs-year">2025</div>
-      <div class="cs-pct" style="color:var(--gold);">96.10%</div>
-      <div class="cs-detail">Satisfied<br>3.90% not satisfied</div>
-      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">14,367 customers · ₦90.94M</div>
-    </div>
-    <div class="cs-card" style="background:rgba(14,143,82,0.04); border:1px solid rgba(14,143,82,0.2);">
-      <div class="cs-year" style="color:var(--green);">2026 YTD</div>
-      <div class="cs-pct" style="color:var(--green);">97.11%</div>
-      <div class="cs-detail">Satisfied<br>2.89% not satisfied</div>
-      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">2,938 customers · ₦13.77M</div>
-    </div>
-  </div>
-
-  <!-- cumulative -->
-  <div style="background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">4-Year Cumulative CS Totals</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Customers Served</span><span class="pl-row-val w">31,429</span></div>
-      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Revenue (CS-tracked)</span><span class="pl-row-val g">₦140.26M</span></div>
-    </div>
-  </div>
-
-  <!-- BONUS: Return customer % chart -->
-  <div style="margin-top:28px; background:var(--surface); border-radius:4px; padding:24px 28px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px;">Return Customer % — All-Time Growth (AVG + 2021–2026)</div>
-    <div style="display:flex; align-items:flex-end; gap:10px; height:150px; padding:0 4px;">
-      <!-- AVG -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:5px;">29.4%</div>
-        <div style="width:100%; background:var(--blue); border-radius:3px 3px 0 0; height:calc(150px * 0.294 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center; letter-spacing:0.05em;">AVG</div>
-      </div>
-      <!-- 2021 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">20.0%</div>
-        <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.200 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2021</div>
-      </div>
-      <!-- 2022 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">22.5%</div>
-        <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.225 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2022</div>
-      </div>
-      <!-- 2023 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">23.4%</div>
-        <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.234 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2023</div>
-      </div>
-      <!-- 2024 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:5px;">25.7%</div>
-        <div style="width:100%; background:var(--gold); border-radius:3px 3px 0 0; height:calc(150px * 0.257 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2024</div>
-      </div>
-      <!-- 2025 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:5px;">32.0%</div>
-        <div style="width:100%; background:var(--teal); border-radius:3px 3px 0 0; height:calc(150px * 0.320 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2025</div>
-      </div>
-      <!-- 2026 -->
-      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">52.7%</div>
-        <div style="width:100%; background:var(--red); border-radius:3px 3px 0 0; height:150px;"></div>
-        <div style="font-size:9px; color:var(--red); margin-top:6px; text-align:center; font-weight:700;">2026 ↑</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════
-     FOOTER
-════════════════════════════════ -->
-<div style="border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; font-size:10px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase;">
-  <span>Suruka Analytics Engine</span>
-  <span>15-Segment Master Report · March 2026</span>
-  <span>Confidential · Internal Use Only</span>
-</div>
-
-</div><!-- /page -->
 
 <script>
-// ── SURUKA FILTER ENGINE ──────────────────────────────────────────────────
+// ── SET THIS URL ────────────────────────────────────────────
+var DATA_URL = "https://raw.githubusercontent.com/Luismanameis/Suruka-Natures-Gift-Enterprise/main/data/suruka-ceo.json";
+// ────────────────────────────────────────────────────────────
 
-// Map: which table column index holds year data in the 5yr table
-// Columns: 0=metric, 1=5yr total, 2=2022, 3=2023, 4=2024, 5=2025, 6=2026
-const YEAR_COL_MAP = { '2022': 2, '2023': 3, '2024': 4, '2025': 5, '2026': 6 };
+var D = null;
 
-// All sections and the filter types they respond to
-const SECTION_FILTER_MAP = [
-  { id: 'seg02', responds: ['rep'] },
-  { id: 'seg04', responds: ['zone', 'dept'] },
-  { id: 'seg08', responds: ['rep'] },
-  { id: 'seg09', responds: ['year'] },
-  { id: 'seg12', responds: ['rep'] },
-];
+fetch(DATA_URL + "?v=" + Date.now())
+  .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
+  .then(function(data){
+    D = data;
+    renderAll(data);
+    document.getElementById('loading').style.display='none';
+    document.getElementById('reportBody').style.display='';
+    fixPadding();
+    populateRepFilter(data);
+  })
+  .catch(function(e){
+    var em=document.getElementById('error-msg');
+    em.textContent="Could not load data: "+e.message;
+    em.style.display='block';
+    document.querySelector('.spin').style.display='none';
+    document.querySelector('.load-label').style.display='none';
+  });
 
-function getFilters() {
-  return {
-    rep:  document.getElementById('filterRep').value,
-    dept: document.getElementById('filterDept').value,
-    zone: document.getElementById('filterZone').value,
-    year: document.getElementById('filterYear').value,
-  };
+function renderAll(d){
+  document.getElementById('hudDate').textContent='Live · '+d._meta.last_updated;
+  document.getElementById('todayDate').textContent=d.today.date;
+
+  // HUD
+  set('h1',d.hud.gross_revenue); set('h2',d.hud.net_revenue);
+  set('h3',d.hud.units); set('h4',d.hud.customers);
+  set('h5',d.hud.return_rate); set('h6',d.hud.ad_roi);
+
+  // Ticker
+  var t=d.ticker||[];
+  var doubled=t.concat(t);
+  document.getElementById('ticker').innerHTML=doubled.map(function(x){
+    return '<span class="ticker-item">'+x+'</span>';
+  }).join('<span class="ticker-item ticker-sep">///</span>');
+
+  // Today cards
+  document.getElementById('todayCards').innerHTML=[
+    card('Gross Revenue',d.hud.gross_revenue,'g','ca-green'),
+    card('Net Revenue',d.hud.net_revenue,'','ca-blue'),
+    card('Units Sold',d.hud.units,'','ca-gold'),
+    card('Customers',d.hud.customers,'','ca-green')
+  ].join('');
+
+  // Rep table
+  var rb=document.getElementById('repTbody');
+  rb.innerHTML='';
+  d.today.reps.forEach(function(r,i){
+    rb.innerHTML+='<tr data-rep="'+r.rep+'" data-dept="'+(r.dept||'')+'" data-zone="'+(r.zone||'')+'">'
+      +'<td><strong>#'+(i+1)+'</strong> '+r.rep+'</td>'
+      +'<td class="g">'+r.revenue+'</td>'
+      +'<td class="mu">'+r.customers+'</td>'
+      +'<td class="mu">'+r.leads+'</td>'
+      +'<td class="mu">'+r.conversion+'</td>'
+      +'</tr>';
+  });
+
+  // Zones
+  var zb='',zt='';
+  d.zones.forEach(function(z){
+    var color=z.zone==='Lagos'?'#2558E8':z.zone==='Benin'?'#B87D00':z.zone==='Abuja'?'#0E8F52':'#9298AA';
+    zb+='<div class="bar-row"><div class="bar-name">'+z.zone+'</div>'
+      +'<div class="bar-track"><div class="bar-fill" style="width:'+z.bar_width+'%;background:'+color+';"></div></div>'
+      +'<div class="bar-pct" style="color:'+color+'">'+z.pct+'</div>'
+      +'<div class="bar-val">'+z.revenue+'</div></div>';
+    zt+='<tr><td>'+z.zone+'</td><td class="g">'+z.revenue+'</td><td class="b">'+z.pct+'</td></tr>';
+  });
+  document.getElementById('zoneBars').innerHTML=zb;
+  document.getElementById('zoneTbody').innerHTML=zt;
+
+  // Depts
+  var db='',dt='';
+  var dcolors=['#B01828','#2558E8','#0E8F52'];
+  d.departments.forEach(function(dep,i){
+    db+='<div class="bar-row"><div class="bar-name">'+dep.dept.replace('Digital Marketer','Digital')+'</div>'
+      +'<div class="bar-track"><div class="bar-fill" style="width:'+dep.bar_width+'%;background:'+dcolors[i]+';"></div></div>'
+      +'<div class="bar-pct" style="color:'+dcolors[i]+'">'+dep.pct+'</div>'
+      +'<div class="bar-val">'+dep.revenue+'</div></div>';
+    dt+='<tr><td>'+dep.dept+'</td><td class="g">'+dep.revenue+'</td><td class="b">'+dep.pct+'</td></tr>';
+  });
+  document.getElementById('deptBars').innerHTML=db;
+  document.getElementById('deptTbody').innerHTML=dt;
+
+  // P&L
+  var pl=d.pl;
+  document.getElementById('plIncome').innerHTML=
+    '<div class="pl-row"><div class="pl-row-key">Gross Revenue</div><div class="pl-row-val g">'+pl.gross_revenue+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Gross Expenses</div><div class="pl-row-val r">'+pl.gross_expenses+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Net Revenue</div><div class="pl-row-val g">'+pl.net_revenue+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Net Profit</div><div class="pl-row-val g">'+pl.net_profit+'</div></div>';
+  document.getElementById('plExpenses').innerHTML=
+    '<div class="pl-row"><div class="pl-row-key">Logistics</div><div class="pl-row-val r">'+pl.logistics+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Digital Expenses</div><div class="pl-row-val r">'+pl.digital_expenses+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Salary & Bonus</div><div class="pl-row-val r">'+pl.salary_bonus+'</div></div>'
+    +'<div class="pl-row"><div class="pl-row-key">Tax</div><div class="pl-row-val r">'+pl.tax+'</div></div>';
+
+  // YTD
+  var ytd=d.ytd;
+  document.getElementById('ytdCards').innerHTML=[
+    card('YTD Gross Revenue',ytd.gross_revenue,'g','ca-green'),
+    card('YTD Net Revenue',ytd.net_revenue,'','ca-blue'),
+    card('% of ₦2B Target',ytd.target_pct,'gold','ca-gold','Target: '+ytd.target),
+    card('Projected EOY',ytd.projected_eoy,'','ca-red','Based on current pace')
+  ].join('');
+
+  // Return chart
+  var months=['Jan','Feb','Mar'];
+  var keys=['jan','feb','mar'];
+  var rcHtml='';
+  var maxPct=70;
+  keys.forEach(function(k,i){
+    var obj=d.return_customers[k];
+    if(!obj) return;
+    var h=Math.round((parseFloat(obj.bar)/maxPct)*100);
+    rcHtml+='<div class="rc-col">'
+      +'<div class="rc-val">'+obj.pct+'</div>'
+      +'<div class="rc-bar" style="height:'+h+'px;background:var(--green);"></div>'
+      +'<div class="rc-year">'+months[i]+'</div>'
+      +'</div>';
+  });
+  document.getElementById('returnChart').innerHTML=rcHtml;
+
+  // 5-year table
+  var fyb='';
+  d.five_year.forEach(function(r){
+    var isCurrent=r.year.indexOf('YTD')>=0;
+    fyb+='<tr'+(isCurrent?' class="td-total"':' style="font-weight:'+(r.year==='2025'?'700':'500')+'"')+'>'
+      +'<td class="'+(isCurrent?'gold':'')+'"><strong>'+r.year+'</strong></td>'
+      +'<td class="g">'+r.gross_rev+'</td>'
+      +'<td>'+r.net_rev+'</td>'
+      +'<td>'+r.customers+'</td>'
+      +'<td>'+r.units+'</td>'
+      +'</tr>';
+  });
+  document.getElementById('fiveYrTbody').innerHTML=fyb;
+
+  // CS Score
+  var csHtml='';
+  var csColors=['mu','','g','g'];
+  d.cs_score.forEach(function(r,i){
+    csHtml+=card(r.year+' CS Score',r.pct,csColors[i],'ca-green');
+  });
+  document.getElementById('csCards').innerHTML=csHtml;
 }
 
-function applyFilters() {
-  const f = getFilters();
-  const anyActive = Object.values(f).some(v => v !== 'all');
+function card(label,val,valClass,accent,sub){
+  return '<div class="card"><div class="card-label">'+label+'</div>'
+    +'<div class="card-val '+(valClass||'')+'">'+val+'</div>'
+    +(sub?'<div class="card-sub">'+sub+'</div>':'')
+    +'<div class="card-accent '+(accent||'')+'"></div>'
+    +'</div>';
+}
+function set(id,val){ var el=document.getElementById(id); if(el) el.textContent=val; }
 
-  // ── Mark selects as active ──
-  ['filterRep','filterDept','filterZone','filterYear'].forEach(id => {
-    const el = document.getElementById(id);
-    el.classList.toggle('active', el.value !== 'all');
+function populateRepFilter(d){
+  var sel=document.getElementById('filterRep');
+  sel.innerHTML='<option value="all">All Reps</option>';
+  d.today.reps.forEach(function(r){
+    sel.innerHTML+='<option value="'+r.rep+'">'+r.rep+'</option>';
   });
-
-  // ── Show/hide reset button ──
-  document.querySelector('.filter-reset').style.visibility = anyActive ? 'visible' : 'hidden';
-
-  // ── REP filter: rows with data-rep ──
-  document.querySelectorAll('tr[data-rep]').forEach(row => {
-    const match = f.rep === 'all' || row.dataset.rep === f.rep;
-    row.classList.toggle('filter-hidden', !match);
-  });
-
-  // ── ZONE filter: rows with data-zone ──
-  document.querySelectorAll('tr[data-zone]').forEach(row => {
-    const match = f.zone === 'all' || row.dataset.zone === f.zone;
-    row.classList.toggle('filter-hidden', !match);
-  });
-
-  // ── DEPT filter: rows with data-dept ──
-  document.querySelectorAll('tr[data-dept]').forEach(row => {
-    const match = f.dept === 'all' || row.dataset.dept === f.dept;
-    row.classList.toggle('filter-hidden', !match);
-  });
-
-  // ── YEAR filter: 5-year table column highlighting ──
-  const fiveYrTable = document.getElementById('fiveYrTable');
-  if (fiveYrTable) {
-    const allCells = fiveYrTable.querySelectorAll('td, th');
-    allCells.forEach(cell => {
-      cell.style.opacity = '';
-      cell.style.background = '';
-    });
-
-    if (f.year !== 'all') {
-      const targetCol = YEAR_COL_MAP[f.year];
-      const rows = fiveYrTable.querySelectorAll('tr');
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td, th');
-        cells.forEach((cell, i) => {
-          if (i === 0 || i === targetCol) {
-            // keep full opacity, highlight year column
-            if (i === targetCol) {
-              cell.style.background = 'rgba(37,88,232,0.06)';
-            }
-          } else {
-            cell.style.opacity = '0.25';
-          }
-        });
-      });
-    }
-  }
-
-  // ── Update active filter pill text in header ──
-  updateFilterBadge(f);
 }
 
-function updateFilterBadge(f) {
-  const parts = [];
-  if (f.rep  !== 'all') parts.push('Rep: ' + f.rep);
-  if (f.dept !== 'all') parts.push('Dept: ' + f.dept);
-  if (f.zone !== 'all') parts.push('Zone: ' + f.zone);
-  if (f.year !== 'all') parts.push('Year: ' + f.year);
-
-  // Show count of visible rows in key tables
-  let existing = document.getElementById('filterBadgeText');
-  if (!existing) {
-    existing = document.createElement('span');
-    existing.id = 'filterBadgeText';
-    existing.style.cssText = 'font-size:11px; font-weight:700; color:var(--blue); padding:4px 10px; background:rgba(37,88,232,0.08); border-radius:20px; border:1px solid rgba(37,88,232,0.2); white-space:nowrap;';
-    document.getElementById('filterBar').insertBefore(existing, document.querySelector('.filter-reset'));
-  }
-
-  if (parts.length > 0) {
-    existing.textContent = '● ' + parts.join(' · ');
-    existing.style.display = 'inline';
-  } else {
-    existing.style.display = 'none';
-  }
-}
-
-function resetFilters() {
-  ['filterRep','filterDept','filterZone','filterYear'].forEach(id => {
-    document.getElementById(id).value = 'all';
+function applyFilters(){
+  var rep=document.getElementById('filterRep').value;
+  var dept=document.getElementById('filterDept').value;
+  var zone=document.getElementById('filterZone').value;
+  var any=rep!=='all'||dept!=='all'||zone!=='all';
+  document.getElementById('filterRep').classList.toggle('active',rep!=='all');
+  document.getElementById('filterDept').classList.toggle('active',dept!=='all');
+  document.getElementById('filterZone').classList.toggle('active',zone!=='all');
+  document.getElementById('resetBtn').style.visibility=any?'visible':'hidden';
+  document.querySelectorAll('tr[data-rep]').forEach(function(r){
+    var show=true;
+    if(rep!=='all'&&r.dataset.rep!==rep) show=false;
+    if(dept!=='all'&&r.dataset.dept!==dept) show=false;
+    if(zone!=='all'&&r.dataset.zone!==zone) show=false;
+    r.classList.toggle('filter-hidden',!show);
   });
+  setTimeout(fixPadding,50);
+}
+function resetFilters(){
+  ['filterRep','filterDept','filterZone'].forEach(function(id){document.getElementById(id).value='all';});
   applyFilters();
 }
-
-// Init on load
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.filter-reset').style.visibility = 'hidden';
-  applyFilters();
-  fixPadding();
+window.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('resetBtn').style.visibility='hidden';
 });
 </script>
 </body>
