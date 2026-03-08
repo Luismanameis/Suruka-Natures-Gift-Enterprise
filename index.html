@@ -7,19 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0B0C10;
-  --surface: #12131A;
-  --surface2: #1A1B26;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --white: #EEF0F4;
-  --muted: #5A5D6E;
-  --muted2: #8A8D9E;
-  --red: #E8334A;
-  --green: #22C972;
-  --gold: #F0B429;
-  --blue: #4B8CF5;
-  --teal: #2DD4BF;
+  --bg: #F6F7FA;
+  --surface: #FFFFFF;
+  --surface2: #F0F2F7;
+  --border: #E3E6EF;
+  --border2: #CDD1DF;
+  --white: #111218;
+  --muted: #9298AA;
+  --muted2: #6B7080;
+  --red: #D9293B;
+  --green: #0E8F52;
+  --gold: #B87D00;
+  --blue: #2558E8;
+  --teal: #0891B2;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,38 +33,31 @@ body {
   min-height: 100vh;
 }
 
-/* noise */
-body::before {
-  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
-}
-
 /* ── FIXED HEADER WRAPPER ── */
 .fixed-header {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 1000;
-  background: var(--bg);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.6);
+  background: var(--surface);
+  box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0,0,0,0.07);
 }
 
 /* ── TICKER ── */
-.ticker { background: var(--red); padding: 7px 0; overflow: hidden; position: relative; }
+.ticker { background: var(--white); padding: 7px 0; overflow: hidden; position: relative; }
 .ticker-track { display: inline-flex; animation: tick 35s linear infinite; white-space: nowrap; }
-.ticker-item { padding: 0 32px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-.ticker-sep { opacity: 0.4; }
+.ticker-item { padding: 0 32px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F7FA; }
+.ticker-sep { opacity: 0.35; }
 @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ── MASTHEAD ── */
 .masthead {
   position: relative; z-index: 1;
-  border-bottom: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border);
   padding: 0 56px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: stretch;
   min-height: 100px;
-  background: var(--bg);
+  background: var(--surface);
 }
 .masthead-brand {
   display: flex; align-items: center; gap: 20px;
@@ -76,10 +69,11 @@ body::before {
   background: var(--red);
   display: flex; align-items: center; justify-content: center;
   font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px;
+  color: white;
   flex-shrink: 0;
 }
-.brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-.brand-sub { font-size: 10px; color: var(--muted2); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
+.brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
+.brand-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
 
 .masthead-kpis {
   display: flex; align-items: stretch;
@@ -91,7 +85,7 @@ body::before {
   display: flex; flex-direction: column; justify-content: center;
 }
 .mkpi:last-child { border-right: none; }
-.mkpi-label { font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
+.mkpi-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
 .mkpi-val { font-size: 1.65rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
 .mkpi-val.g { color: var(--green); }
 .mkpi-val.r { color: var(--red); }
@@ -103,7 +97,7 @@ body::before {
   display: flex; align-items: center;
   padding: 0 0 0 32px;
   border-left: 1px solid var(--border);
-  font-size: 11px; color: var(--muted2); letter-spacing: 0.1em; text-align: right;
+  font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-align: right;
 }
 .live-pip { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 8px; animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
@@ -117,19 +111,19 @@ body::before {
   display: flex; align-items: center; gap: 16px;
   margin-bottom: 22px;
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--white);
 }
-.sec-num { font-size: 10px; font-weight: 600; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; }
-.sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; }
+.sec-num { font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; background: rgba(217,41,59,0.08); padding: 3px 8px; border-radius: 3px; }
+.sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; color: var(--white); }
 .sec-badge {
   margin-left: auto; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 10px; border-radius: 20px; font-weight: 600;
 }
-.badge-live { background: rgba(34,201,114,0.12); color: var(--green); border: 1px solid rgba(34,201,114,0.25); }
-.badge-march { background: rgba(240,180,41,0.12); color: var(--gold); border: 1px solid rgba(240,180,41,0.25); }
+.badge-live { background: rgba(14,143,82,0.1); color: var(--green); border: 1px solid rgba(14,143,82,0.2); }
+.badge-march { background: rgba(184,125,0,0.1); color: var(--gold); border: 1px solid rgba(184,125,0,0.2); }
 
 /* ── CARDS ── */
-.card-grid { display: grid; gap: 2px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.card-grid { display: grid; gap: 12px; border-radius: 4px; }
 .card-grid-2 { grid-template-columns: 1fr 1fr; }
 .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
 .card-grid-4 { grid-template-columns: repeat(4, 1fr); }
@@ -139,13 +133,16 @@ body::before {
 .card {
   background: var(--surface);
   padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
   position: relative; overflow: hidden;
+  transition: box-shadow 0.2s;
 }
-.card:hover { background: var(--surface2); }
-.card-label { font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
-.card-val { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
+.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.card-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.card-val { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--white); }
 .card-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
-.card-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; }
+.card-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
 .ca-green { background: var(--green); }
 .ca-red { background: var(--red); }
 .ca-gold { background: var(--gold); }
@@ -154,25 +151,25 @@ body::before {
 /* ── TABLE ── */
 .tbl-wrap { background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; }
-thead tr { background: rgba(255,255,255,0.03); }
-th { padding: 11px 16px; text-align: left; font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid var(--border); }
+thead tr { background: var(--surface2); }
+th { padding: 11px 16px; text-align: left; font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
 td { padding: 13px 16px; font-size: 13.5px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
 tr:last-child td { border-bottom: none; }
-tr:hover td { background: rgba(255,255,255,0.02); }
-.td-total td { background: rgba(255,255,255,0.03); font-weight: 700; }
-.td-total td:first-child { color: var(--gold); }
+tr:hover td { background: #F8F9FD; }
+.td-total td { background: var(--surface2) !important; font-weight: 700; border-top: 1px solid var(--border2); }
+.td-total td:first-child { color: var(--gold); font-weight: 800; }
 
 .g { color: var(--green); font-weight: 700; }
 .r { color: var(--red); font-weight: 700; }
 .gold { color: var(--gold); font-weight: 700; }
-.mu { color: var(--muted2); }
+.mu { color: var(--muted); }
 .w { color: var(--white); font-weight: 700; }
 .b { color: var(--blue); font-weight: 700; }
 
 /* ── BAR ROW ── */
 .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .bar-row:last-child { margin-bottom: 0; }
-.bar-name { font-size: 12px; font-weight: 600; width: 140px; flex-shrink: 0; }
+.bar-name { font-size: 12px; font-weight: 600; width: 140px; flex-shrink: 0; color: var(--white); }
 .bar-track { flex: 1; height: 5px; background: var(--border2); border-radius: 3px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 3px; transform-origin: left; animation: growBar 1s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -183,10 +180,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
 
 /* ── BIG STAT ── */
-.big-stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.big-stat { background: var(--surface); padding: 28px 28px; }
-.bs-label { font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
-.bs-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; }
+.big-stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
+.big-stat { background: var(--surface); padding: 28px 28px; border: 1px solid var(--border); border-radius: 4px; }
+.bs-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+.bs-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; color: var(--white); }
 .bs-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
 /* ── P&L ── */
@@ -195,16 +192,16 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .pl-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
 .pl-row:last-child { border-bottom: none; }
 .pl-row-key { color: var(--muted2); font-size: 12px; }
-.pl-row-val { font-weight: 700; }
+.pl-row-val { font-weight: 700; color: var(--white); }
 .pl-divider { height: 1px; background: var(--border2); margin: 8px 0; }
 
 /* ── CHANNELS PIE-LIKE ── */
 .ch-list { display: flex; flex-direction: column; gap: 10px; }
 .ch-row { display: flex; align-items: center; gap: 12px; }
 .ch-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.ch-name { font-size: 12px; font-weight: 500; flex: 1; }
+.ch-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--white); }
 .ch-val { font-size: 12px; font-weight: 700; color: var(--green); }
-.ch-pct { font-size: 11px; color: var(--muted2); width: 44px; text-align: right; }
+.ch-pct { font-size: 11px; color: var(--muted); width: 44px; text-align: right; }
 
 /* ── ROI HERO ── */
 .roi-hero {
@@ -212,14 +209,15 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   border-radius: 4px;
   padding: 32px;
   display: flex; align-items: center; justify-content: space-between;
-  border: 1px solid rgba(34,201,114,0.15);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
 }
-.roi-num { font-size: 5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; background: linear-gradient(135deg, var(--green), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.roi-label { font-size: 11px; color: var(--muted2); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
+.roi-num { font-size: 5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; color: var(--green); }
+.roi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
 .roi-breakdown { display: flex; gap: 36px; }
 .roi-item { text-align: center; }
-.roi-item-val { font-size: 1.2rem; font-weight: 700; }
-.roi-item-key { font-size: 10px; color: var(--muted2); letter-spacing: 0.1em; margin-top: 3px; }
+.roi-item-val { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+.roi-item-key { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-top: 3px; }
 
 /* ── TREND SPARKLINE ── */
 .trend-svg { width: 100%; height: 70px; }
@@ -233,25 +231,25 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .return-chart { display: flex; align-items: flex-end; gap: 12px; height: 160px; padding: 0 4px; }
 .rc-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0; }
 .rc-bar { width: 100%; border-radius: 3px 3px 0 0; position: relative; transition: all 0.3s; }
-.rc-bar:hover { filter: brightness(1.2); }
-.rc-val { font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 5px; }
-.rc-year { font-size: 10px; color: var(--muted2); margin-top: 6px; letter-spacing: 0.1em; text-align: center; }
+.rc-bar:hover { filter: brightness(0.9); }
+.rc-val { font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 5px; color: var(--white); }
+.rc-year { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.1em; text-align: center; }
 
 /* ── CS YEAR-YEAR ── */
-.cs-yoy { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.cs-card { background: var(--surface); padding: 24px; }
-.cs-year { font-size: 10px; color: var(--muted2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+.cs-yoy { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
+.cs-card { background: var(--surface); padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
+.cs-year { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
 .cs-pct { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; }
 .cs-detail { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
 /* ── QUARTERLY ── */
-.q-table-note { font-size: 11px; color: var(--muted2); margin-top: 10px; font-style: italic; }
+.q-table-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
 
 /* ── LP COMPARE ── */
 .lp-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .lp-box { background: var(--surface); border-radius: 4px; padding: 24px; border: 1px solid var(--border); }
-.lp-box.featured { border-color: rgba(75,140,245,0.3); }
-.lp-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; }
+.lp-box.featured { border-color: var(--blue); border-left: 4px solid var(--blue); }
+.lp-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; font-weight: 700; }
 
 /* ── FADE IN ── */
 .fade { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
@@ -263,11 +261,11 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .div-line { height: 1px; background: var(--border); }
 
 /* ── TAG CHIP ── */
-.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; }
-.chip-g { background: rgba(34,201,114,0.12); color: var(--green); }
-.chip-r { background: rgba(232,51,74,0.12); color: var(--red); }
-.chip-gold { background: rgba(240,180,41,0.12); color: var(--gold); }
-.chip-b { background: rgba(75,140,245,0.12); color: var(--blue); }
+.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; }
+.chip-g { background: rgba(14,143,82,0.1); color: var(--green); }
+.chip-r { background: rgba(217,41,59,0.1); color: var(--red); }
+.chip-gold { background: rgba(184,125,0,0.1); color: var(--gold); }
+.chip-b { background: rgba(37,88,232,0.1); color: var(--blue); }
 
 /* staff progress */
 .sp-progress { height: 3px; background: var(--border2); border-radius: 2px; margin-top: 6px; overflow: hidden; }
@@ -492,7 +490,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
           <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
             <tr>
-              <td><strong>Lagos Mainland</strong></td><td class="g">₦7,469,600</td><td>92</td><td>772</td>
+              <td><strong>Lagos</strong></td><td class="g">₦7,469,600</td><td>92</td><td>772</td>
               <td><span class="chip chip-g">52.41%</span></td>
             </tr>
             <tr>
@@ -510,7 +508,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
         </table>
       </div>
       <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos Mainland</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">52.41%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">52.41%</span></div>
         <div class="bar-row"><span class="bar-name" style="font-size:12px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">30.53%</span></div>
         <div class="bar-row"><span class="bar-name" style="font-size:12px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:17.06%; background:var(--red);"></div></div><span class="bar-pct r">17.06%</span></div>
       </div>
@@ -664,7 +662,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">1,494 Units</span></div>
       <div class="pl-row"><span class="pl-row-key">Customers</span><span class="pl-row-val w">201</span></div>
       <div class="pl-row"><span class="pl-row-key">Sales Growth MoM</span><span class="pl-row-val r">-73.24%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Expenses Growth MoM</span><span class="pl-row-val g">-70.79%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Expenses Growth MoM</span><span class="pl-row-val r">-70.79%</span></div>
     </div>
     <!-- Sales by channel -->
     <div class="pl-box">
@@ -746,10 +744,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <tbody>
         <tr><td class="mu">Gross Revenue</td><td class="w">₦1,723,102,388</td><td>₦122,267,505</td><td>₦154,451,067</td><td>₦452,967,344</td><td>₦875,740,937</td><td class="g">₦117,675,535</td></tr>
         <tr><td class="mu">Gross Expenses</td><td class="r">₦659,427,598</td><td class="r">₦45,122,747</td><td class="r">₦50,000,516</td><td class="r">₦201,358,773</td><td class="r">₦314,614,285</td><td class="r">₦48,331,278</td></tr>
-        <tr><td class="mu">Logistics</td><td class="mu">₦126,151,478</td><td class="mu">₦0</td><td class="mu">₦0</td><td>₦44,450,254</td><td>₦74,474,713</td><td>₦7,226,511</td></tr>
-        <tr><td class="mu">Digital Expenses</td><td class="mu">₦301,696,142</td><td class="mu">₦23,348,772</td><td class="mu">₦27,409,154</td><td>₦91,295,192</td><td>₦147,083,580</td><td>₦12,559,444</td></tr>
-        <tr><td class="mu">Salary + Bonus</td><td class="mu">₦65,203,180</td><td class="mu">₦8,420,000</td><td class="mu">₦9,479,686</td><td>₦16,263,677</td><td>₦23,790,770</td><td>₦7,249,047</td></tr>
-        <tr><td class="mu">Tax</td><td class="mu">₦98,939,866</td><td class="mu">₦6,170,729</td><td class="mu">₦8,471,396</td><td>₦24,004,769</td><td>₦45,583,530</td><td>₦14,709,442</td></tr>
+        <tr><td class="mu">Logistics</td><td class="r">₦126,151,478</td><td class="r">₦0</td><td class="r">₦0</td><td class="r">₦44,450,254</td><td class="r">₦74,474,713</td><td class="r">₦7,226,511</td></tr>
+        <tr><td class="mu">Digital Expenses</td><td class="r">₦301,696,142</td><td class="r">₦23,348,772</td><td class="r">₦27,409,154</td><td class="r">₦91,295,192</td><td class="r">₦147,083,580</td><td class="r">₦12,559,444</td></tr>
+        <tr><td class="mu">Salary + Bonus</td><td class="r">₦65,203,180</td><td class="r">₦8,420,000</td><td class="r">₦9,479,686</td><td class="r">₦16,263,677</td><td class="r">₦23,790,770</td><td class="r">₦7,249,047</td></tr>
+        <tr><td class="mu">Tax</td><td class="r">₦98,939,866</td><td class="r">₦6,170,729</td><td class="r">₦8,471,396</td><td class="r">₦24,004,769</td><td class="r">₦45,583,530</td><td class="r">₦14,709,442</td></tr>
         <tr><td class="mu">Net Revenue</td><td class="g">₦1,063,674,789</td><td class="g">₦77,144,758</td><td class="g">₦104,450,551</td><td class="g">₦251,608,571</td><td class="g">₦561,126,652</td><td class="g">₦69,344,257</td></tr>
         <tr><td class="mu">Net 15%</td><td class="gold">₦159,551,218</td><td class="gold">₦11,571,714</td><td class="gold">₦15,667,583</td><td class="gold">₦37,741,286</td><td class="gold">₦84,168,998</td><td class="gold">₦10,401,639</td></tr>
         <tr><td class="mu">Total Customers</td><td class="w">44,325</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="g">1,741</td></tr>
@@ -1013,7 +1011,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <div class="cs-detail">Satisfied<br>3.90% not satisfied</div>
       <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">14,367 customers · ₦90,938,755</div>
     </div>
-    <div class="cs-card" style="background:#0f1a14; border:1px solid rgba(34,201,114,0.2);">
+    <div class="cs-card" style="background:rgba(14,143,82,0.04); border:1px solid rgba(14,143,82,0.2);">
       <div class="cs-year" style="color:var(--green);">2026 YTD</div>
       <div class="cs-pct" style="color:var(--green);">97.11%</div>
       <div class="cs-detail">Satisfied<br>2.89% not satisfied</div>
