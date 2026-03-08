@@ -270,6 +270,54 @@ tr:hover td { background: #F8F9FD; }
 /* staff progress */
 .sp-progress { height: 3px; background: var(--border2); border-radius: 2px; margin-top: 6px; overflow: hidden; }
 .sp-bar { height: 100%; border-radius: 2px; background: var(--green); }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border2);
+  padding: 10px 56px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.filter-label {
+  font-size: 10px; font-weight: 700; color: var(--muted2);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-right: 4px; white-space: nowrap;
+}
+.filter-select {
+  appearance: none;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 6px 28px 6px 11px;
+  font-size: 12px; font-weight: 600;
+  font-family: 'Familjen Grotesk', sans-serif;
+  color: var(--white);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 140px;
+}
+.filter-select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,88,232,0.1); }
+.filter-select.active { border-color: var(--blue); background-color: rgba(37,88,232,0.04); color: var(--blue); }
+.filter-divider { width: 1px; height: 22px; background: var(--border2); margin: 0 4px; }
+.filter-reset {
+  margin-left: auto;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  font-size: 11px; font-weight: 700;
+  font-family: 'Familjen Grotesk', sans-serif;
+  color: var(--muted2);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+}
+.filter-reset:hover { border-color: var(--red); color: var(--red); }
+tr.filter-hidden { display: none; }
+.row-dimmed { opacity: 0.25; }
 </style>
 </head>
 <body>
@@ -339,9 +387,61 @@ tr:hover td { background: #F8F9FD; }
     </div>
   </div>
 </div><!-- /masthead -->
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <span class="filter-label">Filter:</span>
+
+  <select class="filter-select" id="filterRep" onchange="applyFilters()">
+    <option value="all">All Reps</option>
+    <option value="Mary">Mary</option>
+    <option value="Bolu">Bolu</option>
+    <option value="Jaya">Jaya</option>
+    <option value="Susan">Susan</option>
+    <option value="Esther">Esther</option>
+    <option value="Lewa">Lewa</option>
+    <option value="Divine">Divine</option>
+    <option value="Rachel">Rachel</option>
+    <option value="Amaya">Amaya</option>
+    <option value="Jane">Jane</option>
+  </select>
+
+  <div class="filter-divider"></div>
+
+  <select class="filter-select" id="filterDept" onchange="applyFilters()">
+    <option value="all">All Departments</option>
+    <option value="Digital Marketer">Digital Marketer</option>
+    <option value="Sales Team">Sales Team</option>
+    <option value="Customer Care">Customer Care</option>
+  </select>
+
+  <div class="filter-divider"></div>
+
+  <select class="filter-select" id="filterZone" onchange="applyFilters()">
+    <option value="all">All Zones</option>
+    <option value="Lagos">Lagos</option>
+    <option value="Benin">Benin</option>
+    <option value="Abuja">Abuja</option>
+    <option value="Ghana">Ghana</option>
+  </select>
+
+  <div class="filter-divider"></div>
+
+  <select class="filter-select" id="filterYear" onchange="applyFilters()">
+    <option value="all">All Years</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+  </select>
+
+  <button class="filter-reset" onclick="resetFilters()">✕ Reset Filters</button>
+</div>
+
 </div><!-- /fixed-header -->
 
-<div class="page" style="padding-top: 148px;">
+<div class="page" style="padding-top: 244px;">
 
 <!-- ════════════════════════════════
      SEGMENT 1 — CURRENT MONTH
@@ -391,16 +491,16 @@ tr:hover td { background: #F8F9FD; }
     <table>
       <thead><tr><th>Sales Representative</th><th>Customers</th><th>Revenue</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Bolu</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Mary</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Jaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Lewa</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Susan</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Amaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Rachel</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Esther</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Divine</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr><td>Jane</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Bolu"><td>Bolu</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Mary"><td>Mary</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Jaya"><td>Jaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Lewa"><td>Lewa</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Susan"><td>Susan</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Amaya"><td>Amaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Rachel"><td>Rachel</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Esther"><td>Esther</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Divine"><td>Divine</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Jane"><td>Jane</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr class="td-total"><td>TOTAL TODAY</td><td>0</td><td>₦0.00</td><td></td></tr>
       </tbody>
     </table>
@@ -489,19 +589,19 @@ tr:hover td { background: #F8F9FD; }
         <table>
           <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
-            <tr>
+            <tr data-zone="Lagos">
               <td><strong>Lagos</strong></td><td class="g">₦7,469,600</td><td>92</td><td>772</td>
               <td><span class="chip chip-g">52.41%</span></td>
             </tr>
-            <tr>
+            <tr data-zone="Benin">
               <td><strong>Benin</strong></td><td class="g">₦4,350,800</td><td>73</td><td>525</td>
               <td><span class="chip chip-gold">30.53%</span></td>
             </tr>
-            <tr>
+            <tr data-zone="Abuja">
               <td><strong>Abuja</strong></td><td class="g">₦2,431,300</td><td>37</td><td>197</td>
               <td><span class="chip chip-r">17.06%</span></td>
             </tr>
-            <tr>
+            <tr data-zone="Ghana">
               <td class="mu">Ghana</td><td class="mu">GHS 0.00</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td>
             </tr>
           </tbody>
@@ -520,15 +620,15 @@ tr:hover td { background: #F8F9FD; }
         <table>
           <thead><tr><th>Department</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
-            <tr>
+            <tr data-dept="Digital Marketer">
               <td><strong>Digital Marketer</strong></td><td class="g">₦6,150,500</td><td>110</td><td>789</td>
               <td><span class="chip chip-g">43.16%</span></td>
             </tr>
-            <tr>
+            <tr data-dept="Sales Team">
               <td><strong>Sales Team</strong></td><td class="g">₦5,749,800</td><td>58</td><td>506</td>
               <td><span class="chip chip-gold">40.34%</span></td>
             </tr>
-            <tr>
+            <tr data-dept="Customer Care">
               <td><strong>Customer Care</strong></td><td class="g">₦2,351,400</td><td>33</td><td>199</td>
               <td><span class="chip chip-r">16.50%</span></td>
             </tr>
@@ -705,16 +805,16 @@ tr:hover td { background: #F8F9FD; }
     <table>
       <thead><tr><th>#</th><th>Staff</th><th>2026 Revenue</th><th>Target</th><th>% Achieved</th><th>Progress</th></tr></thead>
       <tbody id="staffRows">
-        <tr><td class="mu">01</td><td><strong>Mary</strong></td><td class="g">₦38,639,446</td><td class="mu">₦500,000,000</td><td><span class="chip chip-gold">7.73%</span></td><td style="min-width:140px;"><div class="sp-progress"><div class="sp-bar" style="width:7.73%; background:var(--green);"></div></div></td></tr>
-        <tr><td class="mu">02</td><td><strong>Bolu</strong></td><td class="g">₦24,818,723</td><td class="mu">₦400,000,000</td><td><span class="chip chip-gold">6.20%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.20%;"></div></div></td></tr>
-        <tr><td class="mu">03</td><td><strong>Jaya</strong></td><td class="g">₦10,746,190</td><td class="mu">₦150,000,000</td><td><span class="chip chip-gold">7.16%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.16%;"></div></div></td></tr>
-        <tr><td class="mu">04</td><td><strong>Susan</strong></td><td class="g">₦9,558,492</td><td class="mu">₦100,000,000</td><td><span class="chip chip-g">9.56%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:9.56%; background:var(--teal);"></div></div></td></tr>
-        <tr><td class="mu">05</td><td><strong>Esther</strong></td><td class="g">₦8,214,200</td><td class="mu">₦100,000,000</td><td><span class="chip chip-g">8.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:8.21%;"></div></div></td></tr>
-        <tr><td class="mu">06</td><td><strong>Lewa</strong></td><td class="g">₦8,031,600</td><td class="mu">₦250,000,000</td><td><span class="chip chip-r">3.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:3.21%; background:var(--gold);"></div></div></td></tr>
-        <tr><td class="mu">07</td><td><strong>Divine</strong></td><td class="g">₦7,359,000</td><td class="mu">₦100,000,000</td><td><span class="chip chip-gold">7.36%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.36%;"></div></div></td></tr>
-        <tr><td class="mu">08</td><td><strong>Rachel</strong></td><td class="g">₦6,731,311</td><td class="mu">₦100,000,000</td><td><span class="chip chip-gold">6.73%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.73%;"></div></div></td></tr>
-        <tr><td class="mu">09</td><td><strong>Amaya</strong></td><td class="r">₦185,773</td><td class="mu">₦100,000,000</td><td><span class="chip chip-r">0.19%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.19%; background:var(--red);"></div></div></td></tr>
-        <tr><td class="mu">10</td><td><strong>Jane</strong></td><td class="r">₦33,600</td><td class="mu">₦100,000,000</td><td><span class="chip chip-r">0.03%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.03%; background:var(--red);"></div></div></td></tr>
+        <tr data-rep="Mary"><td class="mu">01</td><td><strong>Mary</strong></td><td class="g">₦38,639,446</td><td class="mu">₦500,000,000</td><td><span class="chip chip-gold">7.73%</span></td><td style="min-width:140px;"><div class="sp-progress"><div class="sp-bar" style="width:7.73%; background:var(--green);"></div></div></td></tr>
+        <tr data-rep="Bolu"><td class="mu">02</td><td><strong>Bolu</strong></td><td class="g">₦24,818,723</td><td class="mu">₦400,000,000</td><td><span class="chip chip-gold">6.20%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.20%;"></div></div></td></tr>
+        <tr data-rep="Jaya"><td class="mu">03</td><td><strong>Jaya</strong></td><td class="g">₦10,746,190</td><td class="mu">₦150,000,000</td><td><span class="chip chip-gold">7.16%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.16%;"></div></div></td></tr>
+        <tr data-rep="Susan"><td class="mu">04</td><td><strong>Susan</strong></td><td class="g">₦9,558,492</td><td class="mu">₦100,000,000</td><td><span class="chip chip-g">9.56%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:9.56%; background:var(--teal);"></div></div></td></tr>
+        <tr data-rep="Esther"><td class="mu">05</td><td><strong>Esther</strong></td><td class="g">₦8,214,200</td><td class="mu">₦100,000,000</td><td><span class="chip chip-g">8.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:8.21%;"></div></div></td></tr>
+        <tr data-rep="Lewa"><td class="mu">06</td><td><strong>Lewa</strong></td><td class="g">₦8,031,600</td><td class="mu">₦250,000,000</td><td><span class="chip chip-r">3.21%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:3.21%; background:var(--gold);"></div></div></td></tr>
+        <tr data-rep="Divine"><td class="mu">07</td><td><strong>Divine</strong></td><td class="g">₦7,359,000</td><td class="mu">₦100,000,000</td><td><span class="chip chip-gold">7.36%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.36%;"></div></div></td></tr>
+        <tr data-rep="Rachel"><td class="mu">08</td><td><strong>Rachel</strong></td><td class="g">₦6,731,311</td><td class="mu">₦100,000,000</td><td><span class="chip chip-gold">6.73%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.73%;"></div></div></td></tr>
+        <tr data-rep="Amaya"><td class="mu">09</td><td><strong>Amaya</strong></td><td class="r">₦185,773</td><td class="mu">₦100,000,000</td><td><span class="chip chip-r">0.19%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.19%; background:var(--red);"></div></div></td></tr>
+        <tr data-rep="Jane"><td class="mu">10</td><td><strong>Jane</strong></td><td class="r">₦33,600</td><td class="mu">₦100,000,000</td><td><span class="chip chip-r">0.03%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.03%; background:var(--red);"></div></div></td></tr>
       </tbody>
     </table>
   </div>
@@ -729,7 +829,7 @@ tr:hover td { background: #F8F9FD; }
     <span class="sec-title">5-Year Historical Overview (2022–2026)</span>
   </div>
   <div class="fiveyear-wrap tbl-wrap">
-    <table>
+    <table id="fiveYrTable">
       <thead>
         <tr>
           <th>Metric</th>
@@ -873,13 +973,13 @@ tr:hover td { background: #F8F9FD; }
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Jaya</strong></td><td>109</td><td class="g">9</td><td>67</td><td class="g">12</td><td class="w">176</td><td class="g">21</td><td><span class="chip chip-g">11.93%</span></td></tr>
-        <tr><td><strong>Bolu</strong></td><td class="mu">—</td><td class="g">1</td><td>212</td><td class="g">11</td><td class="w">212</td><td class="g">12</td><td><span class="chip chip-gold">5.66%</span></td></tr>
-        <tr><td><strong>Divine</strong></td><td>130</td><td class="g">1</td><td>149</td><td class="g">13</td><td class="w">279</td><td class="g">14</td><td><span class="chip chip-gold">5.02%</span></td></tr>
-        <tr><td><strong>Susan</strong></td><td>115</td><td class="mu">0</td><td>190</td><td class="g">13</td><td class="w">305</td><td class="g">13</td><td><span class="chip chip-gold">4.26%</span></td></tr>
-        <tr><td><strong>Esther</strong></td><td>146</td><td class="g">2</td><td class="mu">—</td><td class="mu">—</td><td class="w">146</td><td class="g">2</td><td><span class="chip chip-r">1.37%</span></td></tr>
-        <tr><td><strong>Mary</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
-        <tr><td><strong>Jane</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
+        <tr data-rep="Jaya"><td><strong>Jaya</strong></td><td>109</td><td class="g">9</td><td>67</td><td class="g">12</td><td class="w">176</td><td class="g">21</td><td><span class="chip chip-g">11.93%</span></td></tr>
+        <tr data-rep="Bolu"><td><strong>Bolu</strong></td><td class="mu">—</td><td class="g">1</td><td>212</td><td class="g">11</td><td class="w">212</td><td class="g">12</td><td><span class="chip chip-gold">5.66%</span></td></tr>
+        <tr data-rep="Divine"><td><strong>Divine</strong></td><td>130</td><td class="g">1</td><td>149</td><td class="g">13</td><td class="w">279</td><td class="g">14</td><td><span class="chip chip-gold">5.02%</span></td></tr>
+        <tr data-rep="Susan"><td><strong>Susan</strong></td><td>115</td><td class="mu">0</td><td>190</td><td class="g">13</td><td class="w">305</td><td class="g">13</td><td><span class="chip chip-gold">4.26%</span></td></tr>
+        <tr data-rep="Esther"><td><strong>Esther</strong></td><td>146</td><td class="g">2</td><td class="mu">—</td><td class="mu">—</td><td class="w">146</td><td class="g">2</td><td><span class="chip chip-r">1.37%</span></td></tr>
+        <tr data-rep="Mary"><td><strong>Mary</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
+        <tr data-rep="Jane"><td><strong>Jane</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1088,5 +1188,131 @@ tr:hover td { background: #F8F9FD; }
 </div>
 
 </div><!-- /page -->
+
+<script>
+// ── SURUKA FILTER ENGINE ──────────────────────────────────────────────────
+
+// Map: which table column index holds year data in the 5yr table
+// Columns: 0=metric, 1=5yr total, 2=2022, 3=2023, 4=2024, 5=2025, 6=2026
+const YEAR_COL_MAP = { '2022': 2, '2023': 3, '2024': 4, '2025': 5, '2026': 6 };
+
+// All sections and the filter types they respond to
+const SECTION_FILTER_MAP = [
+  { id: 'seg02', responds: ['rep'] },
+  { id: 'seg04', responds: ['zone', 'dept'] },
+  { id: 'seg08', responds: ['rep'] },
+  { id: 'seg09', responds: ['year'] },
+  { id: 'seg12', responds: ['rep'] },
+];
+
+function getFilters() {
+  return {
+    rep:  document.getElementById('filterRep').value,
+    dept: document.getElementById('filterDept').value,
+    zone: document.getElementById('filterZone').value,
+    year: document.getElementById('filterYear').value,
+  };
+}
+
+function applyFilters() {
+  const f = getFilters();
+  const anyActive = Object.values(f).some(v => v !== 'all');
+
+  // ── Mark selects as active ──
+  ['filterRep','filterDept','filterZone','filterYear'].forEach(id => {
+    const el = document.getElementById(id);
+    el.classList.toggle('active', el.value !== 'all');
+  });
+
+  // ── Show/hide reset button ──
+  document.querySelector('.filter-reset').style.visibility = anyActive ? 'visible' : 'hidden';
+
+  // ── REP filter: rows with data-rep ──
+  document.querySelectorAll('tr[data-rep]').forEach(row => {
+    const match = f.rep === 'all' || row.dataset.rep === f.rep;
+    row.classList.toggle('filter-hidden', !match);
+  });
+
+  // ── ZONE filter: rows with data-zone ──
+  document.querySelectorAll('tr[data-zone]').forEach(row => {
+    const match = f.zone === 'all' || row.dataset.zone === f.zone;
+    row.classList.toggle('filter-hidden', !match);
+  });
+
+  // ── DEPT filter: rows with data-dept ──
+  document.querySelectorAll('tr[data-dept]').forEach(row => {
+    const match = f.dept === 'all' || row.dataset.dept === f.dept;
+    row.classList.toggle('filter-hidden', !match);
+  });
+
+  // ── YEAR filter: 5-year table column highlighting ──
+  const fiveYrTable = document.getElementById('fiveYrTable');
+  if (fiveYrTable) {
+    const allCells = fiveYrTable.querySelectorAll('td, th');
+    allCells.forEach(cell => {
+      cell.style.opacity = '';
+      cell.style.background = '';
+    });
+
+    if (f.year !== 'all') {
+      const targetCol = YEAR_COL_MAP[f.year];
+      const rows = fiveYrTable.querySelectorAll('tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td, th');
+        cells.forEach((cell, i) => {
+          if (i === 0 || i === targetCol) {
+            // keep full opacity, highlight year column
+            if (i === targetCol) {
+              cell.style.background = 'rgba(37,88,232,0.06)';
+            }
+          } else {
+            cell.style.opacity = '0.25';
+          }
+        });
+      });
+    }
+  }
+
+  // ── Update active filter pill text in header ──
+  updateFilterBadge(f);
+}
+
+function updateFilterBadge(f) {
+  const parts = [];
+  if (f.rep  !== 'all') parts.push('Rep: ' + f.rep);
+  if (f.dept !== 'all') parts.push('Dept: ' + f.dept);
+  if (f.zone !== 'all') parts.push('Zone: ' + f.zone);
+  if (f.year !== 'all') parts.push('Year: ' + f.year);
+
+  // Show count of visible rows in key tables
+  let existing = document.getElementById('filterBadgeText');
+  if (!existing) {
+    existing = document.createElement('span');
+    existing.id = 'filterBadgeText';
+    existing.style.cssText = 'font-size:11px; font-weight:700; color:var(--blue); padding:4px 10px; background:rgba(37,88,232,0.08); border-radius:20px; border:1px solid rgba(37,88,232,0.2); white-space:nowrap;';
+    document.getElementById('filterBar').insertBefore(existing, document.querySelector('.filter-reset'));
+  }
+
+  if (parts.length > 0) {
+    existing.textContent = '● ' + parts.join(' · ');
+    existing.style.display = 'inline';
+  } else {
+    existing.style.display = 'none';
+  }
+}
+
+function resetFilters() {
+  ['filterRep','filterDept','filterZone','filterYear'].forEach(id => {
+    document.getElementById(id).value = 'all';
+  });
+  applyFilters();
+}
+
+// Init on load
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.filter-reset').style.visibility = 'hidden';
+  applyFilters();
+});
+</script>
 </body>
 </html>
