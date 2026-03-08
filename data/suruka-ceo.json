@@ -2,94 +2,226 @@
   "_meta": {
     "last_updated": "2026-03-08",
     "updated_by": "Apps Script Auto-Sync",
-    "sheet": "Suruka CEO Data"
+    "sheet": "SurukaCEO"
   },
   "hud": {
-    "gross_revenue": "₦14.25M",
-    "net_revenue": "₦8.88M",
-    "units": "1,494",
-    "customers": "201",
-    "return_rate": "58.71%",
-    "ad_roi": "522.84%",
-    "ytd_revenue": "₦117.68M",
-    "ytd_target_pct": "5.88%",
-    "projected_eoy": "₦470.70M"
+    "gross_revenue": "—",
+    "net_revenue": "₦0",
+    "units": "—",
+    "customers": "—",
+    "return_rate": "₦0",
+    "ad_roi": "₦0",
+    "ytd_revenue": "₦0",
+    "ytd_target_pct": "Customers",
+    "projected_eoy": "₦0"
   },
-  "ticker": [
-    "GROSS REVENUE: ₦14.25M",
-    "NET REVENUE: ₦8.88M",
-    "UNITS SOLD: 1,494",
-    "CUSTOMERS: 201",
-    "RETURN RATE: 58.71%",
-    "AD ROI: 522.84%",
-    "YTD: ₦117.68M · 5.88% OF ₦2B TARGET"
-  ],
   "today": {
-    "date": "08 March 2026",
+    "date": "2026-03-08",
     "reps": [
-      { "rep": "Mary", "revenue": "₦38.6M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Bolu", "revenue": "₦24.8M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Jaya", "revenue": "₦10.7M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Susan", "revenue": "₦9.6M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Esther", "revenue": "₦8.2M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Lewa", "revenue": "₦8.0M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Divine", "revenue": "₦7.4M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Rachel", "revenue": "₦6.7M", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Amaya", "revenue": "₦185K", "customers": "—", "leads": "—", "conversion": "—" },
-      { "rep": "Jane", "revenue": "₦33.6K", "customers": "—", "leads": "—", "conversion": "—" }
+      {
+        "rep": "Lewa",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Susan",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Amaya",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Rachel",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Esther",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Divine",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Jane",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "—",
+        "revenue": "₦0",
+        "customers": "₦0",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Segment 3 - 📊 Ad Performance Overview",
+        "revenue": "—",
+        "customers": "—",
+        "leads": "—",
+        "conversion": "—"
+      },
+      {
+        "rep": "Nigeria",
+        "revenue": "—",
+        "customers": "—",
+        "leads": "—",
+        "conversion": "—"
+      }
     ]
   },
   "zones": [
-    { "zone": "Lagos", "revenue": "₦7.47M", "pct": "52.41%", "bar_width": "52.41" },
-    { "zone": "Benin", "revenue": "₦4.35M", "pct": "30.53%", "bar_width": "30.53" },
-    { "zone": "Abuja", "revenue": "₦2.43M", "pct": "17.06%", "bar_width": "17.06" },
-    { "zone": "Ghana", "revenue": "₦0", "pct": "0.00%", "bar_width": "0" }
+    {
+      "zone": "Digital - Facebook",
+      "revenue": "₦489.8K",
+      "pct": "—",
+      "bar_width": "—"
+    },
+    {
+      "zone": "Digital Sub - Facebook To Whatsapp Only",
+      "revenue": "₦70K",
+      "pct": "—",
+      "bar_width": "—"
+    },
+    {
+      "zone": "Digital - Whatsapp Dm",
+      "revenue": "₦718K",
+      "pct": "—",
+      "bar_width": "—"
+    },
+    {
+      "zone": "Digital - Landing Page",
+      "revenue": "₦1.76M",
+      "pct": "—",
+      "bar_width": "—"
+    }
   ],
   "departments": [
-    { "dept": "Digital Marketer", "revenue": "₦6.15M", "pct": "43.16%", "bar_width": "43.16" },
-    { "dept": "Sales Team", "revenue": "₦5.75M", "pct": "40.34%", "bar_width": "40.34" },
-    { "dept": "Customer Care", "revenue": "₦2.35M", "pct": "16.50%", "bar_width": "16.50" }
+    {
+      "dept": "FB/LP/TIK TOK Spent",
+      "revenue": "₦600K",
+      "pct": "—",
+      "bar_width": "—"
+    },
+    {
+      "dept": "TOTAL  SPENT",
+      "revenue": "₦1.04M",
+      "pct": "—",
+      "bar_width": "—"
+    },
+    {
+      "dept": "IG Profit",
+      "revenue": "₦3M",
+      "pct": "—",
+      "bar_width": "—"
+    }
   ],
   "pl": {
-    "gross_revenue": "₦14.25M",
-    "gross_expenses": "₦5.37M",
-    "net_revenue": "₦8.88M",
-    "logistics": "₦1.2M",
-    "digital_expenses": "₦1.04M",
-    "salary_bonus": "₦2.0M",
-    "tax": "₦0.13M",
-    "net_profit": "₦4.51M"
-  },
-  "ads": {
-    "spent": "₦1.04M",
-    "net_profit_from_ads": "₦5.44M",
-    "roi": "522.84%"
+    "gross_revenue": "₦5.23",
+    "gross_expenses": "—",
+    "net_revenue": "—",
+    "logistics": "Revenue",
+    "digital_expenses": "₦7.47M",
+    "salary_bonus": "₦4.35M",
+    "tax": "₦2.43M",
+    "net_profit": "₦0"
   },
   "ytd": {
-    "gross_revenue": "₦117.68M",
-    "net_revenue": "₦69.3M",
-    "customers": "1,741",
-    "units": "13,032",
+    "gross_revenue": "₦0",
+    "net_revenue": "—",
+    "customers": "—",
+    "units": "—",
     "target": "₦2B",
-    "target_pct": "5.88%",
-    "projected_eoy": "₦470.70M"
-  },
-  "return_customers": {
-    "jan": { "pct": "48.85%", "bar": "48.85" },
-    "feb": { "pct": "55.01%", "bar": "55.01" },
-    "mar": { "pct": "58.71%", "bar": "58.71" }
+    "target_pct": "Customers",
+    "projected_eoy": "₦0"
   },
   "five_year": [
-    { "year": "2022", "gross_rev": "₦122.3M", "net_rev": "₦77.1M", "customers": "3,125", "units": "8,529" },
-    { "year": "2023", "gross_rev": "₦154.5M", "net_rev": "₦104.5M", "customers": "7,150", "units": "40,878" },
-    { "year": "2024", "gross_rev": "₦453.0M", "net_rev": "₦251.6M", "customers": "14,593", "units": "101,071" },
-    { "year": "2025", "gross_rev": "₦875.7M", "net_rev": "₦561.1M", "customers": "17,716", "units": "133,616" },
-    { "year": "2026 YTD", "gross_rev": "₦117.7M", "net_rev": "₦69.3M", "customers": "1,741", "units": "13,032" }
+    {
+      "year": "Sales Team",
+      "gross_rev": "₦5.75M",
+      "net_rev": "₦58.00",
+      "customers": "₦506.00",
+      "units": "₦0.40"
+    },
+    {
+      "year": "Digital Marketer",
+      "gross_rev": "₦6.15M",
+      "net_rev": "₦110.00",
+      "customers": "₦789.00",
+      "units": "₦0.43"
+    },
+    {
+      "year": "Customer Care",
+      "gross_rev": "₦2.35M",
+      "net_rev": "₦33.00",
+      "customers": "₦199.00",
+      "units": "₦0.16"
+    },
+    {
+      "year": "—",
+      "gross_rev": "—",
+      "net_rev": "—",
+      "customers": "—",
+      "units": "—"
+    },
+    {
+      "year": "Segment 5 - 🗓️ Revenue & Customer Trends",
+      "gross_rev": "March",
+      "net_rev": "February",
+      "customers": "January",
+      "units": "December"
+    }
   ],
   "cs_score": [
-    { "year": "2023", "pct": "97.42%" },
-    { "year": "2024", "pct": "96.68%" },
-    { "year": "2025", "pct": "96.10%" },
-    { "year": "2026", "pct": "97.11%" }
-  ]
+    {
+      "year": "Net Revenue",
+      "pct": "₦8.88M"
+    },
+    {
+      "year": "Customers",
+      "pct": "₦201.00"
+    },
+    {
+      "year": "Return Customers",
+      "pct": "₦118.00"
+    },
+    {
+      "year": "Return %",
+      "pct": "₦0.59"
+    }
+  ],
+  "return_customers": {
+    "jan": {
+      "pct": "₦0.06",
+      "bar": "—"
+    },
+    "feb": {
+      "pct": "₦470.7M",
+      "bar": "—"
+    },
+    "mar": {
+      "pct": "₦0.24",
+      "bar": "—"
+    }
+  }
 }
