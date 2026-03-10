@@ -35,6 +35,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 15px;
   background: var(--bg);
   color: var(--white);
   line-height: 1.5;
@@ -52,7 +53,7 @@ body {
 /* ── TICKER ── */
 .ticker { background: var(--white); padding: 7px 0; overflow: hidden; position: relative; }
 .ticker-track { display: inline-flex; animation: tick 35s linear infinite; white-space: nowrap; }
-.ticker-item { padding: 0 32px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F7FA; }
+.ticker-item { padding: 0 32px; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F7FA; }
 .ticker-sep { opacity: 0.35; }
 @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -81,7 +82,7 @@ body {
   flex-shrink: 0;
 }
 .brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
-.brand-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
+.brand-sub { font-size: 14px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
 
 .masthead-kpis {
   display: flex; align-items: stretch;
@@ -93,19 +94,19 @@ body {
   display: flex; flex-direction: column; justify-content: center;
 }
 .mkpi:last-child { border-right: none; }
-.mkpi-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
+.mkpi-label { font-size: 14px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
 .mkpi-val { font-size: 1.65rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
 .mkpi-val.g { color: var(--green); }
 .mkpi-val.r { color: var(--red); }
 .mkpi-val.w { color: var(--white); }
 .mkpi-val.gold { color: var(--gold); }
-.mkpi-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.mkpi-sub { font-size: 15px; color: var(--muted); margin-top: 3px; }
 
 .masthead-date {
   display: flex; align-items: center;
   padding: 0 0 0 32px;
   border-left: 1px solid var(--border);
-  font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-align: right;
+  font-size: 15px; color: var(--muted); letter-spacing: 0.1em; text-align: right;
 }
 .live-pip { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 8px; animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
@@ -121,10 +122,10 @@ body {
   padding-bottom: 14px;
   border-bottom: 2px solid var(--white);
 }
-.sec-num { font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; background: rgba(176,24,40,0.08); padding: 3px 8px; border-radius: 3px; }
+.sec-num { font-size: 14px; font-weight: 700; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; background: rgba(176,24,40,0.08); padding: 3px 8px; border-radius: 3px; }
 .sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; color: var(--white); }
 .sec-badge {
-  margin-left: auto; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-left: auto; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 10px; border-radius: 20px; font-weight: 600;
 }
 .badge-live { background: rgba(14,143,82,0.1); color: var(--green); border: 1px solid rgba(14,143,82,0.2); }
@@ -147,9 +148,9 @@ body {
   transition: box-shadow 0.2s;
 }
 .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
-.card-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.card-label { font-size: 14px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
 .card-val { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--white); }
-.card-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
+.card-sub { font-size: 15px; color: var(--muted); margin-top: 5px; }
 .card-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
 .ca-green { background: var(--green); }
 .ca-red { background: var(--red); }
@@ -160,8 +161,8 @@ body {
 .tbl-wrap { background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; }
 thead tr { background: var(--surface2); }
-th { padding: 11px 16px; text-align: left; font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
-td { padding: 13px 16px; font-size: 13.5px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
+th { padding: 11px 16px; text-align: left; font-size: 14px; color: var(--muted2); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
+td { padding: 13px 16px; font-size: 15px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #F8F9FD; }
 .td-total td { background: var(--surface2) !important; font-weight: 700; border-top: 1px solid var(--border2); }
@@ -177,11 +178,11 @@ tr:hover td { background: #F8F9FD; }
 /* ── BAR ROW ── */
 .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .bar-row:last-child { margin-bottom: 0; }
-.bar-name { font-size: 12px; font-weight: 600; width: 140px; flex-shrink: 0; color: var(--white); }
+.bar-name { font-size: 14px; font-weight: 600; width: 140px; flex-shrink: 0; color: var(--white); }
 .bar-track { flex: 1; height: 5px; background: var(--border2); border-radius: 3px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 3px; transform-origin: left; animation: growBar 1s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.bar-pct { font-size: 11px; font-weight: 700; width: 48px; text-align: right; flex-shrink: 0; }
+.bar-pct { font-size: 15px; font-weight: 700; width: 48px; text-align: right; flex-shrink: 0; }
 
 /* ── 2-COL LAYOUT ── */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -190,16 +191,16 @@ tr:hover td { background: #F8F9FD; }
 /* ── BIG STAT ── */
 .big-stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
 .big-stat { background: var(--surface); padding: 28px 28px; border: 1px solid var(--border); border-radius: 4px; }
-.bs-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+.bs-label { font-size: 14px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
 .bs-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; color: var(--white); }
-.bs-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+.bs-sub { font-size: 15px; color: var(--muted); margin-top: 6px; }
 
 /* ── P&L ── */
 .pl-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .pl-box { background: var(--surface); border-radius: 4px; padding: 28px; border: 1px solid var(--border); }
-.pl-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.pl-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
 .pl-row:last-child { border-bottom: none; }
-.pl-row-key { color: var(--muted2); font-size: 12px; }
+.pl-row-key { color: var(--muted2); font-size: 14px; }
 .pl-row-val { font-weight: 700; color: var(--white); }
 .pl-divider { height: 1px; background: var(--border2); margin: 8px 0; }
 
@@ -207,9 +208,9 @@ tr:hover td { background: #F8F9FD; }
 .ch-list { display: flex; flex-direction: column; gap: 10px; }
 .ch-row { display: flex; align-items: center; gap: 12px; }
 .ch-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.ch-name { font-size: 12px; font-weight: 500; flex: 1; color: var(--white); }
-.ch-val { font-size: 12px; font-weight: 700; color: var(--green); }
-.ch-pct { font-size: 11px; color: var(--muted); width: 44px; text-align: right; }
+.ch-name { font-size: 14px; font-weight: 500; flex: 1; color: var(--white); }
+.ch-val { font-size: 14px; font-weight: 700; color: var(--green); }
+.ch-pct { font-size: 15px; color: var(--muted); width: 44px; text-align: right; }
 
 /* ── ROI HERO ── */
 .roi-hero {
@@ -221,11 +222,11 @@ tr:hover td { background: #F8F9FD; }
   border-left: 4px solid var(--green);
 }
 .roi-num { font-size: 5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; color: var(--green); }
-.roi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
+.roi-label { font-size: 15px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
 .roi-breakdown { display: flex; gap: 36px; }
 .roi-item { text-align: center; }
 .roi-item-val { font-size: 1.2rem; font-weight: 700; color: var(--white); }
-.roi-item-key { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-top: 3px; }
+.roi-item-key { font-size: 14px; color: var(--muted); letter-spacing: 0.1em; margin-top: 3px; }
 
 /* ── TREND SPARKLINE ── */
 .trend-svg { width: 100%; height: 70px; }
@@ -240,24 +241,24 @@ tr:hover td { background: #F8F9FD; }
 .rc-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0; }
 .rc-bar { width: 100%; border-radius: 3px 3px 0 0; position: relative; transition: all 0.3s; }
 .rc-bar:hover { filter: brightness(0.9); }
-.rc-val { font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 5px; color: var(--white); }
-.rc-year { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.1em; text-align: center; }
+.rc-val { font-size: 15px; font-weight: 700; text-align: center; margin-bottom: 5px; color: var(--white); }
+.rc-year { font-size: 14px; color: var(--muted); margin-top: 6px; letter-spacing: 0.1em; text-align: center; }
 
 /* ── CS YEAR-YEAR ── */
 .cs-yoy { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
 .cs-card { background: var(--surface); padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
-.cs-year { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.cs-year { font-size: 14px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
 .cs-pct { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; }
-.cs-detail { font-size: 11px; color: var(--muted); margin-top: 6px; }
+.cs-detail { font-size: 15px; color: var(--muted); margin-top: 6px; }
 
 /* ── QUARTERLY ── */
-.q-table-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
+.q-table-note { font-size: 15px; color: var(--muted); margin-top: 10px; font-style: italic; }
 
 /* ── LP COMPARE ── */
 .lp-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .lp-box { background: var(--surface); border-radius: 4px; padding: 24px; border: 1px solid var(--border); }
 .lp-box.featured { border-color: var(--blue); border-left: 4px solid var(--blue); }
-.lp-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; font-weight: 700; }
+.lp-title { font-size: 15px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 16px; font-weight: 700; }
 
 /* ── FADE IN ── */
 .fade { opacity: 0; transform: translateY(16px); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
@@ -269,7 +270,7 @@ tr:hover td { background: #F8F9FD; }
 .div-line { height: 1px; background: var(--border); }
 
 /* ── TAG CHIP ── */
-.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; }
+.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; }
 .chip-g { background: rgba(14,143,82,0.1); color: var(--green); }
 .chip-r { background: rgba(176,24,40,0.1); color: var(--red); }
 .chip-gold { background: rgba(184,125,0,0.1); color: var(--gold); }
@@ -287,7 +288,7 @@ tr:hover td { background: #F8F9FD; }
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
 }
 .filter-label {
-  font-size: 10px; font-weight: 700; color: var(--muted2);
+  font-size: 14px; font-weight: 700; color: var(--muted2);
   letter-spacing: 0.18em; text-transform: uppercase;
   margin-right: 4px; white-space: nowrap;
 }
@@ -297,7 +298,7 @@ tr:hover td { background: #F8F9FD; }
   border: 1px solid var(--border2);
   border-radius: 4px;
   padding: 6px 28px 6px 11px;
-  font-size: 12px; font-weight: 600;
+  font-size: 14px; font-weight: 600;
   font-family: 'Familjen Grotesk', sans-serif;
   color: var(--white);
   cursor: pointer;
@@ -316,7 +317,7 @@ tr:hover td { background: #F8F9FD; }
   background: transparent;
   border: 1px solid var(--border2);
   border-radius: 4px;
-  font-size: 11px; font-weight: 700;
+  font-size: 15px; font-weight: 700;
   font-family: 'Familjen Grotesk', sans-serif;
   color: var(--muted2);
   cursor: pointer;
@@ -350,7 +351,7 @@ tr.filter-hidden { display: none; }
     border-bottom: 1px solid var(--border);
     gap: 12px;
   }
-  .brand-logo { width: 36px; height: 36px; font-size: .9rem; }
+  .brand-logo { width: 36px; height: 36px; font-size: 1.05rem; }
   .brand-name { font-size: 1.1rem; }
   .masthead-kpis {
     padding: 0 !important;
@@ -362,12 +363,12 @@ tr.filter-hidden { display: none; }
   }
   .mkpi { padding: 12px 16px !important; flex-shrink: 0; min-width: 110px; border-right: 1px solid var(--border) !important; }
   .mkpi:last-child { border-right: none !important; }
-  .mkpi-val { font-size: 1.2rem !important; }
+  .mkpi-val { font-size: 1.3rem !important; }
   .masthead-date { padding: 10px 0 !important; border-left: none !important; }
 
   /* Filter bar */
   .filter-bar { padding: 8px 16px !important; gap: 8px; }
-  .filter-select { min-width: 0 !important; flex: 1; font-size: 13px; padding: 6px 22px 6px 9px !important; }
+  .filter-select { min-width: 0 !important; flex: 1; font-size: 15px; padding: 6px 22px 6px 9px !important; }
 
   /* Page */
   .page { padding: 20px 16px 60px !important; gap: 40px !important; }
@@ -375,7 +376,7 @@ tr.filter-hidden { display: none; }
   /* Cards: 1 column by default, 2 for -2 */
   .card-grid-2 { grid-template-columns: 1fr 1fr !important; }
   .card-grid-3, .card-grid-4, .card-grid-5, .card-grid-6 { grid-template-columns: 1fr 1fr !important; }
-  .card-val { font-size: 1.25rem !important; }
+  .card-val { font-size: 1.35rem !important; }
   .card { padding: 16px 14px !important; }
 
   /* Big stat grid */
@@ -397,15 +398,15 @@ tr.filter-hidden { display: none; }
 
   /* Section head */
   .sec-head { flex-wrap: wrap; gap: 8px; }
-  .sec-title { font-size: 1rem !important; }
+  .sec-title { font-size: 1.05rem !important; }
 
   /* Bar rows */
-  .bar-name { width: 90px !important; font-size: 11px !important; }
+  .bar-name { width: 90px !important; font-size: 15px !important; }
 
   /* Return chart */
   .return-chart { height: 100px !important; }
-  .rc-val { font-size: 9px !important; }
-  .rc-year { font-size: 9px !important; }
+  .rc-val { font-size: 15px !important; }
+  .rc-year { font-size: 15px !important; }
 
   /* inline grids */
   [style*="grid-template-columns:repeat(4"] { display: grid !important; grid-template-columns: 1fr 1fr !important; }
@@ -413,8 +414,8 @@ tr.filter-hidden { display: none; }
   [style*="grid-template-columns:1fr 1fr;"] { display: grid !important; grid-template-columns: 1fr !important; }
 
   /* Table fonts */
-  td { font-size: 12px !important; padding: 10px 10px !important; }
-  th { font-size: 9px !important; padding: 9px 10px !important; }
+  td { font-size: 14px !important; padding: 10px 10px !important; }
+  th { font-size: 15px !important; padding: 9px 10px !important; }
 }
 
 @media (max-width: 480px) {
@@ -559,7 +560,7 @@ tr.filter-hidden { display: none; }
   <div class="card-grid card-grid-2" style="gap:2px;">
     <!-- current -->
     <div style="background:var(--surface); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Current March Numbers</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Current March Numbers</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
         <div><div class="card-val g">₦18.41M</div><div class="card-sub">Gross Revenue</div></div>
         <div><div class="card-val w">1,695</div><div class="card-sub">Units Sold</div></div>
@@ -570,7 +571,7 @@ tr.filter-hidden { display: none; }
     </div>
     <!-- projection -->
     <div style="background:var(--surface2); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Full Month Projection</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Full Month Projection</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
         <div><div class="card-val gold">₦57.07M</div><div class="card-sub">Projected Revenue</div></div>
         <div><div class="card-val w">6,082</div><div class="card-sub">Units</div></div>
@@ -688,7 +689,7 @@ tr.filter-hidden { display: none; }
   <div class="two-col">
     <!-- zones -->
     <div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Zone</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Zone</div>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
@@ -712,37 +713,37 @@ tr.filter-hidden { display: none; }
         </table>
       </div>
       <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">49.47%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">31.50%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:19.03%; background:var(--red);"></div></div><span class="bar-pct r">19.03%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">49.47%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">31.50%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:19.03%; background:var(--red);"></div></div><span class="bar-pct r">19.03%</span></div>
       </div>
     </div>
     <!-- departments -->
     <div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Department</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Revenue by Department</div>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Department</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
             <tr data-dept="Digital Marketer">
-              <td><strong>Digital Marketer</strong></td><td class="g">₦7.95M</td><td>149</td><td>1,016</td>
-              <td><span class="chip chip-g">43.17%</span></td>
+              <td><strong>Digital Marketer</strong></td><td class="g">₦8.35M</td><td>149</td><td>1,016</td>
+              <td><span class="chip chip-g">45.36%</span></td>
             </tr>
             <tr data-dept="Sales Team">
-              <td><strong>Sales Team</strong></td><td class="g">₦7.42M</td><td>78</td><td>689</td>
-              <td><span class="chip chip-gold">40.29%</span></td>
+              <td><strong>Sales Team</strong></td><td class="g">₦7.05M</td><td>78</td><td>689</td>
+              <td><span class="chip chip-gold">38.27%</span></td>
             </tr>
             <tr data-dept="Customer Care">
-              <td><strong>Customer Care</strong></td><td class="g">₦3.05M</td><td>42</td><td>257</td>
-              <td><span class="chip chip-r">16.54%</span></td>
+              <td><strong>Customer Care</strong></td><td class="g">₦3.01M</td><td>42</td><td>257</td>
+              <td><span class="chip chip-r">16.36%</span></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Digital Marketer</span><div class="bar-track"><div class="bar-fill" style="width:43.16%; background:var(--blue);"></div></div><span class="bar-pct b">43.17%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Sales Team</span><div class="bar-track"><div class="bar-fill" style="width:40.34%; background:var(--green);"></div></div><span class="bar-pct g">40.29%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Customer Care</span><div class="bar-track"><div class="bar-fill" style="width:16.50%; background:var(--gold);"></div></div><span class="bar-pct gold">16.54%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Digital Marketer</span><div class="bar-track"><div class="bar-fill" style="width:43.16%; background:var(--blue);"></div></div><span class="bar-pct b">45.36%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Sales Team</span><div class="bar-track"><div class="bar-fill" style="width:40.34%; background:var(--green);"></div></div><span class="bar-pct g">38.27%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:14px;">Customer Care</span><div class="bar-track"><div class="bar-fill" style="width:16.50%; background:var(--gold);"></div></div><span class="bar-pct gold">16.36%</span></div>
       </div>
     </div>
   </div>
@@ -777,22 +778,22 @@ tr.filter-hidden { display: none; }
 
   <!-- Return % mini chart -->
   <div style="margin-top:20px; background:var(--surface); border-radius:4px; padding:24px 28px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Return Customer % — Monthly Trend (2026)</div>
+    <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Return Customer % — Monthly Trend (2026)</div>
     <div style="display:flex; align-items:flex-end; gap:16px; height:120px;">
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">48.85%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--red); margin-bottom:5px;">48.85%</div>
         <div style="width:100%; background:var(--red); border-radius:3px 3px 0 0; height:calc(120px * 0.48);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Jan</div>
+        <div style="font-size:14px; color:var(--muted2); margin-top:6px;">Jan</div>
       </div>
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:5px;">55.01%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--gold); margin-bottom:5px;">55.01%</div>
         <div style="width:100%; background:var(--gold); border-radius:3px 3px 0 0; height:calc(120px * 0.55);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Feb</div>
+        <div style="font-size:14px; color:var(--muted2); margin-top:6px;">Feb</div>
       </div>
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:5px;">56.13%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--green); margin-bottom:5px;">56.13%</div>
         <div style="width:100%; background:var(--green); border-radius:3px 3px 0 0; height:calc(120px * 0.587);"></div>
-        <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Mar</div>
+        <div style="font-size:14px; color:var(--muted2); margin-top:6px;">Mar</div>
       </div>
     </div>
   </div>
@@ -833,14 +834,14 @@ tr.filter-hidden { display: none; }
     </div>
   </div>
   <div style="margin-top:14px; background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">YTD Progress vs Annual Target (₦2B)</div>
+    <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px;">YTD Progress vs Annual Target (₦2B)</div>
     <div class="bar-row" style="margin-bottom:0;">
-      <span class="bar-name" style="font-size:12px; width:160px;">YTD Achieved</span>
+      <span class="bar-name" style="font-size:14px; width:160px;">YTD Achieved</span>
       <div class="bar-track"><div class="bar-fill" style="width:5.88%; background:var(--green);"></div></div>
       <span class="bar-pct g">6.09%</span>
     </div>
     <div class="bar-row" style="margin-top:10px; margin-bottom:0;">
-      <span class="bar-name" style="font-size:12px; width:160px;">Projected EOY</span>
+      <span class="bar-name" style="font-size:14px; width:160px;">Projected EOY</span>
       <div class="bar-track"><div class="bar-fill" style="width:23.54%; background:var(--gold);"></div></div>
       <span class="bar-pct gold">24.37%</span>
     </div>
@@ -858,7 +859,7 @@ tr.filter-hidden { display: none; }
   <div class="pl-layout">
     <!-- P&L summary -->
     <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Monthly P&L Summary</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Monthly P&L Summary</div>
       <div class="pl-row"><span class="pl-row-key">Total Sales</span><span class="pl-row-val g">₦18.41M</span></div>
       <div class="pl-row"><span class="pl-row-key">Expenses / Tax</span><span class="pl-row-val r">₦6.18M</span></div>
       <div class="pl-row"><span class="pl-row-key">Gross Profit</span><span class="pl-row-val g">₦12.23M</span></div>
@@ -870,29 +871,29 @@ tr.filter-hidden { display: none; }
     </div>
     <!-- Sales by channel -->
     <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Sales by Channel</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Sales by Channel</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--blue);">43.17%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Digital</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦7.95M</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--blue);">45.36%</div>
+          <div style="font-size:14px; color:var(--muted2); margin-top:4px;">Digital</div>
+          <div style="font-size:15px; font-weight:600; margin-top:2px;">₦8.35M</div>
         </div>
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--green);">40.29%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Sales Team</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦7.42M</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--green);">38.27%</div>
+          <div style="font-size:14px; color:var(--muted2); margin-top:4px;">Sales Team</div>
+          <div style="font-size:15px; font-weight:600; margin-top:2px;">₦7.05M</div>
         </div>
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--gold);">16.54%</div>
-          <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Cust. Care</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦3.05M</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--gold);">16.36%</div>
+          <div style="font-size:14px; color:var(--muted2); margin-top:4px;">Cust. Care</div>
+          <div style="font-size:15px; font-weight:600; margin-top:2px;">₦3.01M</div>
         </div>
       </div>
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Ad Medium Breakdown</div>
-      <div class="pl-row"><span class="pl-row-key">Instagram Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦4.57M</span><span class="mu" style="font-size:11px;">24.82%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Landing Page Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦2.43M</span><span class="mu" style="font-size:11px;">13.19%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Facebook Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦489.8K</span><span class="mu" style="font-size:11px;">2.84%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Others</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦10.89M</span><span class="mu" style="font-size:11px;">59.15%</span></span></div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Ad Medium Breakdown</div>
+      <div class="pl-row"><span class="pl-row-key">Instagram Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦4.57M</span><span class="mu" style="font-size:15px;">24.82%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Landing Page Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦2.43M</span><span class="mu" style="font-size:15px;">13.19%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Facebook Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦489.8K</span><span class="mu" style="font-size:15px;">2.84%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Others</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦10.89M</span><span class="mu" style="font-size:15px;">59.15%</span></span></div>
     </div>
   </div>
 </section>
@@ -980,7 +981,7 @@ tr.filter-hidden { display: none; }
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
     <!-- financials -->
     <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Financial Summary</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Financial Summary</div>
       <div class="pl-row"><span class="pl-row-key">Gross Revenue</span><span class="pl-row-val g">₦121.83M</span></div>
       <div class="pl-row"><span class="pl-row-key">Gross Expenses</span><span class="pl-row-val r">₦49.14M</span></div>
       <div class="pl-row"><span class="pl-row-key">Logistics Expenses</span><span class="pl-row-val r">₦7.23M</span></div>
@@ -993,7 +994,7 @@ tr.filter-hidden { display: none; }
     </div>
     <!-- operations -->
     <div class="pl-box">
-      <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Operations Summary</div>
+      <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Operations Summary</div>
       <div class="pl-row"><span class="pl-row-key">Total Customers</span><span class="pl-row-val w">1,809</span></div>
       <div class="pl-row"><span class="pl-row-key">Return Customers</span><span class="pl-row-val g">950</span></div>
       <div class="pl-row"><span class="pl-row-key">Return Customer %</span><span class="pl-row-val g">52.5%</span></div>
@@ -1090,7 +1091,7 @@ tr.filter-hidden { display: none; }
 
   <!-- conversion bars -->
   <div style="margin-top:16px; background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">Conversion Rate by Rep</div>
+    <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">Conversion Rate by Rep</div>
     <div class="bar-row"><span class="bar-name">Jaya</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div><span class="bar-pct g">11.93%</span></div>
     <div class="bar-row"><span class="bar-name">Bolu</span><div class="bar-track"><div class="bar-fill" style="width:47.4%; background:var(--teal);"></div></div><span class="bar-pct" style="color:var(--teal);">5.66%</span></div>
     <div class="bar-row"><span class="bar-name">Divine</span><div class="bar-track"><div class="bar-fill" style="width:42.1%; background:var(--gold);"></div></div><span class="bar-pct gold">5.02%</span></div>
@@ -1167,7 +1168,7 @@ tr.filter-hidden { display: none; }
       <div class="pl-row"><span class="pl-row-key">Delivered from Interested</span><span class="pl-row-val gold">66.67%</span></div>
     </div>
   </div>
-  <div style="margin-top:14px; background:var(--surface); border-radius:4px; padding:16px 20px; border:1px solid var(--border); font-size:12px; color:var(--muted2);">
+  <div style="margin-top:14px; background:var(--surface); border-radius:4px; padding:16px 20px; border:1px solid var(--border); font-size:14px; color:var(--muted2);">
     <strong style="color:var(--white);">Insight:</strong> Dan's LP has higher interest rate (90% vs 56%) and close rate (60% vs 51%) but far fewer total leads (10 vs 82). Suruka converts more volume. Suruka's delivery-from-interested rate (91.3%) significantly outperforms Dan (66.7%).
   </div>
 </section>
@@ -1182,7 +1183,7 @@ tr.filter-hidden { display: none; }
   </div>
 
   <!-- today -->
-  <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Today — 10/03/2026</div>
+  <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Today — 10/03/2026</div>
   <div class="tbl-wrap" style="margin-bottom:28px;">
     <table>
       <thead><tr><th>Date</th><th>Rep</th><th>Total Contacted</th><th>Satisfied</th><th>Not Satisfied</th><th>Satisfied %</th><th>Not Satisfied %</th></tr></thead>
@@ -1195,7 +1196,7 @@ tr.filter-hidden { display: none; }
   </div>
 
   <!-- year on year -->
-  <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">CS Satisfaction — Year on Year</div>
+  <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">CS Satisfaction — Year on Year</div>
   <div class="cs-yoy" style="margin-bottom:20px;">
     <div class="cs-card">
       <div class="cs-year">2023</div>
@@ -1225,7 +1226,7 @@ tr.filter-hidden { display: none; }
 
   <!-- cumulative -->
   <div style="background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">4-Year Cumulative CS Totals</div>
+    <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">4-Year Cumulative CS Totals</div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
       <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Customers Served</span><span class="pl-row-val w">31,611</span></div>
       <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Revenue (CS-tracked)</span><span class="pl-row-val g">₦140.82M</span></div>
@@ -1234,49 +1235,49 @@ tr.filter-hidden { display: none; }
 
   <!-- BONUS: Return customer % chart -->
   <div style="margin-top:28px; background:var(--surface); border-radius:4px; padding:24px 28px; border:1px solid var(--border);">
-    <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px;">Return Customer % — All-Time Growth (AVG + 2021–2026)</div>
+    <div style="font-size:14px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px;">Return Customer % — All-Time Growth (AVG + 2021–2026)</div>
     <div style="display:flex; align-items:flex-end; gap:10px; height:150px; padding:0 4px;">
       <!-- AVG -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:5px;">29.4%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--blue); margin-bottom:5px;">29.4%</div>
         <div style="width:100%; background:var(--blue); border-radius:3px 3px 0 0; height:calc(150px * 0.294 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center; letter-spacing:0.05em;">AVG</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center; letter-spacing:0.05em;">AVG</div>
       </div>
       <!-- 2021 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">20.0%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--muted2); margin-bottom:5px;">20.0%</div>
         <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.200 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2021</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center;">2021</div>
       </div>
       <!-- 2022 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">22.5%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--muted2); margin-bottom:5px;">22.5%</div>
         <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.225 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2022</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center;">2022</div>
       </div>
       <!-- 2023 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--muted2); margin-bottom:5px;">23.4%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--muted2); margin-bottom:5px;">23.4%</div>
         <div style="width:100%; background:var(--muted); border-radius:3px 3px 0 0; height:calc(150px * 0.234 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2023</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center;">2023</div>
       </div>
       <!-- 2024 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:5px;">25.7%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--gold); margin-bottom:5px;">25.7%</div>
         <div style="width:100%; background:var(--gold); border-radius:3px 3px 0 0; height:calc(150px * 0.257 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2024</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center;">2024</div>
       </div>
       <!-- 2025 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:5px;">32.0%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--teal); margin-bottom:5px;">32.0%</div>
         <div style="width:100%; background:var(--teal); border-radius:3px 3px 0 0; height:calc(150px * 0.320 / 0.527);"></div>
-        <div style="font-size:9px; color:var(--muted2); margin-top:6px; text-align:center;">2025</div>
+        <div style="font-size:15px; color:var(--muted2); margin-top:6px; text-align:center;">2025</div>
       </div>
       <!-- 2026 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">52.5%</div>
+        <div style="font-size:15px; font-weight:700; color:var(--red); margin-bottom:5px;">52.5%</div>
         <div style="width:100%; background:var(--red); border-radius:3px 3px 0 0; height:150px;"></div>
-        <div style="font-size:9px; color:var(--red); margin-top:6px; text-align:center; font-weight:700;">2026 ↑</div>
+        <div style="font-size:15px; color:var(--red); margin-top:6px; text-align:center; font-weight:700;">2026 ↑</div>
       </div>
     </div>
   </div>
@@ -1285,7 +1286,7 @@ tr.filter-hidden { display: none; }
 <!-- ════════════════════════════════
      FOOTER
 ════════════════════════════════ -->
-<div style="border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; font-size:10px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase;">
+<div style="border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; font-size:14px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase;">
   <span>Suruka Analytics Engine</span>
   <span>15-Segment Master Report · March 2026</span>
   <span>Confidential · Internal Use Only</span>
@@ -1393,7 +1394,7 @@ function updateFilterBadge(f) {
   if (!existing) {
     existing = document.createElement('span');
     existing.id = 'filterBadgeText';
-    existing.style.cssText = 'font-size:11px; font-weight:700; color:var(--blue); padding:4px 10px; background:rgba(37,88,232,0.08); border-radius:20px; border:1px solid rgba(37,88,232,0.2); white-space:nowrap;';
+    existing.style.cssText = 'font-size:15px; font-weight:700; color:var(--blue); padding:4px 10px; background:rgba(37,88,232,0.08); border-radius:20px; border:1px solid rgba(37,88,232,0.2); white-space:nowrap;';
     document.getElementById('filterBar').insertBefore(existing, document.querySelector('.filter-reset'));
   }
 
