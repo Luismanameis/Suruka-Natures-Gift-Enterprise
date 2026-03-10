@@ -93,13 +93,13 @@ body {
   display: flex; flex-direction: column; justify-content: center;
 }
 .mkpi:last-child { border-right: none; }
-.mkpi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
-.mkpi-val { font-size: 1.9rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
+.mkpi-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 5px; }
+.mkpi-val { font-size: 1.65rem; font-weight: 700; letter-spacing: -1px; line-height: 1; }
 .mkpi-val.g { color: var(--green); }
 .mkpi-val.r { color: var(--red); }
 .mkpi-val.w { color: var(--white); }
 .mkpi-val.gold { color: var(--gold); }
-.mkpi-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.mkpi-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
 .masthead-date {
   display: flex; align-items: center;
@@ -121,8 +121,8 @@ body {
   padding-bottom: 14px;
   border-bottom: 2px solid var(--white);
 }
-.sec-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.2em; text-transform: uppercase; min-width: 80px; background: rgba(176,24,40,0.08); padding: 4px 10px; border-radius: 3px; }
-.sec-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; color: var(--white); }
+.sec-num { font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; min-width: 80px; background: rgba(176,24,40,0.08); padding: 3px 8px; border-radius: 3px; }
+.sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; color: var(--white); }
 .sec-badge {
   margin-left: auto; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 10px; border-radius: 20px; font-weight: 600;
@@ -147,9 +147,9 @@ body {
   transition: box-shadow 0.2s;
 }
 .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
-.card-label { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
-.card-val { font-size: 1.9rem; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--white); }
-.card-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.card-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.card-val { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--white); }
+.card-sub { font-size: 11px; color: var(--muted); margin-top: 5px; }
 .card-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
 .ca-green { background: var(--green); }
 .ca-red { background: var(--red); }
@@ -160,8 +160,8 @@ body {
 .tbl-wrap { background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; }
 thead tr { background: var(--surface2); }
-th { padding: 12px 18px; text-align: left; font-size: 11px; color: var(--muted2); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
-td { padding: 15px 18px; font-size: 14.5px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
+th { padding: 11px 16px; text-align: left; font-size: 10px; color: var(--muted2); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border2); }
+td { padding: 13px 16px; font-size: 13.5px; font-weight: 500; border-bottom: 1px solid var(--border); color: var(--white); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #F8F9FD; }
 .td-total td { background: var(--surface2) !important; font-weight: 700; border-top: 1px solid var(--border2); }
@@ -177,11 +177,11 @@ tr:hover td { background: #F8F9FD; }
 /* ── BAR ROW ── */
 .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .bar-row:last-child { margin-bottom: 0; }
-.bar-name { font-size: 13px; font-weight: 600; width: 150px; flex-shrink: 0; color: var(--white); }
+.bar-name { font-size: 12px; font-weight: 600; width: 140px; flex-shrink: 0; color: var(--white); }
 .bar-track { flex: 1; height: 5px; background: var(--border2); border-radius: 3px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 3px; transform-origin: left; animation: growBar 1s cubic-bezier(0.16,1,0.3,1) forwards; }
 @keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.bar-pct { font-size: 12px; font-weight: 700; width: 52px; text-align: right; flex-shrink: 0; }
+.bar-pct { font-size: 11px; font-weight: 700; width: 48px; text-align: right; flex-shrink: 0; }
 
 /* ── 2-COL LAYOUT ── */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -190,8 +190,8 @@ tr:hover td { background: #F8F9FD; }
 /* ── BIG STAT ── */
 .big-stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
 .big-stat { background: var(--surface); padding: 28px 28px; border: 1px solid var(--border); border-radius: 4px; }
-.bs-label { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; font-weight: 700; }
-.bs-val { font-size: 2.6rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; color: var(--white); }
+.bs-label { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+.bs-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; line-height: 1; color: var(--white); }
 .bs-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
 /* ── P&L ── */
@@ -220,7 +220,7 @@ tr:hover td { background: #F8F9FD; }
   border: 1px solid var(--border);
   border-left: 4px solid var(--green);
 }
-.roi-num { font-size: 5.5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; color: var(--green); }
+.roi-num { font-size: 5rem; font-weight: 700; letter-spacing: -4px; line-height: 1; color: var(--green); }
 .roi-label { font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
 .roi-breakdown { display: flex; gap: 36px; }
 .roi-item { text-align: center; }
@@ -247,8 +247,8 @@ tr:hover td { background: #F8F9FD; }
 .cs-yoy { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; border-radius: 4px; }
 .cs-card { background: var(--surface); padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
 .cs-year { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-.cs-pct { font-size: 2.6rem; font-weight: 700; letter-spacing: -1.5px; }
-.cs-detail { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.cs-pct { font-size: 2.2rem; font-weight: 700; letter-spacing: -1.5px; }
+.cs-detail { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
 /* ── QUARTERLY ── */
 .q-table-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
@@ -269,7 +269,7 @@ tr:hover td { background: #F8F9FD; }
 .div-line { height: 1px; background: var(--border); }
 
 /* ── TAG CHIP ── */
-.chip { display: inline-block; padding: 3px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
+.chip { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; }
 .chip-g { background: rgba(14,143,82,0.1); color: var(--green); }
 .chip-r { background: rgba(176,24,40,0.1); color: var(--red); }
 .chip-gold { background: rgba(184,125,0,0.1); color: var(--gold); }
@@ -362,7 +362,7 @@ tr.filter-hidden { display: none; }
   }
   .mkpi { padding: 12px 16px !important; flex-shrink: 0; min-width: 110px; border-right: 1px solid var(--border) !important; }
   .mkpi:last-child { border-right: none !important; }
-  .mkpi-val { font-size: 1.35rem !important; }
+  .mkpi-val { font-size: 1.2rem !important; }
   .masthead-date { padding: 10px 0 !important; border-left: none !important; }
 
   /* Filter bar */
@@ -375,13 +375,13 @@ tr.filter-hidden { display: none; }
   /* Cards: 1 column by default, 2 for -2 */
   .card-grid-2 { grid-template-columns: 1fr 1fr !important; }
   .card-grid-3, .card-grid-4, .card-grid-5, .card-grid-6 { grid-template-columns: 1fr 1fr !important; }
-  .card-val { font-size: 1.45rem !important; }
+  .card-val { font-size: 1.25rem !important; }
   .card { padding: 16px 14px !important; }
 
   /* Big stat grid */
   .big-stat-grid { grid-template-columns: 1fr 1fr !important; }
   .big-stat { padding: 18px 16px !important; }
-  .bs-val { font-size: 1.8rem !important; }
+  .bs-val { font-size: 1.6rem !important; }
 
   /* Two/three col layouts */
   .two-col, .three-col, .pl-layout, .lp-compare { grid-template-columns: 1fr !important; }
@@ -393,11 +393,11 @@ tr.filter-hidden { display: none; }
 
   /* CS year-year */
   .cs-yoy { grid-template-columns: 1fr 1fr !important; }
-  .cs-pct { font-size: 1.8rem !important; }
+  .cs-pct { font-size: 1.6rem !important; }
 
   /* Section head */
   .sec-head { flex-wrap: wrap; gap: 8px; }
-  .sec-title { font-size: 1.1rem !important; }
+  .sec-title { font-size: 1rem !important; }
 
   /* Bar rows */
   .bar-name { width: 90px !important; font-size: 11px !important; }
@@ -413,8 +413,8 @@ tr.filter-hidden { display: none; }
   [style*="grid-template-columns:1fr 1fr;"] { display: grid !important; grid-template-columns: 1fr !important; }
 
   /* Table fonts */
-  td { font-size: 13px !important; padding: 11px 12px !important; }
-  th { font-size: 10px !important; padding: 10px 12px !important; }
+  td { font-size: 12px !important; padding: 10px 10px !important; }
+  th { font-size: 9px !important; padding: 9px 10px !important; }
 }
 
 @media (max-width: 480px) {
@@ -433,22 +433,22 @@ tr.filter-hidden { display: none; }
   <div class="ticker-track">
     <span class="ticker-item">SURUKA CEO COMMAND</span><span class="ticker-item ticker-sep">///</span>
     <span class="ticker-item">MARCH 2026</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">GROSS REV ₦17.03M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">NET REV ₦11.03M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">AD ROI 494.21%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">RETURN CUSTOMERS 57.77%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">YTD ₦120.45M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">UNITS SOLD 1,830</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">251 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">GROSS REV ₦18.41M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">NET REV ₦12.23M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">AD ROI 539.07%</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">RETURN CUSTOMERS 56.13%</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">YTD ₦121.83M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">UNITS SOLD 1,962</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">269 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
     <span class="ticker-item">SURUKA CEO COMMAND</span><span class="ticker-item ticker-sep">///</span>
     <span class="ticker-item">MARCH 2026</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">GROSS REV ₦17.03M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">NET REV ₦11.03M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">AD ROI 494.21%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">RETURN CUSTOMERS 57.77%</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">YTD ₦120.45M</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">UNITS SOLD 1,830</span><span class="ticker-item ticker-sep">///</span>
-    <span class="ticker-item">251 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">GROSS REV ₦18.41M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">NET REV ₦12.23M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">AD ROI 539.07%</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">RETURN CUSTOMERS 56.13%</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">YTD ₦121.83M</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">UNITS SOLD 1,962</span><span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">269 CUSTOMERS</span><span class="ticker-item ticker-sep">///</span>
   </div>
 </div>
 
@@ -464,23 +464,23 @@ tr.filter-hidden { display: none; }
   <div class="masthead-kpis">
     <div class="mkpi">
       <div class="mkpi-label">March Gross Rev</div>
-      <div class="mkpi-val g">₦17.03M</div>
-      <div class="mkpi-sub">1,830 units · 251 customers</div>
+      <div class="mkpi-val g">₦18.41M</div>
+      <div class="mkpi-sub">1,962 units · 269 customers</div>
     </div>
     <div class="mkpi">
       <div class="mkpi-label">March Net Rev</div>
-      <div class="mkpi-val g">₦11.03M</div>
-      <div class="mkpi-sub">Return rate 57.77%</div>
+      <div class="mkpi-val g">₦12.23M</div>
+      <div class="mkpi-sub">Return rate 56.13%</div>
     </div>
     <div class="mkpi">
       <div class="mkpi-label">Month Projection</div>
-      <div class="mkpi-val gold">₦52.80M</div>
-      <div class="mkpi-sub">5,673 units · 778 customers</div>
+      <div class="mkpi-val gold">₦57.07M</div>
+      <div class="mkpi-sub">5,789 units · 779 customers</div>
     </div>
     <div class="mkpi">
       <div class="mkpi-label">2026 YTD</div>
-      <div class="mkpi-val g">₦120.45M</div>
-      <div class="mkpi-sub">6.02% of ₦2B target</div>
+      <div class="mkpi-val g">₦121.83M</div>
+      <div class="mkpi-sub">6.09% of ₦2B target</div>
     </div>
   </div>
   <div class="masthead-date">
@@ -561,10 +561,10 @@ tr.filter-hidden { display: none; }
     <div style="background:var(--surface); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Current March Numbers</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
-        <div><div class="card-val g">₦17.03M</div><div class="card-sub">Gross Revenue</div></div>
-        <div><div class="card-val w">1,830</div><div class="card-sub">Units Sold</div></div>
-        <div><div class="card-val w">251</div><div class="card-sub">Customers</div></div>
-        <div><div class="card-val g">57.77%</div><div class="card-sub">Return Rate</div></div>
+        <div><div class="card-val g">₦18.41M</div><div class="card-sub">Gross Revenue</div></div>
+        <div><div class="card-val w">1,695</div><div class="card-sub">Units Sold</div></div>
+        <div><div class="card-val w">269</div><div class="card-sub">Customers</div></div>
+        <div><div class="card-val g">56.13%</div><div class="card-sub">Return Rate</div></div>
       </div>
       <div class="card-accent ca-green"></div>
     </div>
@@ -572,10 +572,10 @@ tr.filter-hidden { display: none; }
     <div style="background:var(--surface2); padding:28px 32px; border-radius:0; position:relative; overflow:hidden;">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:18px;">Full Month Projection</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
-        <div><div class="card-val gold">₦52.80M</div><div class="card-sub">Projected Revenue</div></div>
-        <div><div class="card-val w">5,673</div><div class="card-sub">Units</div></div>
-        <div><div class="card-val w">778</div><div class="card-sub">Customers</div></div>
-        <div><div class="card-val gold">57.77%</div><div class="card-sub">Return Rate</div></div>
+        <div><div class="card-val gold">₦57.07M</div><div class="card-sub">Projected Revenue</div></div>
+        <div><div class="card-val w">6,082</div><div class="card-sub">Units</div></div>
+        <div><div class="card-val w">834</div><div class="card-sub">Customers</div></div>
+        <div><div class="card-val gold">56.13%</div><div class="card-sub">Return Rate</div></div>
       </div>
       <div class="card-accent ca-gold"></div>
     </div>
@@ -589,23 +589,23 @@ tr.filter-hidden { display: none; }
   <div class="sec-head">
     <span class="sec-num">SEG 02</span>
     <span class="sec-title">Today's Numbers — 10/03/2026</span>
-    <span class="sec-badge badge-live">● Live · 2 customers · ₦433,600</span>
+    <span class="sec-badge badge-live">● Live · No sales today yet</span>
   </div>
   <div class="tbl-wrap">
     <table>
       <thead><tr><th>Sales Representative</th><th>Customers</th><th>Revenue</th><th>Status</th></tr></thead>
       <tbody>
-        <tr data-rep="Bolu"><td>Bolu</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Bolu"><td>Bolu</td><td class="w">2</td><td class="g">₦100,800</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr data-rep="Mary"><td>Mary</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Jaya"><td>Jaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Lewa"><td>Lewa</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Jaya"><td>Jaya</td><td class="w">2</td><td class="g">₦118,600</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Lewa"><td>Lewa</td><td class="w">1</td><td class="g">₦137,200</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr data-rep="Susan"><td>Susan</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr data-rep="Amaya"><td>Amaya</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Rachel"><td>Rachel</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Rachel"><td>Rachel</td><td class="w">1</td><td class="g">₦141,000</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr data-rep="Esther"><td>Esther</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr data-rep="Divine"><td>Divine</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
+        <tr data-rep="Divine"><td>Divine</td><td class="w">1</td><td class="g">₦67,200</td><td><span class="chip chip-r">No Sales</span></td></tr>
         <tr data-rep="Jane"><td>Jane</td><td class="mu">0</td><td class="mu">₦0.00</td><td><span class="chip chip-r">No Sales</span></td></tr>
-        <tr class="td-total"><td>TOTAL TODAY</td><td class="mu">2</td><td class="g">₦433,600</td><td></td></tr>
+        <tr class="td-total"><td>TOTAL TODAY</td><td>10</td><td class="g">₦1,341,000</td><td></td></tr>
       </tbody>
     </table>
   </div>
@@ -624,12 +624,12 @@ tr.filter-hidden { display: none; }
   <!-- ROI hero -->
   <div class="roi-hero" style="margin-bottom:20px;">
     <div>
-      <div class="roi-num">494.21%</div>
+      <div class="roi-num">539.07%</div>
       <div class="roi-label">Return on Ad Spend · March</div>
     </div>
     <div class="roi-breakdown">
       <div class="roi-item">
-        <div class="roi-item-val g">₦7.65M</div>
+        <div class="roi-item-val g">₦8.24M</div>
         <div class="roi-item-key">Total Revenue</div>
       </div>
       <div class="roi-item">
@@ -637,7 +637,7 @@ tr.filter-hidden { display: none; }
         <div class="roi-item-key">Total Spent</div>
       </div>
       <div class="roi-item">
-        <div class="roi-item-val g">₦6.42M</div>
+        <div class="roi-item-val g">₦7.01M</div>
         <div class="roi-item-key">Net Profit</div>
       </div>
       <div class="roi-item">
@@ -653,13 +653,13 @@ tr.filter-hidden { display: none; }
       <table>
         <thead><tr><th>Channel</th><th>Revenue</th><th>Contribution</th></tr></thead>
         <tbody>
-          <tr><td>Instagram</td><td class="g">₦4.22M</td><td class="w">55.13%</td></tr>
-          <tr><td>Landing Page</td><td class="g">₦2.23M</td><td class="w">29.12%</td></tr>
+          <tr><td>Instagram</td><td class="g">₦4.57M</td><td class="w">55.46%</td></tr>
+          <tr><td>Landing Page</td><td class="g">₦2.43M</td><td class="w">29.47%</td></tr>
           <tr><td>WhatsApp DM</td><td class="g">₦718K</td><td class="w">11.21%</td></tr>
           <tr><td>Facebook</td><td class="g">₦489.8K</td><td class="w">7.64%</td></tr>
           <tr><td>FB → WhatsApp Sub</td><td class="g">₦70K</td><td class="w">1.09%</td></tr>
           <tr><td class="mu">TikTok</td><td class="mu">₦0.00</td><td class="mu">0.00%</td></tr>
-          <tr class="td-total"><td>TOTAL REVENUE</td><td>₦7.65M</td><td></td></tr>
+          <tr class="td-total"><td>TOTAL REVENUE</td><td>₦8.24M</td><td></td></tr>
         </tbody>
       </table>
     </div>
@@ -668,9 +668,9 @@ tr.filter-hidden { display: none; }
       <table>
         <thead><tr><th>Spend Category</th><th>Spent</th><th>Profit</th></tr></thead>
         <tbody>
-          <tr><td>Instagram</td><td class="r">₦550K</td><td class="g">₦3.67M</td></tr>
-          <tr><td>FB / LP / TikTok</td><td class="r">₦750K</td><td class="g">₦2.75M</td></tr>
-          <tr class="td-total"><td>TOTAL SPENT</td><td class="r">₦1.30M</td><td class="g">₦6.42M</td></tr>
+          <tr><td>Instagram</td><td class="r">₦550K</td><td class="g">₦4.02M</td></tr>
+          <tr><td>FB / LP / TikTok</td><td class="r">₦750K</td><td class="g">₦2.99M</td></tr>
+          <tr class="td-total"><td>TOTAL SPENT</td><td class="r">₦1.30M</td><td class="g">₦7.01M</td></tr>
         </tbody>
       </table>
     </div>
@@ -694,16 +694,16 @@ tr.filter-hidden { display: none; }
           <thead><tr><th>Zone</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
             <tr data-zone="Lagos">
-              <td><strong>Lagos</strong></td><td class="g">₦8.46M</td><td>111</td><td>912</td>
-              <td><span class="chip chip-g">49.65%</span></td>
+              <td><strong>Lagos</strong></td><td class="g">₦9.11M</td><td>122</td><td>997</td>
+              <td><span class="chip chip-g">49.47%</span></td>
             </tr>
             <tr data-zone="Benin">
-              <td><strong>Benin</strong></td><td class="g">₦5.49M</td><td>96</td><td>651</td>
-              <td><span class="chip chip-gold">32.22%</span></td>
+              <td><strong>Benin</strong></td><td class="g">₦5.80M</td><td>98</td><td>671</td>
+              <td><span class="chip chip-gold">31.50%</span></td>
             </tr>
             <tr data-zone="Abuja">
-              <td><strong>Abuja</strong></td><td class="g">₦2.75M</td><td>46</td><td>267</td>
-              <td><span class="chip chip-r">18.13%</span></td>
+              <td><strong>Abuja</strong></td><td class="g">₦3.50M</td><td>51</td><td>294</td>
+              <td><span class="chip chip-r">19.03%</span></td>
             </tr>
             <tr data-zone="Ghana">
               <td class="mu">Ghana</td><td class="mu">GHS 0.00</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td>
@@ -712,9 +712,9 @@ tr.filter-hidden { display: none; }
         </table>
       </div>
       <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">49.65%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">32.22%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:17.06%; background:var(--red);"></div></div><span class="bar-pct r">18.13%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Lagos</span><div class="bar-track"><div class="bar-fill" style="width:52.41%; background:var(--green);"></div></div><span class="bar-pct g">49.47%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Benin</span><div class="bar-track"><div class="bar-fill" style="width:30.53%; background:var(--gold);"></div></div><span class="bar-pct gold">31.50%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Abuja</span><div class="bar-track"><div class="bar-fill" style="width:19.03%; background:var(--red);"></div></div><span class="bar-pct r">19.03%</span></div>
       </div>
     </div>
     <!-- departments -->
@@ -725,24 +725,24 @@ tr.filter-hidden { display: none; }
           <thead><tr><th>Department</th><th>Revenue</th><th>Customers</th><th>Units</th><th>%</th></tr></thead>
           <tbody>
             <tr data-dept="Digital Marketer">
-              <td><strong>Digital Marketer</strong></td><td class="g">₦7.36M</td><td>137</td><td>949</td>
-              <td><span class="chip chip-g">43.24%</span></td>
+              <td><strong>Digital Marketer</strong></td><td class="g">₦7.95M</td><td>149</td><td>1,016</td>
+              <td><span class="chip chip-g">43.17%</span></td>
             </tr>
             <tr data-dept="Sales Team">
-              <td><strong>Sales Team</strong></td><td class="g">₦6.50M</td><td>72</td><td>613</td>
-              <td><span class="chip chip-gold">38.16%</span></td>
+              <td><strong>Sales Team</strong></td><td class="g">₦7.42M</td><td>78</td><td>689</td>
+              <td><span class="chip chip-gold">40.29%</span></td>
             </tr>
             <tr data-dept="Customer Care">
-              <td><strong>Customer Care</strong></td><td class="g">₦2.73M</td><td>40</td><td>237</td>
-              <td><span class="chip chip-r">16.05%</span></td>
+              <td><strong>Customer Care</strong></td><td class="g">₦3.05M</td><td>42</td><td>257</td>
+              <td><span class="chip chip-r">16.54%</span></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Digital Marketer</span><div class="bar-track"><div class="bar-fill" style="width:43.16%; background:var(--blue);"></div></div><span class="bar-pct b">43.24%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Sales Team</span><div class="bar-track"><div class="bar-fill" style="width:40.34%; background:var(--green);"></div></div><span class="bar-pct g">38.16%</span></div>
-        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Customer Care</span><div class="bar-track"><div class="bar-fill" style="width:16.50%; background:var(--gold);"></div></div><span class="bar-pct gold">16.05%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Digital Marketer</span><div class="bar-track"><div class="bar-fill" style="width:43.16%; background:var(--blue);"></div></div><span class="bar-pct b">43.17%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Sales Team</span><div class="bar-track"><div class="bar-fill" style="width:40.34%; background:var(--green);"></div></div><span class="bar-pct g">40.29%</span></div>
+        <div class="bar-row"><span class="bar-name" style="font-size:12px;">Customer Care</span><div class="bar-track"><div class="bar-fill" style="width:16.50%; background:var(--gold);"></div></div><span class="bar-pct gold">16.54%</span></div>
       </div>
     </div>
   </div>
@@ -760,13 +760,13 @@ tr.filter-hidden { display: none; }
     <table>
       <thead><tr><th>Metric</th><th>March 2026</th><th>February 2026</th><th>January 2026</th><th>December 2025</th></tr></thead>
       <tbody>
-        <tr><td class="mu">Gross Revenue</td><td class="g">₦17.03M</td><td class="g">₦53.26M</td><td class="g">₦50.17M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Gross Expenses</td><td class="r">₦6.00M</td><td class="r">₦18.37M</td><td class="r">₦24.59M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Net Revenue</td><td class="g">₦11.03M</td><td class="g">₦34.88M</td><td class="g">₦25.58M</td><td class="mu">₦0</td></tr>
-        <tr><td class="mu">Total Customers</td><td class="w">251</td><td class="w">758</td><td class="w">782</td><td class="mu">—</td></tr>
-        <tr><td class="mu">Return Customers</td><td class="g">133</td><td class="g">417</td><td class="g">382</td><td class="mu">—</td></tr>
+        <tr><td class="mu">Gross Revenue</td><td class="g">₦18.41M</td><td class="g">₦53.26M</td><td class="g">₦50.17M</td><td class="mu">₦0</td></tr>
+        <tr><td class="mu">Gross Expenses</td><td class="r">₦6.18M</td><td class="r">₦18.37M</td><td class="r">₦24.59M</td><td class="mu">₦0</td></tr>
+        <tr><td class="mu">Net Revenue</td><td class="g">₦12.23M</td><td class="g">₦34.88M</td><td class="g">₦25.58M</td><td class="mu">₦0</td></tr>
+        <tr><td class="mu">Total Customers</td><td class="w">269</td><td class="w">758</td><td class="w">782</td><td class="mu">—</td></tr>
+        <tr><td class="mu">Return Customers</td><td class="g">151</td><td class="g">417</td><td class="g">382</td><td class="mu">—</td></tr>
         <tr><td class="mu">Return %</td>
-          <td><span class="chip chip-g">57.77%</span></td>
+          <td><span class="chip chip-g">56.13%</span></td>
           <td><span class="chip chip-gold">55.01%</span></td>
           <td><span class="chip chip-r">48.85%</span></td>
           <td class="mu">—</td>
@@ -790,7 +790,7 @@ tr.filter-hidden { display: none; }
         <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Feb</div>
       </div>
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:5px;">57.77%</div>
+        <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:5px;">56.13%</div>
         <div style="width:100%; background:var(--green); border-radius:3px 3px 0 0; height:calc(120px * 0.587);"></div>
         <div style="font-size:10px; color:var(--muted2); margin-top:6px;">Mar</div>
       </div>
@@ -809,25 +809,25 @@ tr.filter-hidden { display: none; }
   <div class="card-grid card-grid-4">
     <div class="card">
       <div class="card-label">2026 YTD Revenue</div>
-      <div class="card-val g">₦120.45M</div>
+      <div class="card-val g">₦121.83M</div>
       <div class="card-sub">Gross revenue year to date</div>
       <div class="card-accent ca-green"></div>
     </div>
     <div class="card">
       <div class="card-label">% of Target Achieved</div>
-      <div class="card-val r">6.02%</div>
+      <div class="card-val r">6.09%</div>
       <div class="card-sub">Against 2026 annual target</div>
       <div class="card-accent ca-red"></div>
     </div>
     <div class="card">
       <div class="card-label">Full Year Projection</div>
-      <div class="card-val gold">₦481.82M</div>
+      <div class="card-val gold">₦487.33M</div>
       <div class="card-sub">Based on current run rate</div>
       <div class="card-accent ca-gold"></div>
     </div>
     <div class="card">
       <div class="card-label">Projected % of Target</div>
-      <div class="card-val gold">24.09%</div>
+      <div class="card-val gold">24.37%</div>
       <div class="card-sub">Projected annual achievement</div>
       <div class="card-accent ca-blue"></div>
     </div>
@@ -837,12 +837,12 @@ tr.filter-hidden { display: none; }
     <div class="bar-row" style="margin-bottom:0;">
       <span class="bar-name" style="font-size:12px; width:160px;">YTD Achieved</span>
       <div class="bar-track"><div class="bar-fill" style="width:5.88%; background:var(--green);"></div></div>
-      <span class="bar-pct g">6.02%</span>
+      <span class="bar-pct g">6.09%</span>
     </div>
     <div class="bar-row" style="margin-top:10px; margin-bottom:0;">
       <span class="bar-name" style="font-size:12px; width:160px;">Projected EOY</span>
       <div class="bar-track"><div class="bar-fill" style="width:23.54%; background:var(--gold);"></div></div>
-      <span class="bar-pct gold">24.09%</span>
+      <span class="bar-pct gold">24.37%</span>
     </div>
   </div>
 </section>
@@ -859,40 +859,40 @@ tr.filter-hidden { display: none; }
     <!-- P&L summary -->
     <div class="pl-box">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Monthly P&L Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Total Sales</span><span class="pl-row-val g">₦17.03M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Expenses / Tax</span><span class="pl-row-val r">₦6.00M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Gross Profit</span><span class="pl-row-val g">₦11.03M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net Profit (15%)</span><span class="pl-row-val gold">₦1.65M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">1,830 Units</span></div>
-      <div class="pl-row"><span class="pl-row-key">Customers</span><span class="pl-row-val w">251</span></div>
-      <div class="pl-row"><span class="pl-row-key">Sales Growth MoM</span><span class="pl-row-val r">-68.02%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Expenses Growth MoM</span><span class="pl-row-val r">-67.32%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Total Sales</span><span class="pl-row-val g">₦18.41M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Expenses / Tax</span><span class="pl-row-val r">₦6.18M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Gross Profit</span><span class="pl-row-val g">₦12.23M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Net Profit (15%)</span><span class="pl-row-val gold">₦1.83M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">1,962 Units</span></div>
+      <div class="pl-row"><span class="pl-row-key">Customers</span><span class="pl-row-val w">269</span></div>
+      <div class="pl-row"><span class="pl-row-key">Sales Growth MoM</span><span class="pl-row-val r">-65.43%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Expenses Growth MoM</span><span class="pl-row-val r">-66.39%</span></div>
     </div>
     <!-- Sales by channel -->
     <div class="pl-box">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">Sales by Channel</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--blue);">43.24%</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--blue);">43.17%</div>
           <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Digital</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦7.36M</div>
+          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦7.95M</div>
         </div>
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--green);">38.16%</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--green);">40.29%</div>
           <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Sales Team</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦6.50M</div>
+          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦7.42M</div>
         </div>
         <div style="text-align:center; background:var(--surface2); padding:14px 10px; border-radius:4px;">
-          <div style="font-size:1.3rem; font-weight:700; color:var(--gold);">16.05%</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--gold);">16.54%</div>
           <div style="font-size:10px; color:var(--muted2); margin-top:4px;">Cust. Care</div>
-          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦2.73M</div>
+          <div style="font-size:11px; font-weight:600; margin-top:2px;">₦3.05M</div>
         </div>
       </div>
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Ad Medium Breakdown</div>
-      <div class="pl-row"><span class="pl-row-key">Instagram Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦4.22M</span><span class="mu" style="font-size:11px;">24.78%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Landing Page Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦2.23M</span><span class="mu" style="font-size:11px;">13.07%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Facebook Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦489.8K</span><span class="mu" style="font-size:11px;">2.88%</span></span></div>
-      <div class="pl-row"><span class="pl-row-key">Others</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦10.09M</span><span class="mu" style="font-size:11px;">59.27%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Instagram Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦4.57M</span><span class="mu" style="font-size:11px;">24.82%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Landing Page Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦2.43M</span><span class="mu" style="font-size:11px;">13.19%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Facebook Ad</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦489.8K</span><span class="mu" style="font-size:11px;">2.84%</span></span></div>
+      <div class="pl-row"><span class="pl-row-key">Others</span><span class="pl-row-val" style="display:flex;gap:12px;align-items:center;"><span class="g">₦10.89M</span><span class="mu" style="font-size:11px;">59.15%</span></span></div>
     </div>
   </div>
 </section>
@@ -909,14 +909,14 @@ tr.filter-hidden { display: none; }
     <table>
       <thead><tr><th>#</th><th>Staff</th><th>2026 Revenue</th><th>Target</th><th>% Achieved</th><th>Progress</th></tr></thead>
       <tbody id="staffRows">
-        <tr data-rep="Mary"><td class="mu">01</td><td><strong>Mary</strong></td><td class="g">₦39.08M</td><td class="mu">₦500M</td><td><span class="chip chip-gold">7.82%</span></td><td style="min-width:140px;"><div class="sp-progress"><div class="sp-bar" style="width:7.73%; background:var(--green);"></div></div></td></tr>
-        <tr data-rep="Bolu"><td class="mu">02</td><td><strong>Bolu</strong></td><td class="g">₦25.22M</td><td class="mu">₦400M</td><td><span class="chip chip-gold">6.30%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.20%;"></div></div></td></tr>
-        <tr data-rep="Jaya"><td class="mu">03</td><td><strong>Jaya</strong></td><td class="g">₦10.95M</td><td class="mu">₦150M</td><td><span class="chip chip-gold">7.30%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.16%;"></div></div></td></tr>
-        <tr data-rep="Susan"><td class="mu">04</td><td><strong>Susan</strong></td><td class="g">₦9.66M</td><td class="mu">₦100M</td><td><span class="chip chip-g">9.66%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:9.56%; background:var(--teal);"></div></div></td></tr>
-        <tr data-rep="Esther"><td class="mu">05</td><td><strong>Esther</strong></td><td class="g">₦8.27M</td><td class="mu">₦100M</td><td><span class="chip chip-g">8.27%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:8.21%;"></div></div></td></tr>
-        <tr data-rep="Lewa"><td class="mu">06</td><td><strong>Lewa</strong></td><td class="g">₦8.20M</td><td class="mu">₦250M</td><td><span class="chip chip-r">3.28%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:3.21%; background:var(--gold);"></div></div></td></tr>
-        <tr data-rep="Divine"><td class="mu">07</td><td><strong>Divine</strong></td><td class="g">₦7.66M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">7.66%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.36%;"></div></div></td></tr>
-        <tr data-rep="Rachel"><td class="mu">08</td><td><strong>Rachel</strong></td><td class="g">₦7.18M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">7.18%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.73%;"></div></div></td></tr>
+        <tr data-rep="Mary"><td class="mu">01</td><td><strong>Mary</strong></td><td class="g">₦39.41M</td><td class="mu">₦500M</td><td><span class="chip chip-gold">7.88%</span></td><td style="min-width:140px;"><div class="sp-progress"><div class="sp-bar" style="width:7.73%; background:var(--green);"></div></div></td></tr>
+        <tr data-rep="Bolu"><td class="mu">02</td><td><strong>Bolu</strong></td><td class="g">₦25.12M</td><td class="mu">₦400M</td><td><span class="chip chip-gold">6.28%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.20%;"></div></div></td></tr>
+        <tr data-rep="Jaya"><td class="mu">03</td><td><strong>Jaya</strong></td><td class="g">₦10.86M</td><td class="mu">₦150M</td><td><span class="chip chip-gold">7.24%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.16%;"></div></div></td></tr>
+        <tr data-rep="Susan"><td class="mu">04</td><td><strong>Susan</strong></td><td class="g">₦9.59M</td><td class="mu">₦100M</td><td><span class="chip chip-g">9.59%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:9.56%; background:var(--teal);"></div></div></td></tr>
+        <tr data-rep="Esther"><td class="mu">05</td><td><strong>Esther</strong></td><td class="g">₦8.25M</td><td class="mu">₦100M</td><td><span class="chip chip-g">8.25%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:8.21%;"></div></div></td></tr>
+        <tr data-rep="Lewa"><td class="mu">06</td><td><strong>Lewa</strong></td><td class="g">₦8.37M</td><td class="mu">₦250M</td><td><span class="chip chip-r">3.35%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:3.21%; background:var(--gold);"></div></div></td></tr>
+        <tr data-rep="Divine"><td class="mu">07</td><td><strong>Divine</strong></td><td class="g">₦7.49M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">7.49%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:7.36%;"></div></div></td></tr>
+        <tr data-rep="Rachel"><td class="mu">08</td><td><strong>Rachel</strong></td><td class="g">₦7.32M</td><td class="mu">₦100M</td><td><span class="chip chip-gold">7.32%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:6.73%;"></div></div></td></tr>
         <tr data-rep="Amaya"><td class="mu">09</td><td><strong>Amaya</strong></td><td class="r">₦185.77K</td><td class="mu">₦100M</td><td><span class="chip chip-r">0.19%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.19%; background:var(--red);"></div></div></td></tr>
         <tr data-rep="Jane"><td class="mu">10</td><td><strong>Jane</strong></td><td class="r">₦67.2K</td><td class="mu">₦100M</td><td><span class="chip chip-r">0.07%</span></td><td><div class="sp-progress"><div class="sp-bar" style="width:0.03%; background:var(--red);"></div></div></td></tr>
       </tbody>
@@ -946,17 +946,17 @@ tr.filter-hidden { display: none; }
         </tr>
       </thead>
       <tbody>
-        <tr><td class="mu">Gross Revenue</td><td class="w">₦1.72B</td><td>₦122.27M</td><td>₦154.45M</td><td>₦452.97M</td><td>₦875.74M</td><td class="g">₦120.45M</td></tr>
-        <tr><td class="mu">Gross Expenses</td><td class="r">₦659.43M</td><td class="r">₦45.12M</td><td class="r">₦50M</td><td class="r">₦201.36M</td><td class="r">₦314.61M</td><td class="r">₦48.97M</td></tr>
+        <tr><td class="mu">Gross Revenue</td><td class="w">₦1.72B</td><td>₦122.27M</td><td>₦154.45M</td><td>₦452.97M</td><td>₦875.74M</td><td class="g">₦121.83M</td></tr>
+        <tr><td class="mu">Gross Expenses</td><td class="r">₦659.43M</td><td class="r">₦45.12M</td><td class="r">₦50M</td><td class="r">₦201.36M</td><td class="r">₦314.61M</td><td class="r">₦49.14M</td></tr>
         <tr><td class="mu">Logistics</td><td class="r">₦126.15M</td><td class="r">₦0</td><td class="r">₦0</td><td class="r">₦44.45M</td><td class="r">₦74.47M</td><td class="r">₦7.23M</td></tr>
         <tr><td class="mu">Digital Expenses</td><td class="r">₦301.7M</td><td class="r">₦23.35M</td><td class="r">₦27.41M</td><td class="r">₦91.3M</td><td class="r">₦147.08M</td><td class="r">₦12.82M</td></tr>
         <tr><td class="mu">Salary + Bonus</td><td class="r">₦65.2M</td><td class="r">₦8.42M</td><td class="r">₦9.48M</td><td class="r">₦16.26M</td><td class="r">₦23.79M</td><td class="r">₦7.25M</td></tr>
-        <tr><td class="mu">Tax</td><td class="r">₦98.94M</td><td class="r">₦6.17M</td><td class="r">₦8.47M</td><td class="r">₦24M</td><td class="r">₦45.58M</td><td class="r">₦15.06M</td></tr>
-        <tr><td class="mu">Net Revenue</td><td class="g">₦1.06B</td><td class="g">₦77.14M</td><td class="g">₦104.45M</td><td class="g">₦251.61M</td><td class="g">₦561.13M</td><td class="g">₦71.49M</td></tr>
-        <tr><td class="mu">Net 15%</td><td class="gold">₦159.55M</td><td class="gold">₦11.57M</td><td class="gold">₦15.67M</td><td class="gold">₦37.74M</td><td class="gold">₦84.17M</td><td class="gold">₦10.72M</td></tr>
-        <tr><td class="mu">Total Customers</td><td class="w">44,325</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="g">1,791</td></tr>
-        <tr><td class="mu">Return Customers</td><td class="g">12,712</td><td>702</td><td>1,671</td><td>3,753</td><td>5,669</td><td class="g">944</td></tr>
-        <tr><td class="mu">Units Sold</td><td class="w">297,126</td><td>8,529</td><td>40,878</td><td>101,071</td><td>133,616</td><td>13,368</td></tr>
+        <tr><td class="mu">Tax</td><td class="r">₦98.94M</td><td class="r">₦6.17M</td><td class="r">₦8.47M</td><td class="r">₦24M</td><td class="r">₦45.58M</td><td class="r">₦15.23M</td></tr>
+        <tr><td class="mu">Net Revenue</td><td class="g">₦1.06B</td><td class="g">₦77.14M</td><td class="g">₦104.45M</td><td class="g">₦251.61M</td><td class="g">₦561.13M</td><td class="g">₦72.69M</td></tr>
+        <tr><td class="mu">Net 15%</td><td class="gold">₦159.55M</td><td class="gold">₦11.57M</td><td class="gold">₦15.67M</td><td class="gold">₦37.74M</td><td class="gold">₦84.17M</td><td class="gold">₦10.90M</td></tr>
+        <tr><td class="mu">Total Customers</td><td class="w">44,325</td><td>3,125</td><td>7,150</td><td>14,593</td><td>17,716</td><td class="g">1,809</td></tr>
+        <tr><td class="mu">Return Customers</td><td class="g">12,712</td><td>702</td><td>1,671</td><td>3,753</td><td>5,669</td><td class="g">950</td></tr>
+        <tr><td class="mu">Units Sold</td><td class="w">297,126</td><td>8,529</td><td>40,878</td><td>101,071</td><td>133,616</td><td>13,500</td></tr>
         <tr style="border-top:1px solid var(--border2);">
           <td class="mu">Total Staff</td><td class="w">13</td><td>12</td><td>21</td><td>18</td><td>20</td><td>12</td>
         </tr>
@@ -981,23 +981,23 @@ tr.filter-hidden { display: none; }
     <!-- financials -->
     <div class="pl-box">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Financial Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Gross Revenue</span><span class="pl-row-val g">₦120.45M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Gross Expenses</span><span class="pl-row-val r">₦48.97M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Gross Revenue</span><span class="pl-row-val g">₦121.83M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Gross Expenses</span><span class="pl-row-val r">₦49.14M</span></div>
       <div class="pl-row"><span class="pl-row-key">Logistics Expenses</span><span class="pl-row-val r">₦7.23M</span></div>
       <div class="pl-row"><span class="pl-row-key">Digital Expenses</span><span class="pl-row-val r">₦12.82M</span></div>
       <div class="pl-row"><span class="pl-row-key">Salary + Bonus</span><span class="pl-row-val r">₦7.25M</span></div>
-      <div class="pl-row"><span class="pl-row-key">TAX (12.5% VAT)</span><span class="pl-row-val r">₦15.06M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net Revenue</span><span class="pl-row-val g">₦71.49M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Net 15%</span><span class="pl-row-val gold">₦10.72M</span></div>
-      <div class="pl-row"><span class="pl-row-key">Avg Monthly Net</span><span class="pl-row-val gold">₦10.72M</span></div>
+      <div class="pl-row"><span class="pl-row-key">TAX (12.5% VAT)</span><span class="pl-row-val r">₦15.23M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Net Revenue</span><span class="pl-row-val g">₦72.69M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Net 15%</span><span class="pl-row-val gold">₦10.90M</span></div>
+      <div class="pl-row"><span class="pl-row-key">Avg Monthly Net</span><span class="pl-row-val gold">₦10.90M</span></div>
     </div>
     <!-- operations -->
     <div class="pl-box">
       <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">2026 Operations Summary</div>
-      <div class="pl-row"><span class="pl-row-key">Total Customers</span><span class="pl-row-val w">1,791</span></div>
-      <div class="pl-row"><span class="pl-row-key">Return Customers</span><span class="pl-row-val g">944</span></div>
-      <div class="pl-row"><span class="pl-row-key">Return Customer %</span><span class="pl-row-val g">52.7%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">13,368</span></div>
+      <div class="pl-row"><span class="pl-row-key">Total Customers</span><span class="pl-row-val w">1,809</span></div>
+      <div class="pl-row"><span class="pl-row-key">Return Customers</span><span class="pl-row-val g">950</span></div>
+      <div class="pl-row"><span class="pl-row-key">Return Customer %</span><span class="pl-row-val g">52.5%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Units Sold</span><span class="pl-row-val w">13,500</span></div>
       <div class="pl-row"><span class="pl-row-key">Total Staff</span><span class="pl-row-val w">12</span></div>
       <div class="pl-row"><span class="pl-row-key">Hires (YTD)</span><span class="pl-row-val g">2</span></div>
       <div class="pl-row"><span class="pl-row-key">Fired (YTD)</span><span class="pl-row-val r">1</span></div>
@@ -1019,16 +1019,16 @@ tr.filter-hidden { display: none; }
     <table>
       <thead><tr><th>Staff</th><th>Q1 (Jan–Mar)</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><strong>Mary</strong></td><td class="g">₦39.08M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Bolu</strong></td><td class="g">₦25.22M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Jaya</strong></td><td class="g">₦10.95M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Susan</strong></td><td class="g">₦9.66M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Esther</strong></td><td class="g">₦8.27M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Lewa</strong></td><td class="g">₦8.20M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Divine</strong></td><td class="g">₦7.66M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
-        <tr><td><strong>Rachel</strong></td><td class="g">₦7.18M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Mary</strong></td><td class="g">₦39.41M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Bolu</strong></td><td class="g">₦25.12M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Jaya</strong></td><td class="g">₦10.86M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Susan</strong></td><td class="g">₦9.59M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Esther</strong></td><td class="g">₦8.25M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Lewa</strong></td><td class="g">₦8.37M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Divine</strong></td><td class="g">₦7.49M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
+        <tr><td><strong>Rachel</strong></td><td class="g">₦7.32M</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-g">Active</span></td></tr>
         <tr><td><strong>Jane</strong></td><td class="r">₦67.2K</td><td class="mu">₦0</td><td class="mu">₦0</td><td class="mu">₦0</td><td><span class="chip chip-r">Low Activity</span></td></tr>
-        <tr style="border-top:1px solid var(--border2);"><td class="mu" colspan="5">Timothy — Conversion Rate</td><td><span class="chip chip-gold">70.97%</span></td></tr>
+        <tr style="border-top:1px solid var(--border2);"><td class="mu" colspan="5">Timothy — Conversion Rate</td><td><span class="chip chip-gold">70.93%</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1048,18 +1048,18 @@ tr.filter-hidden { display: none; }
   <div class="card-grid card-grid-3" style="margin-bottom:20px;">
     <div class="card">
       <div class="card-label">Total Leads</div>
-      <div class="card-val w">1,400</div>
+      <div class="card-val w">1,470</div>
       <div class="card-sub">IG + Facebook combined</div>
     </div>
     <div class="card">
       <div class="card-label">Total Closed</div>
-      <div class="card-val g">75</div>
+      <div class="card-val g">82</div>
       <div class="card-sub">Customers converted</div>
       <div class="card-accent ca-green"></div>
     </div>
     <div class="card">
       <div class="card-label">Overall Conversion</div>
-      <div class="card-val gold">5.36%</div>
+      <div class="card-val gold">5.58%</div>
       <div class="card-sub">March closing rate</div>
       <div class="card-accent ca-gold"></div>
     </div>
@@ -1077,11 +1077,11 @@ tr.filter-hidden { display: none; }
         </tr>
       </thead>
       <tbody>
-        <tr data-rep="Jaya"><td><strong>Jaya</strong></td><td>140</td><td class="g">9</td><td>93</td><td class="g">15</td><td class="w">233</td><td class="g">24</td><td><span class="chip chip-g">10.30%</span></td></tr>
+        <tr data-rep="Jaya"><td><strong>Jaya</strong></td><td>124</td><td class="g">9</td><td>87</td><td class="g">14</td><td class="w">211</td><td class="g">23</td><td><span class="chip chip-g">10.90%</span></td></tr>
         <tr data-rep="Bolu"><td><strong>Bolu</strong></td><td class="mu">—</td><td class="g">1</td><td>212</td><td class="g">11</td><td class="w">212</td><td class="g">12</td><td><span class="chip chip-gold">5.66%</span></td></tr>
-        <tr data-rep="Divine"><td><strong>Divine</strong></td><td>145</td><td class="g">1</td><td>175</td><td class="g">18</td><td class="w">320</td><td class="g">19</td><td><span class="chip chip-gold">5.94%</span></td></tr>
-        <tr data-rep="Susan"><td><strong>Susan</strong></td><td>115</td><td class="mu">0</td><td>205</td><td class="g">16</td><td class="w">350</td><td class="g">16</td><td><span class="chip chip-gold">4.57%</span></td></tr>
-        <tr data-rep="Esther"><td><strong>Esther</strong></td><td>155</td><td class="g">2</td><td class="mu">—</td><td class="mu">—</td><td class="w">155</td><td class="g">2</td><td><span class="chip chip-r">1.37%</span></td></tr>
+        <tr data-rep="Divine"><td><strong>Divine</strong></td><td>130</td><td class="g">1</td><td>175</td><td class="g">16</td><td class="w">305</td><td class="g">17</td><td><span class="chip chip-gold">5.57%</span></td></tr>
+        <tr data-rep="Susan"><td><strong>Susan</strong></td><td>115</td><td class="mu">0</td><td>190</td><td class="g">14</td><td class="w">305</td><td class="g">14</td><td><span class="chip chip-gold">4.59%</span></td></tr>
+        <tr data-rep="Esther"><td><strong>Esther</strong></td><td>168</td><td class="g">3</td><td class="mu">—</td><td class="mu">—</td><td class="w">168</td><td class="g">3</td><td><span class="chip chip-r">1.79%</span></td></tr>
         <tr data-rep="Mary"><td><strong>Mary</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
         <tr data-rep="Jane"><td><strong>Jane</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td><span class="chip chip-r">0.00%</span></td></tr>
       </tbody>
@@ -1093,7 +1093,7 @@ tr.filter-hidden { display: none; }
     <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">Conversion Rate by Rep</div>
     <div class="bar-row"><span class="bar-name">Jaya</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div><span class="bar-pct g">11.93%</span></div>
     <div class="bar-row"><span class="bar-name">Bolu</span><div class="bar-track"><div class="bar-fill" style="width:47.4%; background:var(--teal);"></div></div><span class="bar-pct" style="color:var(--teal);">5.66%</span></div>
-    <div class="bar-row"><span class="bar-name">Divine</span><div class="bar-track"><div class="bar-fill" style="width:44.3%; background:var(--gold);"></div></div><span class="bar-pct gold">5.02%</span></div>
+    <div class="bar-row"><span class="bar-name">Divine</span><div class="bar-track"><div class="bar-fill" style="width:42.1%; background:var(--gold);"></div></div><span class="bar-pct gold">5.02%</span></div>
     <div class="bar-row"><span class="bar-name">Susan</span><div class="bar-track"><div class="bar-fill" style="width:35.7%; background:var(--gold);"></div></div><span class="bar-pct gold">4.26%</span></div>
     <div class="bar-row"><span class="bar-name">Esther</span><div class="bar-track"><div class="bar-fill" style="width:11.5%; background:var(--red);"></div></div><span class="bar-pct r">1.37%</span></div>
   </div>
@@ -1110,12 +1110,12 @@ tr.filter-hidden { display: none; }
   <div class="card-grid card-grid-5">
     <div class="card">
       <div class="card-label">Total Leads</div>
-      <div class="card-val w">118</div>
+      <div class="card-val w">131</div>
       <div class="card-sub">March 2026</div>
     </div>
     <div class="card">
       <div class="card-label">Interested</div>
-      <div class="card-val gold">67</div>
+      <div class="card-val gold">71</div>
       <div class="card-sub">59.78% of leads</div>
       <div class="card-accent ca-gold"></div>
     </div>
@@ -1127,12 +1127,12 @@ tr.filter-hidden { display: none; }
     </div>
     <div class="card">
       <div class="card-label">% Interested</div>
-      <div class="card-val gold">56.78%</div>
+      <div class="card-val gold">54.20%</div>
       <div class="card-sub">Of total leads</div>
     </div>
     <div class="card">
       <div class="card-label">% Closed</div>
-      <div class="card-val g">50.85%</div>
+      <div class="card-val g">50.38%</div>
       <div class="card-sub">Of total leads delivered</div>
       <div class="card-accent ca-green"></div>
     </div>
@@ -1150,12 +1150,12 @@ tr.filter-hidden { display: none; }
   <div class="lp-compare">
     <div class="lp-box featured">
       <div class="lp-title" style="color:var(--blue);">Suruka Landing Page</div>
-      <div class="pl-row"><span class="pl-row-key">Total Leads</span><span class="pl-row-val w">108</span></div>
-      <div class="pl-row"><span class="pl-row-key">Interested</span><span class="pl-row-val gold">58</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered</span><span class="pl-row-val g">54 Customers</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Interested</span><span class="pl-row-val gold">53.70%</span></div>
-      <div class="pl-row"><span class="pl-row-key">% Closed</span><span class="pl-row-val g">50.00%</span></div>
-      <div class="pl-row"><span class="pl-row-key">Delivered from Interested</span><span class="pl-row-val g">93.10%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Total Leads</span><span class="pl-row-val w">121</span></div>
+      <div class="pl-row"><span class="pl-row-key">Interested</span><span class="pl-row-val gold">62</span></div>
+      <div class="pl-row"><span class="pl-row-key">Delivered</span><span class="pl-row-val g">60 Customers</span></div>
+      <div class="pl-row"><span class="pl-row-key">% Interested</span><span class="pl-row-val gold">51.24%</span></div>
+      <div class="pl-row"><span class="pl-row-key">% Closed</span><span class="pl-row-val g">49.59%</span></div>
+      <div class="pl-row"><span class="pl-row-key">Delivered from Interested</span><span class="pl-row-val g">96.77%</span></div>
     </div>
     <div class="lp-box">
       <div class="lp-title">Dan Landing Page</div>
@@ -1189,7 +1189,7 @@ tr.filter-hidden { display: none; }
       <tbody>
         <tr><td class="mu">10/03/2026</td><td><strong>Lewa</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">Pending</td><td class="mu">—</td></tr>
         <tr><td class="mu">10/03/2026</td><td><strong>Ray</strong></td><td class="mu">—</td><td class="mu">—</td><td class="mu">—</td><td class="mu">Pending</td><td class="mu">—</td></tr>
-        <tr class="td-total"><td colspan="2">TOTAL TODAY</td><td>—</td><td>—</td><td>—</td><td>Pending</td><td>—</td></tr>
+        <tr class="td-total"><td colspan="2">TOTAL TODAY</td><td class="w">80</td><td class="g">79</td><td class="mu">0</td><td class="g">100.00%</td><td class="mu">0.00%</td></tr>
       </tbody>
     </table>
   </div>
@@ -1217,9 +1217,9 @@ tr.filter-hidden { display: none; }
     </div>
     <div class="cs-card" style="background:rgba(14,143,82,0.04); border:1px solid rgba(14,143,82,0.2);">
       <div class="cs-year" style="color:var(--green);">2026 YTD</div>
-      <div class="cs-pct" style="color:var(--green);">97.17%</div>
-      <div class="cs-detail">Satisfied<br>2.83% not satisfied</div>
-      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">3,041 customers · ₦14.16M</div>
+      <div class="cs-pct" style="color:var(--green);">97.24%</div>
+      <div class="cs-detail">Satisfied<br>2.76% not satisfied</div>
+      <div class="cs-detail" style="margin-top:8px; color:var(--muted2);">3,120 customers · ₦14.33M</div>
     </div>
   </div>
 
@@ -1227,8 +1227,8 @@ tr.filter-hidden { display: none; }
   <div style="background:var(--surface); border-radius:4px; padding:20px 24px; border:1px solid var(--border);">
     <div style="font-size:10px; color:var(--muted2); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px;">4-Year Cumulative CS Totals</div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Customers Served</span><span class="pl-row-val w">31,532</span></div>
-      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Revenue (CS-tracked)</span><span class="pl-row-val g">₦140.64M</span></div>
+      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Customers Served</span><span class="pl-row-val w">31,611</span></div>
+      <div class="pl-row" style="padding:0;"><span class="pl-row-key">Total Revenue (CS-tracked)</span><span class="pl-row-val g">₦140.82M</span></div>
     </div>
   </div>
 
@@ -1274,7 +1274,7 @@ tr.filter-hidden { display: none; }
       </div>
       <!-- 2026 -->
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">52.7%</div>
+        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:5px;">52.5%</div>
         <div style="width:100%; background:var(--red); border-radius:3px 3px 0 0; height:150px;"></div>
         <div style="font-size:9px; color:var(--red); margin-top:6px; text-align:center; font-weight:700;">2026 ↑</div>
       </div>
