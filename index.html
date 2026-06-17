@@ -6,16 +6,16 @@
     <title>Suruka Core Analytics Matrix</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --em-red: #ff0000; --em-dark: #0c0f12; --em-card: #11161d; --profit-green: #2e7d32; --loss-red: #c62828; --text-main: #e2e8f0; --text-muted: #a0aec0; --border: #2d3748; --white: #ffffff; }
+        :root { --suruka-green: #2e7d32; --suruka-light-green: #4caf50; --em-dark: #0c0f12; --em-card: #11161d; --profit-green: #2e7d32; --loss-red: #c62828; --text-main: #e2e8f0; --text-muted: #a0aec0; --border: #2d3748; --white: #ffffff; }
         * { box-sizing: border-box; }
         body { background-color: var(--em-dark); color: var(--text-main); font-family: 'Outfit', sans-serif; margin: 0; padding-top: 220px; font-size: 12px; letter-spacing: -0.01em; }
         .fixed-header { position: fixed; top: 0; left: 0; right: 0; background: rgba(17, 22, 29, 0.96); backdrop-filter: blur(8px); z-index: 1000; border-bottom: 2px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .ticker { background: var(--em-red); color: var(--white); padding: 6px; overflow: hidden; white-space: nowrap; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ticker { background: var(--suruka-green); color: var(--white); padding: 6px; overflow: hidden; white-space: nowrap; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--suruka-light-green); }
         .ticker-wrap { display: inline-block; padding-left: 100%; animation: tick 45s linear infinite; }
         @keyframes tick { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
         .top-summary { padding: 10px 20px 6px; display: flex; justify-content: space-between; align-items: center; }
-        h1 { margin: 0; font-size: 18px; color: var(--em-red); font-weight: 900; letter-spacing: -0.5px; text-transform: uppercase; }
-        h2 { font-size: 13px; color: var(--em-red); font-weight: 900; margin: 25px 0 12px 0; border-bottom: 1px solid var(--border); padding-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+        h1 { margin: 0; font-size: 18px; color: var(--white); font-weight: 900; letter-spacing: -0.5px; text-transform: uppercase; border-left: 4px solid var(--suruka-green); padding-left: 8px; }
+        h2 { font-size: 13px; color: var(--white); font-weight: 900; margin: 25px 0 12px 0; border-bottom: 2px solid var(--suruka-green); padding-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
         .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 0 20px 10px; }
         .card { background: #1a202c; padding: 8px 12px; border: 1px solid var(--border); border-radius: 4px; }
         .card-title { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
@@ -23,7 +23,7 @@
         .container { padding: 0 20px 20px; max-width: 1600px; margin: 0 auto; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #141a24; font-variant-numeric: tabular-nums; }
         th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
-        th { background: #161d28; color: var(--text-muted); font-size: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
+        th { background: #161d28; color: var(--text-muted); font-size: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
         .g { color: var(--profit-green) !important; font-weight: bold; }
         .r { color: var(--loss-red) !important; font-weight: bold; }
         .w { color: var(--white) !important; font-weight: 600; }
@@ -52,7 +52,7 @@
             <div class="card"><div class="card-title">Acquisition Volume / Proj</div><div class="metric w">490 Cust</div><small class="w">Target: 894 Cust</small></div>
             <div class="card"><div class="card-title">Operating Outflow / Tax Change</div><div class="metric r">₦9,734,382</div><small class="r">Delta Shift: -43.73%</small></div>
             <div class="card"><div class="card-title">Gross Operating Margin / Delta</div><div class="metric g">₦27,739,874</div><small class="r">Velocity: -21.97%</small></div>
-            <div class="card"><div class="card-title">Target Retained Capital (15%)</div><div class="metric g">₦4,160,981.10</div><small class="w" style="font-weight: 800; color: #ff0000;">Current Month Fixed</small></div>
+            <div class="card"><div class="card-title">Target Retained Capital (15%)</div><div class="metric g">₦4,160,981.10</div><small class="w" style="font-weight: 800; color: var(--suruka-light-green);">Current Month Fixed</small></div>
         </div>
     </div>
 
@@ -70,7 +70,7 @@
                 <tr><td>Susan</td><td>1</td><td class="g">₦33,600.00</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                 <tr><td>Rachel</td><td>1</td><td class="g">₦62,000.00</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                 <tr><td>Divine</td><td>3</td><td class="g">₦152,200.00</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                <tr><td>Ray</td><td>0</td><td class="g">₦0.00</td><td>0</td><td>0 Accounts</td><td>0.00%</td><td class="r">0.00%</td></tr>
+                <tr><td>Ray</td><td>0</td><td class="g">₦0.00</td><td>0</td><td>0 Accounts</td><td class="g">0.00%</td><td class="r">0.00%</td></tr>
                 <tr><td>Fortunate / Jane</td><td>0</td><td class="g">₦0.00</td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
                 <tr style="font-weight:bold; background:#1a202c;"><td>TOTAL CONSOLIDATED CYCLE RUN</td><td class="w">15 Cust</td><td class="g">₦1,453,350.00</td><td class="w">102 Units</td><td class="w">23 Cust</td><td class="g">100.00%</td><td class="r">0.00%</td></tr>
             </tbody>
